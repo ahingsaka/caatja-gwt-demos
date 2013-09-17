@@ -244,7 +244,7 @@ public class Scene1 {
                     setAnchor(cc1)
             );
 
-        CaatjaGradient gradient = director.crc.createLinearGradient(0, 0, 0, 30);
+        CaatjaGradient gradient = director.ctx.createLinearGradient(0, 0, 0, 30);
         gradient.addColorStop(0, "#00ff00");
         gradient.addColorStop(0.5, "red");
         gradient.addColorStop(1, "blue");

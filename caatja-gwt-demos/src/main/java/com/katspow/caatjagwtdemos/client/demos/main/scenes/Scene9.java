@@ -113,7 +113,7 @@ public class Scene9 {
     }
     
     private static void __scene9_text(Director director, Scene scene) throws Exception {
-        CaatjaGradient gradient= director.crc.createLinearGradient(0,0,0,50);
+        CaatjaGradient gradient= director.ctx.createLinearGradient(0,0,0,50);
         gradient.addColorStop(0,"orange");
         gradient.addColorStop(0.5,"red");
         gradient.addColorStop(1,"#3f00ff");

@@ -387,6 +387,7 @@ public class Main {
         final AnotherSpecialScene scene= new AnotherSpecialScene();
 
         ActorContainer root= new ActorContainer() {
+            
             @Override
             public void mouseEnter (CAATMouseEvent mouseEvent) {
                 

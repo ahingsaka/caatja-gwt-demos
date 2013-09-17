@@ -81,7 +81,7 @@ public class Scene5 {
         rb.setInterpolator( new Interpolator().createCubicBezierInterpolator(new Pt().set(0, 0),new Pt().set(1, 0), new Pt().set(0, 1), new Pt().set(1, 1), true ) );
         cc1.addBehavior(rb);
         
-        CaatjaGradient gradient= director.crc.createLinearGradient(0,0,0,30);
+        CaatjaGradient gradient= director.ctx.createLinearGradient(0,0,0,30);
         gradient.addColorStop(0,"black");
         gradient.addColorStop(0.5,"gray");
         gradient.addColorStop(1,"#d0d0d0"); 
