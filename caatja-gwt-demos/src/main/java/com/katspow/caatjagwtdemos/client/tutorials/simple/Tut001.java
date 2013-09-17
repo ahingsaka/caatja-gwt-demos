@@ -33,8 +33,7 @@ public class Tut001 {
         scene.addChild(circle);
         director.addScene(scene);
 
-        director.loop(1);
-
+        Caatja.loop(1);
     }
 
 }
