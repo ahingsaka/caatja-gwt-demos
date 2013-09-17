@@ -5,6 +5,7 @@ import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
+import com.katspow.caatja.foundation.actor.Actor.EventType;
 import com.katspow.caatja.foundation.actor.ActorListener;
 
 /**
@@ -37,9 +38,9 @@ public class Tut031 {
         // add a life cycle listener to the actor.
         _pulsating_actor_2.addListener(new ActorListener() {
             @Override
-            public void actorLifeCycleEvent(Actor actor, String eventType, double time) {
+            public void actorLifeCycleEvent(Actor actor, EventType eventType, double time) {
                 // on expiration notification,
-                if ( "expired".equals(eventType)) {
+                if (eventType == EventType.EXPIRED) {
                     // just make the Actor sleep for 1 second.
                     // After waking up, last for 2 seconds.
                     actor.setFrameTime( time+1000, 2000 );

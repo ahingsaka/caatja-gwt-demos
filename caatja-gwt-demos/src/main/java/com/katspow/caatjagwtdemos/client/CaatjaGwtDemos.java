@@ -12,8 +12,6 @@ import com.katspow.caatjagwt.client.CaatjaGwtRootPanel;
 import com.katspow.caatjagwt.client.CaatjaGwtService;
 import com.katspow.caatjagwt.client.CaatjaGwtWindow;
 import com.katspow.caatjagwtdemos.client.demos.hypernumber.HyperNumber;
-import com.katspow.caatjagwtdemos.client.demos.main.Main;
-import com.katspow.caatjagwtdemos.client.tutorials.simple.Tut051;
 
 public class CaatjaGwtDemos implements EntryPoint {
 
@@ -24,9 +22,9 @@ public class CaatjaGwtDemos implements EntryPoint {
 				new CaatjaGwtPreloader(), new CAATGwt());
 		
 		try {
-			new Main().__CAAT_init();
-//			new HyperNumber().init();
-//			new Tut051().init();
+//			new Main().__CAAT_init();
+			new HyperNumber().init();
+//			new Tut031().init();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
