@@ -24,7 +24,7 @@ public class Scene12 {
 
         String[] colors = new String[] { "red", "blue", "white", "rgb(0,255,255)", "yellow" };
 
-        CaatjaGradient gradient = director.crc.createLinearGradient(0, 0, director.width, director.height);
+        CaatjaGradient gradient = director.ctx.createLinearGradient(0, 0, director.width, director.height);
         gradient.addColorStop(0, "#000000");
         gradient.addColorStop(1, "#00007f");
         

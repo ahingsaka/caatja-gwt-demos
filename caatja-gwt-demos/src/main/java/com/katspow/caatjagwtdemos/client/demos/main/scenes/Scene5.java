@@ -29,7 +29,7 @@ public class Scene5 {
         pa.setBounds(0,0,director.canvas.getCoordinateSpaceWidth(),director.canvas.getCoordinateSpaceHeight());
         scene.addChild(pa); 
 
-        CaatjaGradient gradient= director.crc.createLinearGradient(0,0,0,-40);
+        CaatjaGradient gradient= director.ctx.createLinearGradient(0,0,0,-40);
         gradient.addColorStop(0,"#ffff00");
         gradient.addColorStop(0.5,"#00ffff");
         gradient.addColorStop(1,"blue");    
@@ -44,7 +44,7 @@ public class Scene5 {
         scene.addChild(text);
 
         
-        CaatjaGradient gradient2= director.crc.createLinearGradient(0,0,0,40);
+        CaatjaGradient gradient2= director.ctx.createLinearGradient(0,0,0,40);
         gradient2.addColorStop(0,"#0000ff");
         gradient2.addColorStop(0.5,"#ff0000");
         gradient2.addColorStop(1,"#ffff00");    

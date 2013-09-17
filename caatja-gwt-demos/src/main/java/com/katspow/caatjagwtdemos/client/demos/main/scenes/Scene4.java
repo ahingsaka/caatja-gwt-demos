@@ -67,7 +67,7 @@ public class Scene4 {
             ActorContainer p = new ActorContainer() {
                 @Override
                 public void paint(Director director, double time) {
-                    CaatjaContext2d canvas = director.crc;
+                    CaatjaContext2d canvas = director.ctx;
                     
                     if ( null!=this.parent && null!=this.fillStyle ) {
                         canvas.setFillStyle(this.pointed ? new CaatjaFillStrokeStyle("orange") : (this.fillStyle!=null ? this.fillStyle : new CaatjaFillStrokeStyle("white"))); //"white";

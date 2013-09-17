@@ -121,7 +121,7 @@ public class Scene2 {
             }
         }
 
-        CaatjaGradient gradient = director.crc.createLinearGradient(0, 0, 0, 30);
+        CaatjaGradient gradient = director.ctx.createLinearGradient(0, 0, 0, 30);
         gradient.addColorStop(0, "#ffff00");
         gradient.addColorStop(0.5, "#ff00ff");
         gradient.addColorStop(1, "blue");
