@@ -1,6 +1,7 @@
 package com.katspow.caatjagwtdemos.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatjagwt.client.CAATGwt;
 import com.katspow.caatjagwt.client.CaatjaGwtDate;
@@ -11,7 +12,7 @@ import com.katspow.caatjagwt.client.CaatjaGwtPreloader;
 import com.katspow.caatjagwt.client.CaatjaGwtRootPanel;
 import com.katspow.caatjagwt.client.CaatjaGwtService;
 import com.katspow.caatjagwt.client.CaatjaGwtWindow;
-import com.katspow.caatjagwtdemos.client.demos.hypernumber.HyperNumber;
+import com.katspow.caatjagwtdemos.client.welcome.WelcomeView;
 
 public class CaatjaGwtDemos implements EntryPoint {
 
@@ -23,8 +24,11 @@ public class CaatjaGwtDemos implements EntryPoint {
 		
 		try {
 //			new Main().__CAAT_init();
-			new HyperNumber().init();
+//			new HyperNumber().init();
 //			new Tut031().init();
+			
+			RootLayoutPanel.get().add(new WelcomeView());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
