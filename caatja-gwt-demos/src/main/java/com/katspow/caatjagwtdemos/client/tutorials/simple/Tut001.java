@@ -23,7 +23,7 @@ public class Tut001 {
         Director director = new Director().initialize(100, 100, canvas);
         Scene scene = director.createScene();
 
-        ShapeActor circle = (ShapeActor) new ShapeActor()
+        ShapeActor circle = new ShapeActor()
                 .setLocation(20, 20)
                 .setSize(60, 60)
                 .setFillStrokeStyle(new CaatjaFillStrokeStyle("#ff0000"));
