@@ -163,7 +163,7 @@ public class Main {
 
                     @Override
                     public void paint(Director director, double time) {
-                        CaatjaContext2d canvas= director.crc;
+                        CaatjaContext2d canvas= director.ctx;
                         
                         if ( null!=this.parent && null!=this.fillStyle ) {
                             canvas.beginPath();
@@ -256,7 +256,7 @@ public class Main {
 
                     @Override
                     public void paint(Director director, double time) {
-                        CaatjaContext2d canvas= director.crc;
+                        CaatjaContext2d canvas= director.ctx;
                         
                         if ( null!=this.parent && null!=this.fillStyle ) {
                             canvas.beginPath();
@@ -309,7 +309,7 @@ public class Main {
 
                     @Override
                     public void paint(Director director, double time) {
-                        CaatjaContext2d canvas= director.crc;
+                        CaatjaContext2d canvas= director.ctx;
                         
                         if ( null!=this.parent && null!=this.fillStyle ) {
                             canvas.beginPath();

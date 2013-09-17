@@ -33,7 +33,7 @@ public class Demo16 {
         director.imagesCache = images;
         final Scene scene = director.createScene();
         
-        CaatjaGradient gradient= director.crc.createLinearGradient(0,0,director.width,director.height);
+        CaatjaGradient gradient= director.ctx.createLinearGradient(0,0,director.width,director.height);
         gradient.addColorStop(0,"#000000");
         gradient.addColorStop(1,"#00007f");
 

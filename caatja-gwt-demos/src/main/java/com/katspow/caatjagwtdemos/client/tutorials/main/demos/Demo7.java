@@ -115,7 +115,7 @@ public class Demo7 {
     }
     
     private void createDescription(Director director,Scene scene) throws Exception {
-        CaatjaGradient gradient = director.crc.createLinearGradient(0, 0, 0, 50);
+        CaatjaGradient gradient = director.ctx.createLinearGradient(0, 0, 0, 50);
         gradient.addColorStop(0, "blue");
         gradient.addColorStop(0.5, "orange");
         gradient.addColorStop(1, "yellow");

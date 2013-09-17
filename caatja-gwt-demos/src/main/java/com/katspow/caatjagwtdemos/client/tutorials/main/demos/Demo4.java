@@ -40,7 +40,7 @@ public class Demo4 {
     }
     
     private void fpaint(Director director, double time, ActorContainer parent, CaatjaFillStrokeStyle fillStyle, boolean pointed, double width, double height) {
-        CaatjaContext2d canvas= director.crc;
+        CaatjaContext2d canvas= director.ctx;
         
                             if ( null!=parent && null!=fillStyle ) {
                                 
@@ -290,7 +290,7 @@ public class Demo4 {
 //                coords3.setText("");
 //            };
 
-            CaatjaGradient gradient= director.crc.createLinearGradient(0,0,0,50);
+            CaatjaGradient gradient= director.ctx.createLinearGradient(0,0,0,50);
             gradient.addColorStop(0,"green");
             gradient.addColorStop(0.5,"red");
             gradient.addColorStop(1,"yellow");

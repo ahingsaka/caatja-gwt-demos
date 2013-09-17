@@ -175,7 +175,7 @@ public class Demo6 {
 //        }
 //        
 //        private void __scene11_text(Director director, Scene scene) {
-//            CanvasGradient gradient = director.crc.createLinearGradient(0, 0, 0, 50);
+//            CanvasGradient gradient = director.ctx.createLinearGradient(0, 0, 0, 50);
 //            gradient.addColorStop(0, "orange");
 //            gradient.addColorStop(0.5, "yellow");
 //            gradient.addColorStop(1, "#7f00ff");

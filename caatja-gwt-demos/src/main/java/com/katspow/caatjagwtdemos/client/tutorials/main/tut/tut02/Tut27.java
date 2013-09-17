@@ -30,7 +30,7 @@ public class Tut27 {
                         new Interpolator().createExponentialInOutInterpolator(3, true))
                 );
 
-        CaatjaGradient gradient = director.crc.createLinearGradient(0, 0, 0, 50);
+        CaatjaGradient gradient = director.ctx.createLinearGradient(0, 0, 0, 50);
         gradient.addColorStop(0, "#00ff00");
         gradient.addColorStop(0.5, "red");
         gradient.addColorStop(1, "blue");

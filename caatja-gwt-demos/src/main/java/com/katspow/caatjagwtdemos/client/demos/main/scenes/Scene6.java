@@ -63,7 +63,7 @@ public class Scene6 {
         Circle circle= new Circle() {
             @Override
             public void paint(Director director, double time) {
-                CaatjaContext2d canvas= director.crc;
+                CaatjaContext2d canvas= director.ctx;
                 
                 canvas.beginPath();
                 canvas.setGlobalAlpha(.75);

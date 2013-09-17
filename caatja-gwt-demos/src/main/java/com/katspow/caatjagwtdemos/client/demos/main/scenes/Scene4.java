@@ -134,7 +134,7 @@ public class Scene4 {
             Actor p0 = new Actor() {
                 @Override
                 public void paint(Director director, double time) {
-                    CaatjaContext2d canvas= director.crc;
+                    CaatjaContext2d canvas= director.ctx;
                     super.paint(director, time);
                     canvas.setFillStyle("black");
                     canvas.fillRect(1,1,5,5);
@@ -180,7 +180,7 @@ public class Scene4 {
                 
                 @Override
                 public void paint(Director director, double time) {
-                    CaatjaContext2d canvas= director.crc;
+                    CaatjaContext2d canvas= director.ctx;
                     super.paint(director, time);
                     canvas.setFillStyle("black");
                     canvas.fillRect(1,1,5,5);
@@ -272,7 +272,7 @@ public class Scene4 {
 //            mouseEvent.source.childList[2].setText("");
 //        };
         
-        CaatjaGradient gradient= director.crc.createLinearGradient(0,0,0,50);
+        CaatjaGradient gradient= director.ctx.createLinearGradient(0,0,0,50);
         gradient.addColorStop(0,"green");
         gradient.addColorStop(0.5,"red");
         gradient.addColorStop(1,"yellow");  

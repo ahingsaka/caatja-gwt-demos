@@ -57,7 +57,7 @@ public class Scene7 {
             
             @Override
             public void paint(Director director, double time) {
-                director.crc.drawImage( director.getImage("plants"), 0, 0, this.width, this.height );
+                director.ctx.drawImage( director.getImage("plants"), 0, 0, this.width, this.height );
             }
 
             @Override
