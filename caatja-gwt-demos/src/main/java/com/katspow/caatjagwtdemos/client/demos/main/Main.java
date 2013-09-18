@@ -533,7 +533,7 @@ public class Main {
                 Matrix.scale(2,2) );
         
         
-        final CaatjaCanvas canvas = Caatja.createCanvas();;
+        final CaatjaCanvas canvas = Caatja.createCanvas();
 //        caatjaService.createCanvas();
         
         final Director director = new Director();
