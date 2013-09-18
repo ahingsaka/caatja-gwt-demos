@@ -10,6 +10,7 @@ import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
+import com.katspow.caatja.behavior.SetForTimeReturnValue;
 import com.katspow.caatja.core.CAAT;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
@@ -430,7 +431,7 @@ public class Main {
 
                     @Override
                     public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
-                            Object value) {
+                            SetForTimeReturnValue value) {
                     }
 
                     @Override

@@ -5,6 +5,7 @@ import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.RotateBehavior;
+import com.katspow.caatja.behavior.SetForTimeReturnValue;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -98,7 +99,7 @@ public class SceneExperimental {
                                     }
                                     
                                     @Override
-                                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, Object value) {
+                                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
                                         
                                     }
 

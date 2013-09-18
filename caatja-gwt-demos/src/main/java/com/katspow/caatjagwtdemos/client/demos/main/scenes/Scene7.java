@@ -10,6 +10,7 @@ import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.ContainerBehavior;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.PathBehavior;
+import com.katspow.caatja.behavior.SetForTimeReturnValue;
 import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
@@ -97,7 +98,7 @@ public class Scene7 {
                     }
 
                     public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
-                            Object value) {
+                            SetForTimeReturnValue value) {
                     }
 
                     @Override
@@ -170,7 +171,7 @@ public class Scene7 {
                 }
 
                 public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
-                        Object value) {
+                        SetForTimeReturnValue value) {
                 }
 
                 @Override

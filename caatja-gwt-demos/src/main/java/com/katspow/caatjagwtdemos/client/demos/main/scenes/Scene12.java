@@ -6,6 +6,7 @@ import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
+import com.katspow.caatja.behavior.SetForTimeReturnValue;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
@@ -103,7 +104,7 @@ public class Scene12 {
 
                         @Override
                         public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
-                                Object value) {
+                                SetForTimeReturnValue value) {
 
                         }
 

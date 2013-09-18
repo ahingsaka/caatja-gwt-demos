@@ -4,6 +4,7 @@ import com.katspow.caatja.behavior.BaseBehavior;
 import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
+import com.katspow.caatja.behavior.SetForTimeReturnValue;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
 import com.katspow.caatja.foundation.Director;
@@ -56,7 +57,7 @@ public class Tut022 {
             }
 
             @Override
-            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, Object value) {
+            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
                 
             }
 
@@ -74,7 +75,7 @@ public class Tut022 {
             }
 
             @Override
-            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, Object value) {
+            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
                 
             }
 

@@ -12,13 +12,13 @@ import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
+import com.katspow.caatja.behavior.SetForTimeReturnValue;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.core.canvas.CaatjaImage;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
-import com.katspow.caatja.foundation.actor.Actor.Anchor;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.actor.Button;
 import com.katspow.caatja.foundation.actor.ImageActor;
@@ -388,7 +388,7 @@ public class GameScene implements ContextListener {
                         }
                     }
 
-                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, Object value) {
+                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
                         
                     }
 
@@ -540,7 +540,7 @@ public class GameScene implements ContextListener {
 
                   @Override
                   public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime,
-                          Actor actor, Object value) {
+                          Actor actor, SetForTimeReturnValue value) {
                   }
 
                 @Override
@@ -585,7 +585,7 @@ public class GameScene implements ContextListener {
                           }
                           
                           @Override
-                          public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, Object value) throws Exception {
+                          public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) throws Exception {
 //                              System.out.println("behavior applied");
                               List<String> colors= Arrays.asList("#00ff00","#ffff00","#00ffff");
                               for(int i=0; i<3; i++ ) {
@@ -724,7 +724,7 @@ public class GameScene implements ContextListener {
                 }
                 
                 @Override
-                public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, Object value) {
+                public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
                     
                 }
 
