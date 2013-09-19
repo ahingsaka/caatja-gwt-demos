@@ -1,11 +1,11 @@
-package com.katspow.caatjagwtdemos.client.welcome;
+package com.katspow.caatjagwtdemos.client.showcase;
 
 import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 
-public class WelcomeScene extends Scene {
+public class ShowcaseScene extends Scene {
 
 	public void load(Director director) throws Exception {
 

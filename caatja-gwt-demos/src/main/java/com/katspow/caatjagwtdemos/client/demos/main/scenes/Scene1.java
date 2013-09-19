@@ -163,6 +163,7 @@ public class Scene1 {
     public static Scene init(Director director) throws Exception {
 
         Scene scene= new Scene();
+        scene.setFillStrokeStyle(new CaatjaFillStrokeStyle("#FFFFFF"));
         
         double dw= director.width;
         double dh= director.height;
