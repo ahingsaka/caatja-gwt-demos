@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.demos.main.fish;
+package com.katspow.caatjagwtdemos.client.showcase.fish;
 
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.foundation.Director;

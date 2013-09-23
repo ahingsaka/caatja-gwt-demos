@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.showcase;
+package com.katspow.caatjagwtdemos.client.showcase.scenes;
 
 import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
 import com.katspow.caatja.foundation.Director;

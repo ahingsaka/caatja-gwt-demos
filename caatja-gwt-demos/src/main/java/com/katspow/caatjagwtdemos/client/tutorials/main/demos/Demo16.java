@@ -22,7 +22,7 @@ import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.pathutil.Path;
-import com.katspow.caatjagwtdemos.client.demos.main.fish.FishScene12;
+import com.katspow.caatjagwtdemos.client.showcase.fish.FishScene12;
 
 public class Demo16 {
     

@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.demos.main.actor;
+package com.katspow.caatjagwtdemos.client.showcase.actor;
 
 import com.katspow.caatja.foundation.actor.Actor;
 

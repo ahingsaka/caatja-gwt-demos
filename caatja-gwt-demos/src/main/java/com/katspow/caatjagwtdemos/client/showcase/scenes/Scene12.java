@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.demos.main.scenes;
+package com.katspow.caatjagwtdemos.client.showcase.scenes;
 
 import com.katspow.caatja.behavior.BaseBehavior;
 import com.katspow.caatja.behavior.BehaviorListener;
@@ -13,7 +13,7 @@ import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.pathutil.Path;
-import com.katspow.caatjagwtdemos.client.demos.main.fish.FishScene12;
+import com.katspow.caatjagwtdemos.client.showcase.fish.FishScene12;
 
 public class Scene12 {
 

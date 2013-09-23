@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.demos.main.scenes;
+package com.katspow.caatjagwtdemos.client.showcase.scenes;
 
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.foundation.Scene;

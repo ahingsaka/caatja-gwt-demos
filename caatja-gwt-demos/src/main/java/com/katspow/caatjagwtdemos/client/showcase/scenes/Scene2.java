@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.demos.main.scenes;
+package com.katspow.caatjagwtdemos.client.showcase.scenes;
 
 import java.util.Arrays;
 

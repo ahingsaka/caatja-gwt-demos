@@ -16,18 +16,19 @@ import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.ui.TextActor;
-import com.katspow.caatjagwtdemos.client.demos.main.actor.SpecialActor;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene1;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene10;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene11;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene12;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene2;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene3;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene4;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene5;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene6;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene7;
-import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene8;
+import com.katspow.caatjagwtdemos.client.showcase.actor.SpecialActor;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene1;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene10;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene11;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene12;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene2;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene3;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene4;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene5;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene6;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene7;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene8;
+import com.katspow.caatjagwtdemos.client.showcase.scenes.ShowcaseScene;
 
 /**
  * 
