@@ -1,9 +1,12 @@
-package com.katspow.caatjagwtdemos.client.demos.hypernumber;
+package com.katspow.caatjagwtdemos.client.hypernumber.startmenu;
 
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ImageActor;
 import com.katspow.caatja.foundation.timer.Callback;
 import com.katspow.caatja.foundation.timer.TimerTask;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.Event;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.context.Context;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.context.ContextListener;
 
 public class AnimatedBackground extends ImageActor implements ContextListener {
     

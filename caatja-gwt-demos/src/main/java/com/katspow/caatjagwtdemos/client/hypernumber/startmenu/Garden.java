@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.demos.hypernumber;
+package com.katspow.caatjagwtdemos.client.hypernumber.startmenu;
 
 import java.util.ArrayList;
 import java.util.List;

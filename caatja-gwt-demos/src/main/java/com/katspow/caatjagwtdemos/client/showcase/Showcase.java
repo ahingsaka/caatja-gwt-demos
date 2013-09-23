@@ -2,8 +2,8 @@ package com.katspow.caatjagwtdemos.client.showcase;
 
 import com.katspow.caatja.behavior.AlphaBehavior;
 import com.katspow.caatja.behavior.BaseBehavior;
-import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.behavior.BaseBehavior.Status;
+import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
@@ -13,12 +13,21 @@ import com.katspow.caatja.core.image.CaatjaImageLoaderCallback;
 import com.katspow.caatja.core.image.CaatjaPreloader;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
+import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.ui.TextActor;
 import com.katspow.caatjagwtdemos.client.demos.main.actor.SpecialActor;
 import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene1;
+import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene10;
+import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene11;
+import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene12;
 import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene2;
 import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene3;
+import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene4;
+import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene5;
+import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene6;
+import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene7;
+import com.katspow.caatjagwtdemos.client.demos.main.scenes.Scene8;
 
 /**
  * 
@@ -135,6 +144,14 @@ public class Showcase {
         director.addScene(Scene1.init(director));
         director.addScene(Scene2.init(director));
         director.addScene(Scene3.init(director));
+        director.addScene(Scene4.init(director));
+        director.addScene(Scene5.init(director));
+        director.addScene(Scene6.init(director));
+        director.addScene(Scene12.init(director));
+        director.addScene(Scene7.init(director));
+        director.addScene(Scene8.init(director));
+        Scene10.init(director);
+        director.addScene(Scene11.init(director));
 
         director.setScene(0);
         
@@ -227,7 +244,8 @@ public class Showcase {
             idx.fillStyle = new CaatjaFillStrokeStyle("#c07f00");
         }
         
-        director.scenes.get(i).addChild(idx);
+        Scene scene = director.scenes.get(i);
+        scene.addChild(idx);
 
         setupTRButtonPaintIndex(idx, j + 1);
         

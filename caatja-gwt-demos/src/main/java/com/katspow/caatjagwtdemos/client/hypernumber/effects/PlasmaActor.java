@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.demos.hypernumber;
+package com.katspow.caatjagwtdemos.client.hypernumber.effects;
 
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.foundation.Director;

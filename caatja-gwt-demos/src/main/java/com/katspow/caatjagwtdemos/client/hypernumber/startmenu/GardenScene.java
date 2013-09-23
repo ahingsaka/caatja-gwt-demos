@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.demos.hypernumber;
+package com.katspow.caatjagwtdemos.client.hypernumber.startmenu;
 
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.core.canvas.CaatjaImage;
@@ -8,10 +8,11 @@ import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.actor.Button;
 import com.katspow.caatja.foundation.actor.ImageActor;
 import com.katspow.caatja.foundation.image.CompoundImage;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.GameScene;
 
 public class GardenScene {
     
-    GameScene gameScene=      null;
+    public GameScene gameScene=      null;
     Scene directorScene=  null;
     Director director=       null;
     CompoundImage buttonImage=    null;

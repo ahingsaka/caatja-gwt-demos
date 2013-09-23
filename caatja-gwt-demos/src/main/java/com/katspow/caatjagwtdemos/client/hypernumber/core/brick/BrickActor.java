@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.demos.hypernumber;
+package com.katspow.caatjagwtdemos.client.hypernumber.core.brick;
 
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.event.CAATMouseEvent;
@@ -8,7 +8,7 @@ import com.katspow.caatja.foundation.image.CompoundImage;
 
 public class BrickActor extends Actor {
 
-    Brick brick = null;
+    public Brick brick = null;
     CompoundImage compoundImage = null;
 
     public BrickActor() {
@@ -21,7 +21,7 @@ public class BrickActor extends Actor {
      * @param brick
      *            a HN.Brick instance.
      */
-    BrickActor initialize(CompoundImage compoundImage, Brick brick) {
+    public BrickActor initialize(CompoundImage compoundImage, Brick brick) {
         this.compoundImage = compoundImage;
         this.brick = brick;
         this.setSize(compoundImage.singleWidth, compoundImage.singleHeight);
@@ -56,7 +56,7 @@ public class BrickActor extends Actor {
         this.brick.changeSelection();
     }
 
-    void reset() {
+    public void reset() {
         this.resetTransform();
         this.emptyBehaviorList();
         this.alpha = 1;

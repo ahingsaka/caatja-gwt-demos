@@ -1,9 +1,11 @@
-package com.katspow.caatjagwtdemos.client.demos.hypernumber;
+package com.katspow.caatjagwtdemos.client.hypernumber.core;
 
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.actor.Actor;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.context.Context;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.context.ContextListener;
 
 public class Chrono extends Actor implements ContextListener {
     

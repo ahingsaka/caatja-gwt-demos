@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.demos.hypernumber;
+package com.katspow.caatjagwtdemos.client.hypernumber.core;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,6 +30,11 @@ import com.katspow.caatja.foundation.ui.TextActor;
 import com.katspow.caatja.pathutil.CurvePath;
 import com.katspow.caatja.pathutil.LinearPath;
 import com.katspow.caatja.pathutil.Path;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.brick.Brick;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.brick.BrickActor;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.context.Context;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.context.ContextListener;
+import com.katspow.caatjagwtdemos.client.hypernumber.startmenu.AnimatedBackground;
 
 public class GameScene implements ContextListener {
     

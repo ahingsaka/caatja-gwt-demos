@@ -1,6 +1,7 @@
-package com.katspow.caatjagwtdemos.client.demos.hypernumber;
+package com.katspow.caatjagwtdemos.client.hypernumber.core;
 
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.context.ContextListener;
 
 public class GuessNumberActor extends TextActor implements ContextListener {
     

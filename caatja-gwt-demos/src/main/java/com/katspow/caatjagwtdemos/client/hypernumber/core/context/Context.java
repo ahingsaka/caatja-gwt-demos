@@ -1,7 +1,10 @@
-package com.katspow.caatjagwtdemos.client.demos.hypernumber;
+package com.katspow.caatjagwtdemos.client.hypernumber.core.context;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.katspow.caatjagwtdemos.client.hypernumber.core.Event;
+import com.katspow.caatjagwtdemos.client.hypernumber.core.brick.Brick;
 
 public class Context {
     
@@ -16,24 +19,24 @@ public class Context {
     int guessNumber=    0;      // number to sum up with bricks.
     double time=           0;      // maximum time to take to guess an adding number sequence.
 
-    List<Brick> selectedList=   null;   // selected bricks.
+    public List<Brick> selectedList=   null;   // selected bricks.
 
-    int status=         0;      // <-- control logic -->
-    int level = 0;
+    public int status=         0;      // <-- control logic -->
+    public int level = 0;
     
     int score = 0; // game points.
 
-    double turnTime=       15000;
+    public double turnTime=       15000;
 
     double[] turnTimes=   new double[]{20000, 15000, 10000};
-    int difficulty=     0;    // 0= easy; 1= hard; 2= hardcore.
+    public int difficulty=     0;    // 0= easy; 1= hard; 2= hardcore.
 
-    static final int ST_STARTGAME=       5;
-    static final int ST_INITIALIZING=    0;
-    static final int ST_START_LEVEL=    2;
-    static final int ST_RUNNNING=        1;
-    static final int ST_LEVEL_RESULT=    3;
-    static final int ST_ENDGAME=    4;
+    public static final int ST_STARTGAME=       5;
+    public static final int ST_INITIALIZING=    0;
+    public static final int ST_START_LEVEL=    2;
+    public static final int ST_RUNNNING=        1;
+    public static final int ST_LEVEL_RESULT=    3;
+    public static final int ST_ENDGAME=    4;
     
     // Add by me
     int multiplier = 1;
@@ -66,11 +69,11 @@ public class Context {
 
         return this;
     }
-    int getNumberColors ()  {
+    public int getNumberColors ()  {
         return this.numNumberColors;
     }
     
-    Context initialize () {
+    public Context initialize () {
         
         this.setStatus( this.ST_STARTGAME );
         this.turnTime= this.turnTimes[this.difficulty];
@@ -81,7 +84,7 @@ public class Context {
         return this;
     }
     
-    Context nextLevel() {
+    public Context nextLevel() {
 
         this.level++;
         this.fireEvent("context","levelchange",null, null, null, null, null, null);
@@ -134,16 +137,16 @@ public class Context {
         }
     }
     
-    Context addContextListener (ContextListener listener ) {
+    public Context addContextListener (ContextListener listener ) {
         this.eventListener.add(listener);
         return this;
     }
     
-    Brick getBrick (int row,int column ) {
+    public Brick getBrick (int row,int column ) {
         return this.data[row][column];
     }
     
-    void setStatus (int status ) {
+    public void setStatus (int status ) {
         this.status= status;
         this.fireEvent( "context", "status", this.status, null, null, null, null, null );
         
@@ -152,7 +155,7 @@ public class Context {
         }
     }
     
-    void selectionChanged(Brick brick) {
+    public void selectionChanged(Brick brick) {
 
         // si ya estaba en la lista de seleccionados, quitarlo.
         if (selectedList.contains(brick)) {

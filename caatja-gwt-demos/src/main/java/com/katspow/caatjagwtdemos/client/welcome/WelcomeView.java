@@ -1,13 +1,14 @@
 package com.katspow.caatjagwtdemos.client.welcome;
 
-import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.katspow.caatjagwtdemos.client.hypernumber.HyperNumber;
 import com.katspow.caatjagwtdemos.client.showcase.Showcase;
 
 public class WelcomeView extends Composite {
@@ -15,52 +16,79 @@ public class WelcomeView extends Composite {
     private static final String WELCOME_TEXT = "Welcome to the CAATJA-GWT demos !<br>"
             + "Choose one of the examples on the left<br> " + "by clicking on the icon";
 
+    private enum Demo {
+        SHOWCASE, HYPERNUMBER, DEMOS
+    }
+
     public WelcomeView() {
-        DockLayoutPanel mainPanel = new DockLayoutPanel(Unit.PCT);
 
-        mainPanel.addNorth(new HTML("CAATJA-GWT demos"), 20);
+        FlexTable grid = new FlexTable();
+        grid.setSize("680px", "500px");
 
-        VerticalPanel vp = new VerticalPanel();
-        
+        grid.setText(0, 0, "CAATJA-GWT demos");
+        grid.getFlexCellFormatter().setColSpan(0, 0, 3);
+        grid.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
+
         HTML showcase = new HTML("Showcase");
         showcase.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-               WelcomeView.this.setVisible(false);
-                try {
-                    new Showcase().start();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                loadDemo(Demo.SHOWCASE);
             }
         });
-        
-        vp.add(showcase);
-        
-        HTML hypernumber = new HTML("Hypernumber");
+
+        HTML hypernumber = new HTML("Hypernumber (beta)");
         hypernumber.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                
+                loadDemo(Demo.HYPERNUMBER);
             }
         });
-        
-        vp.add(hypernumber);
 
         HTML demosWithSourceCode = new HTML("Demos with source code");
         demosWithSourceCode.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                
+                loadDemo(Demo.DEMOS);
             }
         });
-        
-        vp.add(demosWithSourceCode);
-        
 
-        mainPanel.addWest(new ScrollPanel(vp), 50);
-        mainPanel.add(new HTML(WELCOME_TEXT));
+        grid.setWidget(1, 0, showcase);
+        grid.setWidget(2, 0, hypernumber);
+        grid.setWidget(3, 0, demosWithSourceCode);
 
-        initWidget(mainPanel);
+        grid.setWidget(1, 2, new HTML(WELCOME_TEXT));
+        grid.getFlexCellFormatter().setColSpan(1, 2, 2);
+        grid.getFlexCellFormatter().setRowSpan(1, 2, 3);
+        grid.getFlexCellFormatter().setHorizontalAlignment(1, 2, HasHorizontalAlignment.ALIGN_CENTER);
+        grid.getFlexCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_MIDDLE);
+
+        initWidget(grid);
 
     }
 
+    private void loadDemo(Demo demo) {
+
+        try {
+            WelcomeView.this.setVisible(false);
+
+            switch (demo) {
+            case SHOWCASE:
+                new Showcase().start();
+                break;
+
+            case HYPERNUMBER:
+                new HyperNumber().start();
+                break;
+
+            case DEMOS:
+                Window.alert("Not yet implemented !");
+                break;
+
+            default:
+                break;
+            }
+        } catch (Exception e) {
+            Window.alert("Could not load " + demo.name());
+            e.printStackTrace();
+        }
+    }
 }

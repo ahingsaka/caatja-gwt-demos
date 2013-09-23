@@ -1,4 +1,6 @@
-package com.katspow.caatjagwtdemos.client.demos.hypernumber;
+package com.katspow.caatjagwtdemos.client.hypernumber.core.brick;
+
+import com.katspow.caatjagwtdemos.client.hypernumber.core.context.Context;
 
 public class Brick {
 

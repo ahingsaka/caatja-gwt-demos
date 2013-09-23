@@ -4,7 +4,7 @@ import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
-import com.katspow.caatjagwtdemos.client.demos.hypernumber.Garden;
+import com.katspow.caatjagwtdemos.client.hypernumber.startmenu.Garden;
 
 public class Demo10 {
 
