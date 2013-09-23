@@ -51,7 +51,7 @@ public class HyperNumber {
                 GameScene gameScene = new GameScene().create(director, 8, 8, context);
                 gardenScene.gameScene = gameScene;
 
-                director.loop(60);
+                Caatja.loop(60);
 
             }
         });

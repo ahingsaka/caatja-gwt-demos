@@ -44,6 +44,11 @@ import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene6;
 import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene7;
 import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene8;
 
+/**
+ * Deprecated version of showcase entry point 
+ *
+ */
+@Deprecated
 public class ShowcaseOld {
 	
     private void setupTRButton(Actor prev) {
