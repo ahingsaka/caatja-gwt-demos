@@ -15,13 +15,14 @@ import com.katspow.caatja.foundation.ui.ShapeActor;
  */
 public class Tut001 {
 
-    public void init() throws Exception {
+    public static final void init(CaatjaCanvas canvas, Director director) throws Exception {
 
-        CaatjaCanvas canvas = Caatja.createCanvas();
-        Caatja.addCanvas(canvas);
+//        CaatjaCanvas canvas = Caatja.createCanvas();
+//        Caatja.addCanvas(canvas);
+//        Director director = new Director().initialize(100, 100, canvas);
         
-        Director director = new Director().initialize(100, 100, canvas);
         Scene scene = director.createScene();
+        scene.setFillStyle("#ffffff");
 
         ShapeActor circle = new ShapeActor()
                 .setLocation(20, 20)
@@ -33,7 +34,7 @@ public class Tut001 {
         scene.addChild(circle);
         director.addScene(scene);
 
-        Caatja.loop(1);
+//        Caatja.loop(1);
     }
 
 }

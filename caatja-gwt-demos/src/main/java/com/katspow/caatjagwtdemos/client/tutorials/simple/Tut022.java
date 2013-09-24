@@ -6,6 +6,7 @@ import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
 import com.katspow.caatja.core.Caatja;
+import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
@@ -20,10 +21,11 @@ import com.katspow.caatja.foundation.ui.ShapeActor;
  */
 public class Tut022 {
 
-    public void init() throws Exception {
+    public static final void init(Director director_4) throws Exception {
 
-        Director director_4 = new Director().initialize(160, 160, null);
+//        Director director_4 = new Director().initialize(160, 160, null);
         Scene scene_4 = director_4.createScene();
+        scene_4.setFillStyle("#ffffff");
 
         ShapeActor _c4_rectangle_0 = (ShapeActor) new ShapeActor();
         
@@ -85,7 +87,7 @@ public class Tut022 {
             }
         });
 
-        Caatja.loop(30);
+//        Caatja.loop(30);
 
     }
 

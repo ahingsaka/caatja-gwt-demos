@@ -2,6 +2,7 @@ package com.katspow.caatjagwtdemos.client.tutorials.simple;
 
 import com.katspow.caatja.behavior.AlphaBehavior;
 import com.katspow.caatja.core.Caatja;
+import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
@@ -15,10 +16,12 @@ import com.katspow.caatja.foundation.ui.ShapeActor;
  */
 public class Tut021 {
 
-    public void init() throws Exception {
+    public static final void init(Director director_1) throws Exception {
 
-        Director director_1 = new Director().initialize(100, 80, null);
+//        Director director_1 = new Director().initialize(100, 80, null);
         Scene scene_1 = director_1.createScene();
+        scene_1.setFillStyle("#ffffff");
+        
         ShapeActor rectangle_1 = (ShapeActor) new ShapeActor();
         
         rectangle_1.setShape(ShapeActor.Shape.RECTANGLE)
@@ -40,7 +43,7 @@ public class Tut021 {
         rectangle_1.addBehavior(alpha_1);
 
         // set animation to 10fps.
-        Caatja.loop(10);
+//        Caatja.loop(10);
 
     }
 }

@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.katspow.caatjagwtdemos.client.hypernumber.HyperNumber;
 import com.katspow.caatjagwtdemos.client.showcase.Showcase;
+import com.katspow.caatjagwtdemos.client.tutorials.Tutorials;
 
 public class WelcomeView extends Composite {
 
@@ -80,7 +81,7 @@ public class WelcomeView extends Composite {
                 break;
 
             case DEMOS:
-                Window.alert("Not yet implemented !");
+                new Tutorials().start();
                 break;
 
             default:
