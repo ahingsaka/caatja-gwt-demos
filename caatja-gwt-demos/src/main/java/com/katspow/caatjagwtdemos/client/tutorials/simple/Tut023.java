@@ -4,7 +4,7 @@ import com.katspow.caatja.behavior.ContainerBehavior;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.core.Caatja;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.ui.ShapeActor;
@@ -27,9 +27,9 @@ public class Tut023 {
         shape_5.setShape(ShapeActor.Shape.RECTANGLE)
             .setLocation(50, 50)
             .setSize(50, 50)
-            .setFillStrokeStyle(new CaatjaFillStrokeStyle("#ffff00"));
+            .setFillStrokeStyle(CaatjaColor.valueOf("#ffff00"));
         
-        shape_5.setStrokeStyle(new CaatjaFillStrokeStyle("#000000"));
+        shape_5.setStrokeStyle(CaatjaColor.valueOf("#000000"));
         scene_5.addChild(shape_5);
 
         // set a Container for behaviors up.

@@ -7,7 +7,7 @@ import com.katspow.caatja.behavior.BaseBehavior.Status;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;

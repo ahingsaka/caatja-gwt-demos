@@ -1,7 +1,7 @@
 package com.katspow.caatjagwtdemos.client.tutorials.simple;
 
 import com.katspow.caatja.core.Caatja;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -32,7 +32,7 @@ public class Tut031 {
         // create a simple actor. will last for two seconds on Scene.
         Actor _pulsating_actor_2= new Actor().
                 setBounds(10,10,80,80).
-                setFillStrokeStyle(new CaatjaFillStrokeStyle("#00ff00")).
+                setFillStrokeStyle(CaatjaColor.valueOf("#00ff00")).
                 setFrameTime(0,2000);
 
         // add a life cycle listener to the actor.

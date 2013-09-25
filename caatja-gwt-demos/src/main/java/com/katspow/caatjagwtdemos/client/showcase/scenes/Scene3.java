@@ -10,7 +10,7 @@ import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
@@ -35,7 +35,7 @@ public class Scene3 {
             public void paint(Director director, double time) {
                 CaatjaContext2d canvas = director.ctx;
 
-                canvas.setStrokeStyle(new CaatjaFillStrokeStyle("black"));
+                canvas.setStrokeStyle(CaatjaColor.valueOf("black"));
 
                 for (int i = 0; i < 9; i++) {
                     canvas.strokeRect(60 + (conpoundimage.singleWidth * 2) * (i % 3), 60 + (conpoundimage.singleWidth)

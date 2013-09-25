@@ -8,7 +8,7 @@ import java.util.Map;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.RotateBehavior;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
@@ -139,8 +139,8 @@ public class Scene1 {
 
             @Override
             public void paint(Director director, double time) {
-                this.fillStyle = fish.pathMeasure.interpolator.equals(interpolatorReal) ? new CaatjaFillStrokeStyle("#00ff7f")
-                        : new CaatjaFillStrokeStyle("#c0c0c0");
+                this.fillStyle = fish.pathMeasure.interpolator.equals(interpolatorReal) ? CaatjaColor.valueOf("#00ff7f")
+                        : CaatjaColor.valueOf("#c0c0c0");
                 super.paint(director, time);
             }
 
@@ -152,7 +152,7 @@ public class Scene1 {
         };
         ia.setInterpolator(interpolatorReal, null);
         ia.setBounds(x, y, S, S);
-        ia.fillStyle = new CaatjaFillStrokeStyle("#c0c0c0");
+        ia.fillStyle = CaatjaColor.valueOf("#c0c0c0");
 
         ia.interpolatorReal = interpolatorReal;
 
@@ -163,7 +163,7 @@ public class Scene1 {
     public static Scene init(Director director) throws Exception {
 
         Scene scene= new Scene();
-        scene.setFillStrokeStyle(new CaatjaFillStrokeStyle("#FFFFFF"));
+        scene.setFillStrokeStyle(CaatjaColor.valueOf("#FFFFFF"));
         
         double dw= director.width;
         double dh= director.height;

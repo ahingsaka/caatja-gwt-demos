@@ -2,11 +2,11 @@ package com.katspow.caatjagwtdemos.client.hypernumber.effects;
 
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 
 public class Rotozoom {
     
-	CaatjaFillStrokeStyle pattern=    null;
+	CaatjaColor pattern=    null;
     double width=      0;
     double height=     0;
     int size=       3000;
@@ -17,7 +17,7 @@ public class Rotozoom {
         return this;
     }
     
-    public Rotozoom setPattern (CaatjaFillStrokeStyle pattern) {
+    public Rotozoom setPattern (CaatjaColor pattern) {
         this.pattern= pattern;
         return this;
     }

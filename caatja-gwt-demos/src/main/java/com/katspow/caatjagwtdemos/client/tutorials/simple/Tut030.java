@@ -4,7 +4,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
@@ -46,11 +46,11 @@ public class Tut030 {
                     crx.fillRect(0,0,this.width,this.height );
 
                     // outline it.
-                    crx.setStrokeStyle(new CaatjaFillStrokeStyle("black"));
+                    crx.setStrokeStyle(CaatjaColor.valueOf("black"));
                     crx.strokeRect(0,0,this.width,this.height );
 
                     // draw a white arrow. just to point where position 0,0 is.
-                    crx.setStrokeStyle(new CaatjaFillStrokeStyle("white"));
+                    crx.setStrokeStyle(CaatjaColor.valueOf("white"));
                     crx.beginPath();
                     crx.moveTo(5,10);
                     crx.lineTo(20,10);
@@ -92,7 +92,7 @@ public class Tut030 {
                     setBounds(i*100+10, 20, s, s).
                    
                     setRotation( Math.PI*2*Math.random() ).
-                    setFillStrokeStyle(new CaatjaFillStrokeStyle("#ff3fff"));
+                    setFillStrokeStyle(CaatjaColor.valueOf("#ff3fff"));
 
             _c1_container.name = "rectangle"+i;
 
@@ -128,7 +128,7 @@ public class Tut030 {
 
                     // fill a white circle of 10x10 pixels at position 2,2
                     // just to show where 0,0 is positioned on screen.
-                    ctx.setFillStyle(new CaatjaFillStrokeStyle("white"));
+                    ctx.setFillStyle(CaatjaColor.valueOf("white"));
                     ctx.beginPath();
                     ctx.arc(7,7,5,0,2*Math.PI,false);
                     ctx.fill();
@@ -157,7 +157,7 @@ public class Tut030 {
             }.
                     setBounds(s/2,s/2,s/4,s/4).
                     setRotation( Math.PI*2*Math.random() ).
-                    setFillStrokeStyle(new CaatjaFillStrokeStyle("#00ff00"));
+                    setFillStrokeStyle(CaatjaColor.valueOf("#00ff00"));
 
             // set a custom paint function for children inside containers.
 

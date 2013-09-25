@@ -3,7 +3,7 @@ package com.katspow.caatjagwtdemos.client.tutorials.simple;
 import com.katspow.caatja.behavior.AlphaBehavior;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.ui.ShapeActor;
@@ -27,9 +27,9 @@ public class Tut021 {
         rectangle_1.setShape(ShapeActor.Shape.RECTANGLE)
             .setLocation(10, 10)
             .setSize(60, 60)
-            .setFillStrokeStyle(new CaatjaFillStrokeStyle("#ff0000"));
+            .setFillStrokeStyle(CaatjaColor.valueOf("#ff0000"));
         
-        rectangle_1.setStrokeStyle(new CaatjaFillStrokeStyle("#000000"));
+        rectangle_1.setStrokeStyle(CaatjaColor.valueOf("#000000"));
 
         scene_1.addChild(rectangle_1);
 

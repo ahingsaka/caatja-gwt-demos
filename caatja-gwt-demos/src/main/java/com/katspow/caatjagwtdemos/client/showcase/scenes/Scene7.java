@@ -11,7 +11,7 @@ import com.katspow.caatja.behavior.ContainerBehavior;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
@@ -33,7 +33,7 @@ public class Scene7 {
         children.textBaseline="top";
         children.setText("");
         children.setLocation(15,20);
-        children.setTextFillStyle(new CaatjaFillStrokeStyle("white"));
+        children.setTextFillStyle(CaatjaColor.valueOf("white"));
         children.outlineColor= "red";
         children.outline= true;
         
@@ -184,7 +184,7 @@ public class Scene7 {
         }
 
 
-        root.fillStyle= new CaatjaFillStrokeStyle("#3f3fff");
+        root.fillStyle= CaatjaColor.valueOf("#3f3fff");
 
         
         scene.addChild(children);

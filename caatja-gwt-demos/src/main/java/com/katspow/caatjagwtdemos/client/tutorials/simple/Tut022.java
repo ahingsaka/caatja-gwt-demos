@@ -7,7 +7,7 @@ import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -32,9 +32,9 @@ public class Tut022 {
         _c4_rectangle_0.setShape(ShapeActor.Shape.RECTANGLE)
             .setLocation(50, 50)
             .setSize(60, 60)
-            .setFillStrokeStyle(new CaatjaFillStrokeStyle("#ff0000"));
+            .setFillStrokeStyle(CaatjaColor.valueOf("#ff0000"));
         
-        _c4_rectangle_0.setStrokeStyle(new CaatjaFillStrokeStyle("#000000"));
+        _c4_rectangle_0.setStrokeStyle(CaatjaColor.valueOf("#000000"));
         scene_4.addChild(_c4_rectangle_0);
 
         final ScaleBehavior _sb_c4_text_0 = new ScaleBehavior().setPingPong().

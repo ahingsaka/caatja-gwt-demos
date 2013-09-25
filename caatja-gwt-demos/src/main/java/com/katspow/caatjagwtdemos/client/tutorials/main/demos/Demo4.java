@@ -7,7 +7,7 @@ import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
@@ -39,7 +39,7 @@ public class Demo4 {
         parent.setZOrder(actor,Integer.MAX_VALUE);
     }
     
-    private void fpaint(Director director, double time, ActorContainer parent, CaatjaFillStrokeStyle fillStyle, boolean pointed, double width, double height) {
+    private void fpaint(Director director, double time, ActorContainer parent, CaatjaColor fillStyle, boolean pointed, double width, double height) {
         CaatjaContext2d canvas= director.ctx;
         
                             if ( null!=parent && null!=fillStyle ) {

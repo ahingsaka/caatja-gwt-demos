@@ -3,7 +3,7 @@ package com.katspow.caatjagwtdemos.client.showcase.scenes;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
@@ -35,7 +35,7 @@ public class Scene4 {
         coords.textBaseline="top";
         coords.setText("");
         coords.setLocation(cc.width/2,20);
-        coords.setTextFillStyle(new CaatjaFillStrokeStyle("black"));
+        coords.setTextFillStyle(CaatjaColor.valueOf("black"));
         coords.outlineColor="white";
         coords.outline= true;
         scene.addChild(coords);
@@ -46,7 +46,7 @@ public class Scene4 {
         coords2.textBaseline="top";
         coords2.setText("");
         coords2.setLocation(15,42);
-        coords2.setTextFillStyle(new CaatjaFillStrokeStyle("black"));
+        coords2.setTextFillStyle(CaatjaColor.valueOf("black"));
         coords2.outlineColor=  "white";
         coords2.outline= true;
         scene.addChild(coords2);
@@ -57,7 +57,7 @@ public class Scene4 {
         coords3.textBaseline="top";
         coords3.setText("");
         coords3.setLocation(15,64);
-        coords3.setTextFillStyle(new CaatjaFillStrokeStyle("black"));
+        coords3.setTextFillStyle(CaatjaColor.valueOf("black"));
         coords3.outlineColor=  "white";
         coords3.outline= true;
         scene.addChild(coords3);
@@ -70,7 +70,7 @@ public class Scene4 {
                     CaatjaContext2d canvas = director.ctx;
                     
                     if ( null!=this.parent && null!=this.fillStyle ) {
-                        canvas.setFillStyle(this.pointed ? new CaatjaFillStrokeStyle("orange") : (this.fillStyle!=null ? this.fillStyle : new CaatjaFillStrokeStyle("white"))); //"white";
+                        canvas.setFillStyle(this.pointed ? CaatjaColor.valueOf("orange") : (this.fillStyle!=null ? this.fillStyle : CaatjaColor.valueOf("white"))); //"white";
                         canvas.fillRect(0,0,this.width,this.height );
                     }
                     
@@ -127,7 +127,7 @@ public class Scene4 {
             p.setRotation( Math.PI*2*Math.random() );
             double sc= 1+Math.random()*.25;
             p.setScale( sc, sc );
-            p.fillStyle= new CaatjaFillStrokeStyle("#ff3fff");
+            p.fillStyle= CaatjaColor.valueOf("#ff3fff");
            
             cc.addChild(p);
 
@@ -173,7 +173,7 @@ public class Scene4 {
             
             p0.setBounds((double) s/4,(double) s/4,(double) s/4,(double) s/4 );
             p0.setRotation( Math.PI*2*Math.random() );
-            p0.fillStyle=new CaatjaFillStrokeStyle("#a03f00");
+            p0.fillStyle=CaatjaColor.valueOf("#a03f00");
             p.addChild(p0);
 
             Actor p1= new Actor() {
@@ -219,7 +219,7 @@ public class Scene4 {
             };
             p1.setBounds((double) s/2,(double) s/2,(double) s/4,(double) s/4 );
             p1.setRotation( Math.PI*2*Math.random() );
-            p1.fillStyle=new CaatjaFillStrokeStyle("#ffff3f");
+            p1.fillStyle=CaatjaColor.valueOf("#ffff3f");
             p.addChild(p1);
         
             p1.enableDrag();
@@ -330,7 +330,7 @@ public class Scene4 {
         text4.setText("Drag + [Control,Shift,Alt]");
         text4.calcTextSize(director);
         text4.setLocation(cc1.width/2,100);
-        text4.setTextFillStyle(new CaatjaFillStrokeStyle("black"));
+        text4.setTextFillStyle(CaatjaColor.valueOf("black"));
         text4.cacheAsBitmap();
         cc1.addChild(text4.setLocation((cc1.width-text4.textWidth)/2,100));
 
@@ -340,7 +340,7 @@ public class Scene4 {
         text5.setText("Double Click");
         text5.calcTextSize(director);
         text5.setLocation(cc1.width/2,120);
-        text5.setTextFillStyle(new CaatjaFillStrokeStyle("black"));
+        text5.setTextFillStyle(CaatjaColor.valueOf("black"));
         text5.cacheAsBitmap();
         cc1.addChild(text5.setLocation((cc1.width-text5.textWidth)/2,120));
 

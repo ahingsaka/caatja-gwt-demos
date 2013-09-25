@@ -15,7 +15,7 @@ import com.katspow.caatja.core.CAAT;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.image.CaatjaImageLoader;
 import com.katspow.caatja.core.image.CaatjaImageLoaderCallback;
 import com.katspow.caatja.core.image.CaatjaPreloader;
@@ -67,7 +67,7 @@ public class ShowcaseOld {
     }
     
     private void setupTRButtonPaint(Actor prev) {
-        prev.fillStyle =new CaatjaFillStrokeStyle("#0000ff");
+        prev.fillStyle =CaatjaColor.valueOf("#0000ff");
     }
     
     private void setupTRButtonPaintIndex(Actor idx, int i) {
@@ -173,7 +173,7 @@ public class ShowcaseOld {
                         
                         if ( null!=this.parent && null!=this.fillStyle ) {
                             canvas.beginPath();
-                            canvas.setFillStyle(this.pointed ? new CaatjaFillStrokeStyle("orange") : (this.fillStyle!=null ? this.fillStyle : new CaatjaFillStrokeStyle("white"))); //'white';
+                            canvas.setFillStyle(this.pointed ? CaatjaColor.valueOf("orange") : (this.fillStyle!=null ? this.fillStyle : CaatjaColor.valueOf("white"))); //'white';
                             canvas.arc(10,10,10,0,Math.PI*2,false );
                             canvas.fill();
                         }
@@ -184,7 +184,7 @@ public class ShowcaseOld {
                             canvas.clip();
                         }
                             
-                        canvas.setStrokeStyle(this.pointed ?  new CaatjaFillStrokeStyle("green") :  new CaatjaFillStrokeStyle("#ffff00"));
+                        canvas.setStrokeStyle(this.pointed ?  CaatjaColor.valueOf("green") :  CaatjaColor.valueOf("#ffff00"));
                         canvas.beginPath();
 
                         canvas.moveTo(3,10);
@@ -206,7 +206,7 @@ public class ShowcaseOld {
                 
                 prev.setBounds(5,470,20,20);
                 prev.setRotation( Math.PI );
-                prev.fillStyle= new CaatjaFillStrokeStyle("#0000ff");
+                prev.fillStyle= CaatjaColor.valueOf("#0000ff");
                 
                 director.scenes.get(i).addChild(prev);
                 
@@ -266,7 +266,7 @@ public class ShowcaseOld {
                         
                         if ( null!=this.parent && null!=this.fillStyle ) {
                             canvas.beginPath();
-                            canvas.setFillStyle(this.pointed ? new CaatjaFillStrokeStyle("orange") : (this.fillStyle!=null ? this.fillStyle : new CaatjaFillStrokeStyle("white"))); //'white';
+                            canvas.setFillStyle(this.pointed ? CaatjaColor.valueOf("orange") : (this.fillStyle!=null ? this.fillStyle : CaatjaColor.valueOf("white"))); //'white';
                             canvas.arc(10,10,10,0,Math.PI*2,false );
                             canvas.fill();
                         }
@@ -277,7 +277,7 @@ public class ShowcaseOld {
                             canvas.clip();
                         }
                             
-                        canvas.setStrokeStyle(this.pointed ?  new CaatjaFillStrokeStyle("green") :  new CaatjaFillStrokeStyle("#ffff00"));
+                        canvas.setStrokeStyle(this.pointed ?  CaatjaColor.valueOf("green") :  CaatjaColor.valueOf("#ffff00"));
                         canvas.beginPath();
 
                         canvas.moveTo(3,10);
@@ -297,7 +297,7 @@ public class ShowcaseOld {
                 };
                 
                 next.setBounds(director.width-20-5,470,20,20);
-                next.fillStyle=new CaatjaFillStrokeStyle("#0000ff");
+                next.fillStyle=CaatjaColor.valueOf("#0000ff");
 
                 director.scenes.get(i).addChild(next);
                 
@@ -319,7 +319,7 @@ public class ShowcaseOld {
                         
                         if ( null!=this.parent && null!=this.fillStyle ) {
                             canvas.beginPath();
-                            canvas.setFillStyle(this.pointed ? new CaatjaFillStrokeStyle("orange") : (this.fillStyle!=null ? this.fillStyle : new CaatjaFillStrokeStyle("white"))); //'white';
+                            canvas.setFillStyle(this.pointed ? CaatjaColor.valueOf("orange") : (this.fillStyle!=null ? this.fillStyle : CaatjaColor.valueOf("white"))); //'white';
                             canvas.arc(10,10,10,0,Math.PI*2,false );
                             canvas.fill();
                         }
@@ -351,10 +351,10 @@ public class ShowcaseOld {
 //                        director.switchToScene(mouseEvent.source.__sceneIndex,1000,false,true);
 //                    };
                     setupTRButton(idx);
-                    idx.fillStyle=new CaatjaFillStrokeStyle("#0000ff");
+                    idx.fillStyle=CaatjaColor.valueOf("#0000ff");
                 } else {
                     idx.mouseEnabled= false;
-                    idx.fillStyle= new CaatjaFillStrokeStyle("#c07f00");
+                    idx.fillStyle= CaatjaColor.valueOf("#c07f00");
                 }
                 director.scenes.get(i).addChild(idx);
                 
@@ -419,7 +419,7 @@ public class ShowcaseOld {
                 int b = (int) (64 * Math.random()) >> 0;
                 int a = 255;
 
-                burbuja.fillStyle = new CaatjaFillStrokeStyle("rgba("+r+","+g+","+b+","+a+")");
+                burbuja.fillStyle = CaatjaColor.valueOf("rgba("+r+","+g+","+b+","+a+")");
 
                 this.addChild(burbuja);
 
@@ -469,7 +469,7 @@ public class ShowcaseOld {
         root.setBounds(0,0,director.canvas.getCoordinateSpaceWidth(),director.canvas.getCoordinateSpaceHeight());
         scene.addChild( root );
 
-        root.fillStyle = new CaatjaFillStrokeStyle("#000000");
+        root.fillStyle = CaatjaColor.valueOf("#000000");
 
         TextActor textLoading= new TextActor() {
             @Override

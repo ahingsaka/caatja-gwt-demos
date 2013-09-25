@@ -5,7 +5,7 @@ import java.util.Arrays;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
-import com.katspow.caatja.core.canvas.CaatjaFillStrokeStyle;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
@@ -100,7 +100,7 @@ public class Scene6 {
         circle.setBounds( director.canvas.getCoordinateSpaceWidth()/2, director.canvas.getCoordinateSpaceHeight()/2, 10, 10 );
         circle.__orgX= circle.x;
         circle.__orgY= circle.y;
-        circle.fillStyle= new CaatjaFillStrokeStyle("blue");
+        circle.fillStyle= CaatjaColor.valueOf("blue");
         circle.mouseEnabled= false;
 
         scene.addChild(circle);
