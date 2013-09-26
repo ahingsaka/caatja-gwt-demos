@@ -14,6 +14,7 @@ import com.katspow.caatjagwtdemos.client.welcome.tutorials.Tutorials;
 
 public class WelcomeView extends Composite {
 
+    private static final String NOT_YET_IMPLEMENTED = "Not yet implemented !";
     private static final String HEIGHT = "500px";
     private static final String WIDTH = "680px";
     
@@ -94,7 +95,7 @@ public class WelcomeView extends Composite {
                 break;
                 
             case DEMOS:
-                Window.alert("Not yet implemented !");
+                Window.alert(NOT_YET_IMPLEMENTED);
                 break;
 
             default:
