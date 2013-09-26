@@ -1,8 +1,8 @@
-package com.katspow.caatjagwtdemos.client.hypernumber.core;
+package com.katspow.caatjagwtdemos.client.welcome.hypernumber.core;
 
 import java.util.List;
 
-import com.katspow.caatjagwtdemos.client.hypernumber.core.brick.Brick;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.brick.Brick;
 
 public class Event {
     

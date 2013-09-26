@@ -1,10 +1,10 @@
-package com.katspow.caatjagwtdemos.client.hypernumber.core;
+package com.katspow.caatjagwtdemos.client.welcome.hypernumber.core;
 
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.ui.TextActor;
-import com.katspow.caatjagwtdemos.client.hypernumber.core.context.Context;
-import com.katspow.caatjagwtdemos.client.hypernumber.core.context.ContextListener;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.context.Context;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.context.ContextListener;
 
 public class ScoreActor extends TextActor implements ContextListener {
     

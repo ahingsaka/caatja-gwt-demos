@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.hypernumber.startmenu;
+package com.katspow.caatjagwtdemos.client.welcome.hypernumber.startmenu;
 
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.core.canvas.CaatjaImage;
@@ -8,7 +8,7 @@ import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.actor.Button;
 import com.katspow.caatja.foundation.actor.ImageActor;
 import com.katspow.caatja.foundation.image.CompoundImage;
-import com.katspow.caatjagwtdemos.client.hypernumber.core.GameScene;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.GameScene;
 
 public class GardenScene {
     

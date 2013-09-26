@@ -1,10 +1,10 @@
-package com.katspow.caatjagwtdemos.client.hypernumber.core.context;
+package com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.context;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.katspow.caatjagwtdemos.client.hypernumber.core.Event;
-import com.katspow.caatjagwtdemos.client.hypernumber.core.brick.Brick;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.Event;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.brick.Brick;
 
 public class Context {
     

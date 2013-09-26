@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.hypernumber.core;
+package com.katspow.caatjagwtdemos.client.welcome.hypernumber.core;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.pathutil.Path;
-import com.katspow.caatjagwtdemos.client.hypernumber.core.brick.Brick;
-import com.katspow.caatjagwtdemos.client.hypernumber.core.context.Context;
-import com.katspow.caatjagwtdemos.client.hypernumber.core.context.ContextListener;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.brick.Brick;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.context.Context;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.context.ContextListener;
 
 public class SelectionPath extends Actor implements ContextListener {
     

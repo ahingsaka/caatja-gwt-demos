@@ -1,13 +1,13 @@
-package com.katspow.caatjagwtdemos.client.hypernumber;
+package com.katspow.caatjagwtdemos.client.welcome.hypernumber;
 
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.image.CaatjaImageLoader;
 import com.katspow.caatja.core.image.CaatjaImageLoaderCallback;
 import com.katspow.caatja.core.image.CaatjaPreloader;
 import com.katspow.caatja.foundation.Director;
-import com.katspow.caatjagwtdemos.client.hypernumber.core.GameScene;
-import com.katspow.caatjagwtdemos.client.hypernumber.core.context.Context;
-import com.katspow.caatjagwtdemos.client.hypernumber.startmenu.GardenScene;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.GameScene;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.context.Context;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.startmenu.GardenScene;
 
 /**
  * Entry point for hypernumber demo 

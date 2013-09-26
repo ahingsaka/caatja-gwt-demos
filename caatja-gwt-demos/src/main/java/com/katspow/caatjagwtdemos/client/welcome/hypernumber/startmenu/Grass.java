@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.hypernumber.startmenu;
+package com.katspow.caatjagwtdemos.client.welcome.hypernumber.startmenu;
 
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
 

@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.hypernumber.core.brick;
+package com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.brick;
 
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.event.CAATMouseEvent;
