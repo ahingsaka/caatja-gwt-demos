@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.tutorials;
+package com.katspow.caatjagwtdemos.client.welcome.tutorials;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

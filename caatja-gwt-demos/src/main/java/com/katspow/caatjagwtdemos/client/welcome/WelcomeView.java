@@ -8,9 +8,9 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.katspow.caatjagwtdemos.client.tutorials.Tutorials;
 import com.katspow.caatjagwtdemos.client.welcome.hypernumber.HyperNumber;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.Showcase;
+import com.katspow.caatjagwtdemos.client.welcome.tutorials.Tutorials;
 
 public class WelcomeView extends Composite {
 
