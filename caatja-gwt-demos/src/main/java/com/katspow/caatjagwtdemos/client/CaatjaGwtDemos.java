@@ -18,6 +18,7 @@ public class CaatjaGwtDemos implements EntryPoint {
 
 	public void onModuleLoad() {
 
+	    // FIXME DI
 		new Caatja(new CaatjaGwtDate(), new CaatjaGwtNavigator(), new CaatjaGwtWindow(), new CaatjaGwtRootPanel(),
 				new CaatjaGwtService(), new CaatjaGwtEventManager(), new CaatjaGwtImageLoader(),
 				new CaatjaGwtPreloader(), new CAATGwt());

@@ -28,7 +28,7 @@ public class Tutorials {
     private static final int CANVAS_HEIGHT = 600;
     private static final int SOURCE_DISPLAY_Y = CANVAS_HEIGHT + 20;
     private static final int TREE_X = CANVAS_WIDTH + 20;
-    
+
     private Director director;
     private ScrollPanel sourceCodeDisplay;
     private CaatjaCanvas canvas;
@@ -89,7 +89,7 @@ public class Tutorials {
 
         HTML tut002 = createTutorialEntry(Tut021.class, "B", "Source code of B");
         tutorialsTree.addItem(tut002);
-        
+
         HTML tut003 = createTutorialEntry(Tut022.class, "C", "Source code of C");
         tutorialsTree.addItem(tut003);
 
@@ -116,10 +116,10 @@ public class Tutorials {
                 launchTutorial(clazz, source);
             }
         });
-        
+
         return tutEntry;
     }
-
+    
     private void loadImages() {
         preloadImages();
 
@@ -150,7 +150,7 @@ public class Tutorials {
     }
 
     /**
-     * When images are loaded, we store them
+     * When images are loaded, we store them and we start the animation loop.
      * 
      * @throws Exception
      */

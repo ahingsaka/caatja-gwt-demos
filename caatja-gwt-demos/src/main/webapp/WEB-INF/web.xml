@@ -13,8 +13,7 @@
 		<servlet-name>caatjaGwtService</servlet-name>
 		<url-pattern>/caatjagwtdemos/caatjaGwtService</url-pattern>
 	</servlet-mapping>
-
-
+	
 	<!-- Default page to serve -->
 	<welcome-file-list>
 		<welcome-file>CaatjaGwtDemos.html</welcome-file>
