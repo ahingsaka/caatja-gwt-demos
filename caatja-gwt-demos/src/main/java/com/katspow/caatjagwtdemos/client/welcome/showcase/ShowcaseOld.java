@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.showcase;
+package com.katspow.caatjagwtdemos.client.welcome.showcase;
 
 import com.katspow.caatja.CAATKeyListener;
 import com.katspow.caatja.behavior.AlphaBehavior;
@@ -30,19 +30,19 @@ import com.katspow.caatja.foundation.ui.TextActor;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.math.matrix.Matrix;
 import com.katspow.caatja.pathutil.Path;
-import com.katspow.caatjagwtdemos.client.showcase.actor.SpecialActor;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.AnotherSpecialScene;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene1;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene10;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene11;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene12;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene2;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene3;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene4;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene5;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene6;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene7;
-import com.katspow.caatjagwtdemos.client.showcase.scenes.Scene8;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.actor.SpecialActor;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.AnotherSpecialScene;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene1;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene10;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene11;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene12;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene2;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene3;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene4;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene5;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene6;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene7;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene8;
 
 /**
  * Deprecated version of showcase entry point 

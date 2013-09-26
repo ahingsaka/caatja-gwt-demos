@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.showcase.scenes;
+package com.katspow.caatjagwtdemos.client.welcome.showcase.scenes;
 
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;

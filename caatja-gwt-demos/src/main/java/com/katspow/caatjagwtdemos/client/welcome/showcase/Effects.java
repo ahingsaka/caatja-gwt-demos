@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.showcase;
+package com.katspow.caatjagwtdemos.client.welcome.showcase;
 
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.foundation.Director;

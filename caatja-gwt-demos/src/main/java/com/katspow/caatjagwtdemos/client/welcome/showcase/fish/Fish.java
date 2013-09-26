@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.showcase.fish;
+package com.katspow.caatjagwtdemos.client.welcome.showcase.fish;
 
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.foundation.actor.SpriteActor;

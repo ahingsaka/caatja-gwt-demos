@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.showcase.scenes;
+package com.katspow.caatjagwtdemos.client.welcome.showcase.scenes;
 
 import java.util.Arrays;
 
@@ -15,7 +15,7 @@ import com.katspow.caatja.foundation.actor.SpriteActor;
 import com.katspow.caatja.foundation.image.CompoundImage;
 import com.katspow.caatja.foundation.ui.TextActor;
 import com.katspow.caatja.math.Pt;
-import com.katspow.caatjagwtdemos.client.showcase.actor.Circle;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.actor.Circle;
 
 public class Scene6 {
     

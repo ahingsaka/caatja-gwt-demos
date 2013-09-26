@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.showcase.scenes;
+package com.katspow.caatjagwtdemos.client.welcome.showcase.scenes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,8 +22,8 @@ import com.katspow.caatja.foundation.ui.PathActor;
 import com.katspow.caatja.foundation.ui.TextActor;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.pathutil.Path;
-import com.katspow.caatjagwtdemos.client.showcase.fish.Fish;
-import com.katspow.caatjagwtdemos.client.showcase.fish.FishInterpolatorActor;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.fish.Fish;
+import com.katspow.caatjagwtdemos.client.welcome.showcase.fish.FishInterpolatorActor;
 
 public class Scene1 {
     

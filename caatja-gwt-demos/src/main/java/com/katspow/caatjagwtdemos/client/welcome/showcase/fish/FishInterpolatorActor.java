@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.showcase.fish;
+package com.katspow.caatjagwtdemos.client.welcome.showcase.fish;
 
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.event.CAATMouseEvent;
