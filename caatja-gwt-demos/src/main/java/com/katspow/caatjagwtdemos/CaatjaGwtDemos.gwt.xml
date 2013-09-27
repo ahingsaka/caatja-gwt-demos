@@ -8,6 +8,7 @@
 <module rename-to='caatjagwtdemos'>
 
   <inherits name='com.katspow.caatjagwt.CaatjaGwt'/>
+  <inherits name="com.google.gwt.user.theme.dark.Dark"/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.katspow.caatjagwtdemos.client.CaatjaGwtDemos'/>

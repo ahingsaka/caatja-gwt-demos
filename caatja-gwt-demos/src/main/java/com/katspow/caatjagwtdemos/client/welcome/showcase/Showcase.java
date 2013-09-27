@@ -37,14 +37,17 @@ import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.ShowcaseScene;
 public class Showcase {
 
     private Director director;
-    private ShowcaseScene welcomeScene;
+    private ShowcaseScene showcaseScene;
 
     /**
      * Entry point.
+     * @param director 
      * 
      * @throws Exception
      */
-    public void start() throws Exception {
+    public void start(Director director) throws Exception {
+        this.director = director;
+        
         setup();
         loadImages();
     }
@@ -55,20 +58,22 @@ public class Showcase {
      * @throws Exception
      */
     private void setup() throws Exception {
-        final CaatjaCanvas canvas = Caatja.createCanvas();
-        welcomeScene = new ShowcaseScene();
-        director = new Director();
+//        final CaatjaCanvas canvas = Caatja.createCanvas();
+        showcaseScene = new ShowcaseScene();
+        //director = new Director();
 
-        director.initialize(680, 500, canvas);
-        director.addScene(welcomeScene);
-        director.setScene(0);
+        //director.initialize(680, 500, canvas);
+        director.addScene(showcaseScene);
+        
+        //director.setScene(0);
+        director.setScene(showcaseScene);
 
-        welcomeScene.load(director);
+        showcaseScene.load(director);
 
-        createLoadingText();
+//        createLoadingText();
 
-        Caatja.addCanvas(canvas);
-        Caatja.loop(60);
+//        Caatja.addCanvas(canvas);
+//        Caatja.loop(60);
     }
 
     /**
@@ -76,19 +81,19 @@ public class Showcase {
      * 
      * @throws Exception
      */
-    private void createLoadingText() throws Exception {
-        TextActor loading = new TextActor();
-        loading.setFont("30px sans-serif").
-            setTextBaseline("top").
-            setText("Loading ...").
-            calcTextSize(director).
-            setTextFillStyle("white");
-        
-        loading.setLocation((director.canvas.getCoordinateSpaceWidth() - loading.width) / 2,
-                (director.canvas.getCoordinateSpaceHeight()) / 2);
-
-        welcomeScene.addChild(loading);
-    }
+//    private void createLoadingText() throws Exception {
+//        TextActor loading = new TextActor();
+//        loading.setFont("30px sans-serif").
+//            setTextBaseline("top").
+//            setText("Loading ...").
+//            calcTextSize(director).
+//            setTextFillStyle("white");
+//        
+//        loading.setLocation((director.canvas.getCoordinateSpaceWidth() - loading.width) / 2,
+//                (director.canvas.getCoordinateSpaceHeight()) / 2);
+//
+//        showcaseScene.addChild(loading);
+//    }
 
     /**
      * Once images are "preloaded", we call the image service from the server to get them

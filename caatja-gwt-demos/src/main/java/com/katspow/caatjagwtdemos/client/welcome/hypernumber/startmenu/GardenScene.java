@@ -13,7 +13,7 @@ import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.GameScene;
 public class GardenScene {
     
     public GameScene gameScene=      null;
-    Scene directorScene=  null;
+    public Scene directorScene=  null;
     Director director=       null;
     CompoundImage buttonImage=    null;
 

@@ -47,7 +47,7 @@ public class GameScene implements ContextListener {
     int gap = 2;
 
     Context context=        null;
-    Scene directorScene=  null;
+    public Scene directorScene=  null;
 
     SelectionPath selectionPath =  null;
     ActorContainer bricksContainer = null;
