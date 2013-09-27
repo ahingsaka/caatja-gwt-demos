@@ -12,7 +12,7 @@ import com.katspow.caatjagwt.client.CaatjaGwtPreloader;
 import com.katspow.caatjagwt.client.CaatjaGwtRootPanel;
 import com.katspow.caatjagwt.client.CaatjaGwtService;
 import com.katspow.caatjagwt.client.CaatjaGwtWindow;
-import com.katspow.caatjagwtdemos.client.welcome.WelcomeView;
+import com.katspow.caatjagwtdemos.client.welcome.HomeView;
 
 public class CaatjaGwtDemos implements EntryPoint {
 
@@ -30,7 +30,7 @@ public class CaatjaGwtDemos implements EntryPoint {
 		    
 		    
 			//new Showcase().start();
-			RootPanel.get().add(new WelcomeView());
+			RootPanel.get().add(new HomeView());
 			
 		} catch (Exception e) {
 			e.printStackTrace();

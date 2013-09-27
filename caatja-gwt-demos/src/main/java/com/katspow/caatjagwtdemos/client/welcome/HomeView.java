@@ -12,7 +12,7 @@ import com.katspow.caatjagwtdemos.client.welcome.hypernumber.HyperNumber;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.Showcase;
 import com.katspow.caatjagwtdemos.client.welcome.tutorials.Tutorials;
 
-public class WelcomeView extends Composite {
+public class HomeView extends Composite {
 
     private static final String NOT_YET_IMPLEMENTED = "Not yet implemented !";
     private static final String HEIGHT = "500px";
@@ -35,7 +35,7 @@ public class WelcomeView extends Composite {
         }
     }
 
-    public WelcomeView() {
+    public HomeView() {
 
         FlexTable grid = new FlexTable();
         grid.setSize(WIDTH, HEIGHT);
@@ -79,7 +79,7 @@ public class WelcomeView extends Composite {
     private void loadDemo(Demo demo) {
 
         try {
-            WelcomeView.this.setVisible(false);
+            HomeView.this.setVisible(false);
 
             switch (demo) {
             case SHOWCASE:
