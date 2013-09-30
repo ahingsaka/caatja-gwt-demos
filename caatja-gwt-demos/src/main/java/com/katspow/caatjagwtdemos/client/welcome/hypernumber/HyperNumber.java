@@ -13,8 +13,15 @@ import com.katspow.caatjagwtdemos.client.welcome.hypernumber.startmenu.GardenSce
 public class HyperNumber {
     
     private Director director;
-
+    
+    private static Scene menuScene;
+    private static Scene playScene;
+    private static boolean started;
+    
     public void start(Director director) throws Exception {
+        
+        if (!started) {
+            
         this.director = director;
         setup();
         
@@ -49,11 +56,15 @@ public class HyperNumber {
                 GameScene gameScene = new GameScene().create(director, 8, 8, context);
                 gardenScene.gameScene = gameScene;
                 
-                Scene garden = gardenScene.directorScene;
-                director.addScene(garden);
-                director.addScene(gameScene.directorScene);
+                menuScene = gardenScene.directorScene;
+//                int menuSceneIndex = director.addScene(menuScene);
+//                int playSceneIndex = director.addScene(gameScene.directorScene);
+                playScene = gameScene.directorScene;
                 
-                director.setScene(director.getSceneIndex(garden));
+                started = true;
+        }
+                
+                director.setScene(director.getSceneIndex(menuScene));
                 
 
 //                Caatja.loop(60);
@@ -68,5 +79,12 @@ public class HyperNumber {
         director.setClear(false);
     }
     
+    public static Scene getPlayScene() {
+        return playScene;
+    }
+    
+    public static Scene getMenuScene() {
+        return menuScene;
+    }
 
 }

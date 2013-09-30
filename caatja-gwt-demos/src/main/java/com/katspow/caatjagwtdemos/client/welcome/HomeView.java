@@ -270,7 +270,7 @@ public class HomeView extends Composite {
                 break;
                
             case HOME:
-                director.setScene(0);
+                director.setScene(director.getSceneIndex(welcomeScene));
                 break;
 
             default:

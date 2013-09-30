@@ -1,13 +1,15 @@
 package com.katspow.caatjagwtdemos.client.welcome.showcase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.katspow.caatja.behavior.AlphaBehavior;
 import com.katspow.caatja.behavior.BaseBehavior;
 import com.katspow.caatja.behavior.BaseBehavior.Status;
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.core.Caatja;
-import com.katspow.caatja.core.canvas.CaatjaCanvas;
-import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.core.canvas.CaatjaColor;
+import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.core.image.CaatjaImageLoader;
 import com.katspow.caatja.core.image.CaatjaImageLoaderCallback;
 import com.katspow.caatja.core.image.CaatjaPreloader;
@@ -15,7 +17,6 @@ import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
-import com.katspow.caatja.foundation.ui.TextActor;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.actor.SpecialActor;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene1;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene10;
@@ -38,6 +39,8 @@ public class Showcase {
 
     private Director director;
     private ShowcaseScene showcaseScene;
+    private static List<Scene> showcaseScenes;
+    private boolean started;
 
     /**
      * Entry point.
@@ -49,7 +52,7 @@ public class Showcase {
         this.director = director;
         
         setup();
-        loadImages();
+//        loadImages();
     }
 
     /**
@@ -58,17 +61,24 @@ public class Showcase {
      * @throws Exception
      */
     private void setup() throws Exception {
-//        final CaatjaCanvas canvas = Caatja.createCanvas();
-        showcaseScene = new ShowcaseScene();
-        //director = new Director();
-
-        //director.initialize(680, 500, canvas);
-        director.addScene(showcaseScene);
         
-        //director.setScene(0);
+        if (!started) {
+    //        final CaatjaCanvas canvas = Caatja.createCanvas();
+            showcaseScene = new ShowcaseScene();
+            //director = new Director();
+    
+            //director.initialize(680, 500, canvas);
+            director.addScene(showcaseScene);
+            
+            //director.setScene(0);
+    
+            showcaseScene.load(director);
+            loadImages();
+            
+            started = true;
+        }
+        
         director.setScene(showcaseScene);
-
-        showcaseScene.load(director);
 
 //        createLoadingText();
 
@@ -147,17 +157,35 @@ public class Showcase {
      * @throws Exception
      */
     private void loadShowcaseScenes() throws Exception {
-        director.addScene(Scene1.init(director));
-        director.addScene(Scene2.init(director));
-        director.addScene(Scene3.init(director));
-        director.addScene(Scene4.init(director));
-        director.addScene(Scene5.init(director));
-        director.addScene(Scene6.init(director));
-        director.addScene(Scene12.init(director));
-        director.addScene(Scene7.init(director));
-        director.addScene(Scene8.init(director));
-        Scene10.init(director);
-        director.addScene(Scene11.init(director));
+        
+        showcaseScenes = new ArrayList<Scene>();
+        showcaseScenes.add(Scene1.init(director));
+        showcaseScenes.add(Scene2.init(director));
+        showcaseScenes.add(Scene3.init(director));
+        showcaseScenes.add(Scene4.init(director));
+        showcaseScenes.add(Scene5.init(director));
+        showcaseScenes.add(Scene6.init(director));
+        showcaseScenes.add(Scene12.init(director));
+        showcaseScenes.add(Scene7.init(director));
+        showcaseScenes.add(Scene8.init(director));
+        showcaseScenes.add(Scene10.init(director));
+        showcaseScenes.add(Scene11.init(director));
+        
+        for (Scene scene : showcaseScenes) {
+            director.addScene(scene);
+        }
+        
+//        director.addScene(Scene1.init(director));
+//        director.addScene(Scene2.init(director));
+//        director.addScene(Scene3.init(director));
+//        director.addScene(Scene4.init(director));
+//        director.addScene(Scene5.init(director));
+//        director.addScene(Scene6.init(director));
+//        director.addScene(Scene12.init(director));
+//        director.addScene(Scene7.init(director));
+//        director.addScene(Scene8.init(director));
+//        Scene10.init(director);
+//        director.addScene(Scene11.init(director));
 
         director.setScene(0);
         
@@ -171,8 +199,8 @@ public class Showcase {
      * @throws Exception 
      */
     private void createSceneSwitchingButtons() throws Exception {
-        int numScenes = director.getNumScenes();
-
+        
+        int numScenes = showcaseScenes.size();
         double buttonW = 22.5;
         double buttonX = (director.width - buttonW * numScenes) / 2;
 
@@ -191,7 +219,6 @@ public class Showcase {
             }
 
         }
-
     }
 
     /**
@@ -250,7 +277,9 @@ public class Showcase {
             idx.fillStyle = CaatjaColor.valueOf("#c07f00");
         }
         
-        Scene scene = director.scenes.get(i);
+//        Scene scene = director.scenes.get(i);
+        Scene scene = director.scenes.get(director.getSceneIndex(showcaseScenes.get(i)));
+        
         scene.addChild(idx);
 
         setupTRButtonPaintIndex(idx, j + 1);
@@ -342,7 +371,8 @@ public class Showcase {
         next.setBounds(director.width - 20 - 5, 470, 20, 20);
         next.fillStyle = CaatjaColor.valueOf("#0000ff");
 
-        director.scenes.get(index).addChild(next);
+        director.scenes.get(director.getSceneIndex(showcaseScenes.get(index)));
+        //director.scenes.get(index).addChild(next);
 
         setupTRButton(next);
         setupTRButtonPaint(next);
@@ -437,7 +467,8 @@ public class Showcase {
         prev.setRotation(Math.PI);
         prev.fillStyle = CaatjaColor.valueOf("#0000ff");
 
-        director.scenes.get(index).addChild(prev);
+        director.scenes.get(director.getSceneIndex(showcaseScenes.get(index)));
+//        director.scenes.get(index).addChild(prev);
 
         setupTRButton(prev);
         setupTRButtonPaint(prev);

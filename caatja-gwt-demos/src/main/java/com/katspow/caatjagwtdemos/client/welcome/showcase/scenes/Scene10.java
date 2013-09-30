@@ -15,14 +15,17 @@ import com.katspow.caatja.foundation.ui.TextActor;
  */
 public class Scene10 {
     
-    public static void init(Director director) throws Exception {
+    private static PackedCircleScene packedCircleScene;
+
+    public static Scene init(Director director) throws Exception {
         
      // Start our scene created below
-        PackedCircleScene packedCircleScene = new PackedCircleScene();
+        packedCircleScene = new PackedCircleScene();
         packedCircleScene.initDirector(director);
 
         __scene10_text(director, packedCircleScene.scene);
         
+        return packedCircleScene.getScene();
     }
     
     private static void __scene10_text(Director director, Scene scene) throws Exception {
@@ -65,5 +68,5 @@ public class Scene10 {
 
         scene.addChild(cc);
     }
-
+    
 }

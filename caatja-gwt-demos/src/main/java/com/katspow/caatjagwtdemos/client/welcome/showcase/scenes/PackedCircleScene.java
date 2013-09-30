@@ -131,7 +131,8 @@ public class PackedCircleScene {
             this.root.addChild(circleActor);
         }
 
-        this.director.addScene(this.scene);
+        // Useless : should be done by another class (Showcase) 
+        //this.director.addScene(this.scene);
 
         // Force all packedCircles to move to the position of their delegates
         this.packedCirleManager.forceCirclesToMatchDelegatePositions();
@@ -176,6 +177,10 @@ public class PackedCircleScene {
         actor.addBehavior(fadeBehavior);
 
         return fadeBehavior;
+    }
+    
+    public Scene getScene() {
+        return scene;
     }
 
 }

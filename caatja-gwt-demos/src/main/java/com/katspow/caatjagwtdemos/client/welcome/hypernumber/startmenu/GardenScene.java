@@ -8,6 +8,7 @@ import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.actor.Button;
 import com.katspow.caatja.foundation.actor.ImageActor;
 import com.katspow.caatja.foundation.image.CompoundImage;
+import com.katspow.caatjagwtdemos.client.welcome.hypernumber.HyperNumber;
 import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.GameScene;
 
 public class GardenScene {
@@ -70,10 +71,10 @@ public class GardenScene {
             public void fnOnClick() throws Exception {
                 //director.switchToNextScene(2000,false,true);
                 director.easeInOut(
-                        1,
+                        director.getSceneIndex(HyperNumber.getPlayScene()),
                         Scene.Ease.TRANSLATE,
                         Actor.Anchor.RIGHT,
-                        0,
+                        director.getSceneIndex(HyperNumber.getMenuScene()),
                         Scene.Ease.TRANSLATE,
                         Actor.Anchor.LEFT,
                         1000,
@@ -92,10 +93,10 @@ public class GardenScene {
                 gameScene.setDifficulty(1);
                 gameScene.prepareSceneIn();
                 director.easeInOut(
-                        1,
+                        director.getSceneIndex(HyperNumber.getPlayScene()),
                         Scene.Ease.TRANSLATE,
                         Actor.Anchor.TOP,
-                        0,
+                        director.getSceneIndex(HyperNumber.getMenuScene()),
                         Scene.Ease.TRANSLATE,
                         Actor.Anchor.BOTTOM,
                         1000,
@@ -114,10 +115,10 @@ public class GardenScene {
             gameScene.setDifficulty(2);
             gameScene.prepareSceneIn();
             director.easeInOut(
-                    1,
+                    director.getSceneIndex(HyperNumber.getPlayScene()),
                     Scene.Ease.TRANSLATE,
                     Actor.Anchor.BOTTOM,
-                    0,
+                    director.getSceneIndex(HyperNumber.getMenuScene()),
                     Scene.Ease.TRANSLATE,
                     Actor.Anchor.TOP,
                     1000,
