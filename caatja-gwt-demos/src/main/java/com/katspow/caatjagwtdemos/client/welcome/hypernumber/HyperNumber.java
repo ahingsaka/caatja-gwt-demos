@@ -1,7 +1,5 @@
 package com.katspow.caatjagwtdemos.client.welcome.hypernumber;
 
-import javax.naming.directory.DirContext;
-
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.GameScene;

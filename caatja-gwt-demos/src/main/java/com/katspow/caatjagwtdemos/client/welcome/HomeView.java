@@ -25,8 +25,8 @@ import com.katspow.caatjagwtdemos.client.welcome.tutorials.Tutorials;
 public class HomeView extends Composite {
 
     private static final String NOT_YET_IMPLEMENTED = "Not yet implemented !";
-    private static final int CANVAS_HEIGHT = 600;
-    private static final int CANVAS_WIDTH = 700;
+    private static final int CANVAS_HEIGHT = 500;
+    private static final int CANVAS_WIDTH = 680;
     private static final int STACK_PANEL_X = CANVAS_WIDTH;
    
     private static final String HEIGHT = "500px";
@@ -215,7 +215,7 @@ public class HomeView extends Composite {
 //        demosStackPanel.add(new HTML("With the tutorials, you'll learn to use caatja"), "Tutorials");
 //        demosStackPanel.add(new HTML("Hypernumber is a small game, it is in beta but playable"), "Hypernumber (BETA)");
        
-        demosStackPanel.setHeight("600px");
+        demosStackPanel.setHeight("500px");
         demosStackPanel.setWidth("250px");
         demosStackPanel.setVisible(false);
        
