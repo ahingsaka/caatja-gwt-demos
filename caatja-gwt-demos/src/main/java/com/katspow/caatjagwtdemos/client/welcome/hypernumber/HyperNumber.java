@@ -12,18 +12,17 @@ import com.katspow.caatjagwtdemos.client.welcome.hypernumber.startmenu.GardenSce
  */
 public class HyperNumber {
     
-    private static Director director;
+    private  Director director;
     
-    private static Scene menuScene;
-    private static Scene playScene;
-    private static boolean started;
+    private static  Scene menuScene;
+    private static  Scene playScene;
+    private  boolean started;
     
-    public static void start(Director director) throws Exception {
+    public void start(Director director) throws Exception {
         
         if (!started) {
             
-        HyperNumber.director = director;
-        setup();
+        this.director = director;
         
 //        final CaatjaPreloader preloader = Caatja.getCaatjaImagePreloader();
 //
@@ -64,6 +63,7 @@ public class HyperNumber {
                 started = true;
         }
                 
+        setup();
                 director.setScene(director.getSceneIndex(menuScene));
                 
 
@@ -74,7 +74,7 @@ public class HyperNumber {
 
     }
     
-    private static void setup() throws Exception {
+    private  void setup() throws Exception {
         //director = new Director().initialize(640, 480).setClear(false);
         director.setClear(false);
     }
