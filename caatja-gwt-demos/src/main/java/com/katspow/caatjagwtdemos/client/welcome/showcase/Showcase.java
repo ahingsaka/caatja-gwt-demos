@@ -37,10 +37,10 @@ import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.ShowcaseScene;
  */
 public class Showcase {
 
-    private Director director;
-    private ShowcaseScene showcaseScene;
+    private static Director director;
+    private static ShowcaseScene showcaseScene;
     private static List<Scene> showcaseScenes;
-    private boolean started;
+    private static boolean started;
 
     /**
      * Entry point.
@@ -48,8 +48,8 @@ public class Showcase {
      * 
      * @throws Exception
      */
-    public void start(Director director) throws Exception {
-        this.director = director;
+    public static void start(Director director) throws Exception {
+        Showcase.director = director;
         
         setup();
 //        loadImages();
@@ -60,7 +60,7 @@ public class Showcase {
      * 
      * @throws Exception
      */
-    private void setup() throws Exception {
+    private static void setup() throws Exception {
         
         if (!started) {
     //        final CaatjaCanvas canvas = Caatja.createCanvas();
@@ -76,9 +76,11 @@ public class Showcase {
             loadImages();
             
             started = true;
+            director.setScene(showcaseScene);
+        } else {
+        	director.setScene(director.getSceneIndex(showcaseScenes.get(0)));
         }
         
-        director.setScene(showcaseScene);
 
 //        createLoadingText();
 
@@ -108,7 +110,7 @@ public class Showcase {
     /**
      * Once images are "preloaded", we call the image service from the server to get them
      */
-    private void loadImages() {
+    private static void loadImages() {
         preloadImages();
 
         CaatjaImageLoader caatjaImageLoader = Caatja.getCaatjaImageLoader();
@@ -124,7 +126,7 @@ public class Showcase {
     /**
      * We add requested images to the preloader
      */
-    private void preloadImages() {
+    private static void preloadImages() {
         final CaatjaPreloader preloader = Caatja.getCaatjaImagePreloader();
         preloader.addImage("fish", "anim1.png");
         preloader.addImage("fish2", "anim2.png");
@@ -145,7 +147,7 @@ public class Showcase {
      * 
      * @throws Exception
      */
-    private void finishShowcaseLoading() throws Exception {
+    private static void finishShowcaseLoading() throws Exception {
         director.imagesCache = Caatja.getCaatjaImagePreloader().getCaatjaImages();
         director.emptyScenes();
         loadShowcaseScenes();
@@ -156,7 +158,7 @@ public class Showcase {
      * Load all showcase scenes
      * @throws Exception
      */
-    private void loadShowcaseScenes() throws Exception {
+    private static void loadShowcaseScenes() throws Exception {
         
         showcaseScenes = new ArrayList<Scene>();
         showcaseScenes.add(Scene1.init(director));
@@ -187,7 +189,7 @@ public class Showcase {
 //        Scene10.init(director);
 //        director.addScene(Scene11.init(director));
 
-        director.setScene(0);
+        director.setScene(director.getSceneIndex(showcaseScenes.get(0)));
         
         createSceneSwitchingButtons();
         
@@ -198,7 +200,7 @@ public class Showcase {
      * Creates all buttons for scene navigation
      * @throws Exception 
      */
-    private void createSceneSwitchingButtons() throws Exception {
+    private static void createSceneSwitchingButtons() throws Exception {
         
         int numScenes = showcaseScenes.size();
         double buttonW = 22.5;
@@ -225,7 +227,7 @@ public class Showcase {
      * Creates all the buttons on the bottom for scene navigation
      * @throws Exception 
      */
-    private void createAllSceneButtons(int i, int j, double buttonX, double buttonW) throws Exception {
+    private static void createAllSceneButtons(int i, int j, double buttonX, double buttonW) throws Exception {
 
         SpecialActor idx = new SpecialActor() {
             @Override
@@ -286,7 +288,7 @@ public class Showcase {
         
     }
 
-    private void createNextButton(int index) throws Exception {
+    private static void createNextButton(int index) throws Exception {
         
         Actor next = new Actor() {
             @Override
@@ -378,7 +380,7 @@ public class Showcase {
         setupTRButtonPaint(next);
     }
 
-    private void createPreviousButton(int index) throws Exception {
+    private static void createPreviousButton(int index) throws Exception {
         
         Actor prev = new Actor() {
             @Override
@@ -474,7 +476,7 @@ public class Showcase {
         setupTRButtonPaint(prev);
     }
     
-    private void setupTRButton(Actor prev) {
+    private static void setupTRButton(Actor prev) {
         
         ScaleBehavior sb = new ScaleBehavior().
                 setPingPong().
@@ -489,11 +491,11 @@ public class Showcase {
         
     }
     
-    private void setupTRButtonPaint(Actor prev) {
+    private static void setupTRButtonPaint(Actor prev) {
         prev.fillStyle = CaatjaColor.valueOf("#0000ff");
     }
 
-    private void setupTRButtonPaintIndex(Actor idx, int i) {
+    private static void setupTRButtonPaintIndex(Actor idx, int i) {
         // DO nothing
     }
 
