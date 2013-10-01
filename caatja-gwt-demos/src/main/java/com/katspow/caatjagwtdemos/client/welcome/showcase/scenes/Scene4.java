@@ -345,6 +345,8 @@ public class Scene4 {
         cc1.addChild(text5.setLocation((cc1.width-text5.textWidth)/2,120));
 
         cc1.mouseEnabled= false;    
+        
+        scene.setFillStrokeStyle(CaatjaColor.valueOf("#FFFFFF"));
 
         return scene;
     }

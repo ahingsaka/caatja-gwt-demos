@@ -5,6 +5,7 @@ import java.util.List;
 import com.katspow.caatja.behavior.AlphaBehavior;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.ScaleBehavior;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;

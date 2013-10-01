@@ -32,6 +32,8 @@ public class Scene6 {
             }
         };
         
+        scene.setFillStrokeStyle(CaatjaColor.valueOf("#FFFFFF"));
+        
         CompoundImage conpoundimage = new CompoundImage();
         conpoundimage.initialize(director.getImage("fish"), 1, 3);
         

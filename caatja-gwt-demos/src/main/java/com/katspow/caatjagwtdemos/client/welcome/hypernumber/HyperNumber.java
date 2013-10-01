@@ -7,82 +7,49 @@ import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.context.Contex
 import com.katspow.caatjagwtdemos.client.welcome.hypernumber.startmenu.GardenScene;
 
 /**
- * Entry point for hypernumber demo 
- *
+ * Entry point for hypernumber demo
+ * 
  */
 public class HyperNumber {
-    
-    private  static Director director;
-    
-    private static  Scene menuScene;
-    private static  Scene playScene;
-    private  static boolean started;
-    
+
+    private static Director director;
+    private static Scene menuScene;
+    private static Scene playScene;
+    private static boolean started;
+
     public static void start(Director director) throws Exception {
-        
+
         if (!started) {
-            
+
             HyperNumber.director = director;
-        
-//        final CaatjaPreloader preloader = Caatja.getCaatjaImagePreloader();
-//
-//        preloader.addImage("bricks", "nums.png");
-//        preloader.addImage("buttons", "buttons.png");
-//        preloader.addImage("madewith", "madewith.png");
-//        preloader.addImage("space", "space2.jpg");
-//        preloader.addImage("background", "fondo.jpg");
-//        preloader.addImage("background_op", "fondo_opciones.jpg");
-//        preloader.addImage("cloud1", "nube1.png");
-//        preloader.addImage("cloud2", "nube2.png");
-//        preloader.addImage("cloud3", "nube3.png");
-//        preloader.addImage("cloud4", "nube4.png");
-//
-//        preloader.addImage("cloudb1", "nubefondo1.png");
-//        preloader.addImage("cloudb2", "nubefondo2.png");
-//        preloader.addImage("cloudb3", "nubefondo3.png");
-//        preloader.addImage("cloudb4", "nubefondo4.png");
 
-//        CaatjaImageLoader caatjaImageLoader = Caatja.getCaatjaImageLoader();
-//        caatjaImageLoader.loadImages(preloader, new CaatjaImageLoaderCallback() {
-//            public void onFinishedLoading() throws Exception {
+            GardenScene gardenScene = new GardenScene().create(director, 120);
 
-//                director.imagesCache = preloader.getCaatjaImages();
+            Context context = new Context().create(8, 12, GameScene.imageBricksH);
 
-                GardenScene gardenScene = new GardenScene().create(director, 120);
+            GameScene gameScene = new GameScene().create(director, 8, 8, context);
+            gardenScene.gameScene = gameScene;
 
-                Context context = new Context().create(8, 12, GameScene.imageBricksH);
+            menuScene = gardenScene.directorScene;
+            playScene = gameScene.directorScene;
 
-                GameScene gameScene = new GameScene().create(director, 8, 8, context);
-                gardenScene.gameScene = gameScene;
-                
-                menuScene = gardenScene.directorScene;
-//                int menuSceneIndex = director.addScene(menuScene);
-//                int playSceneIndex = director.addScene(gameScene.directorScene);
-                playScene = gameScene.directorScene;
-                
-                started = true;
+            started = true;
         }
-                
+
         setup();
-                director.setScene(director.getSceneIndex(menuScene));
-                
-
-//                Caatja.loop(60);
-
-//            }
-//        });
+        director.setScene(director.getSceneIndex(menuScene));
 
     }
-    
-    private static  void setup() throws Exception {
-        //director = new Director().initialize(640, 480).setClear(false);
+
+    private static void setup() throws Exception {
+        // director = new Director().initialize(640, 480).setClear(false);
         director.setClear(false);
     }
-    
+
     public static Scene getPlayScene() {
         return playScene;
     }
-    
+
     public static Scene getMenuScene() {
         return menuScene;
     }

@@ -3,6 +3,7 @@ package com.katspow.caatjagwtdemos.client.welcome.showcase.scenes;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.core.Caatja;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
@@ -47,6 +48,7 @@ public class Scene8 {
 
         int i;
         Scene scene = new Scene();
+        scene.setFillStrokeStyle(CaatjaColor.valueOf("#FFFFFF"));
         
         ShapeActor sun = (ShapeActor) __createShape(50, 50).setFillStyle("yellow").setLocation(director.width / 2-25,
                 director.height / 2-25);

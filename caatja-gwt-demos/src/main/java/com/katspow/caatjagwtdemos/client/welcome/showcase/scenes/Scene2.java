@@ -23,6 +23,7 @@ public class Scene2 {
 
     public static Scene init(Director director) throws Exception {
         Scene scene = new Scene();
+        scene.setFillStrokeStyle(CaatjaColor.valueOf("#FFFFFF"));
 
         CompoundImage conpoundimage = new CompoundImage();
         conpoundimage.initialize(director.getImage("chapas"), 6, 6);

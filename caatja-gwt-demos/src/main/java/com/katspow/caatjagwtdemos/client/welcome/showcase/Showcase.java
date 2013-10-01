@@ -50,10 +50,7 @@ public class Showcase {
      */
     public static void start(Director director) throws Exception {
         Showcase.director = director;
-        
-        
         setup();
-//        loadImages();
     }
 
     /**
@@ -68,16 +65,10 @@ public class Showcase {
     	director.clear = true;
         
         if (!started) {
-    //        final CaatjaCanvas canvas = Caatja.createCanvas();
             showcaseScene = new ShowcaseScene();
-            //director = new Director();
-    
-            //director.initialize(680, 500, canvas);
             director.addScene(showcaseScene);
-            
-            //director.setScene(0);
-    
             showcaseScene.load(director);
+            
             loadImages();
             
             started = true;
@@ -86,11 +77,6 @@ public class Showcase {
         	director.setScene(director.getSceneIndex(showcaseScenes.get(0)));
         }
         
-
-//        createLoadingText();
-
-//        Caatja.addCanvas(canvas);
-//        Caatja.loop(60);
     }
 
     /**
@@ -176,24 +162,14 @@ public class Showcase {
         showcaseScenes.add(Scene7.init(director));
         showcaseScenes.add(Scene8.init(director));
         showcaseScenes.add(Scene10.init(director));
-        showcaseScenes.add(Scene11.init(director));
+        
+        // TODO Add acceleration scene when it is finished
+        //showcaseScenes.add(Scene11.init(director));
         
         for (Scene scene : showcaseScenes) {
             director.addScene(scene);
         }
         
-//        director.addScene(Scene1.init(director));
-//        director.addScene(Scene2.init(director));
-//        director.addScene(Scene3.init(director));
-//        director.addScene(Scene4.init(director));
-//        director.addScene(Scene5.init(director));
-//        director.addScene(Scene6.init(director));
-//        director.addScene(Scene12.init(director));
-//        director.addScene(Scene7.init(director));
-//        director.addScene(Scene8.init(director));
-//        Scene10.init(director);
-//        director.addScene(Scene11.init(director));
-
         director.setScene(director.getSceneIndex(showcaseScenes.get(0)));
         
         createSceneSwitchingButtons();

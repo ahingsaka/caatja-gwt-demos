@@ -2,6 +2,7 @@ package com.katspow.caatjagwtdemos.client.welcome.showcase.scenes;
 
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.RotateBehavior;
+import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
@@ -15,6 +16,7 @@ public class Scene5 {
 
     public static Scene init(Director director) throws Exception {
         Scene scene = new Scene();
+        scene.setFillStrokeStyle(CaatjaColor.valueOf("#FFFFFF"));
         
      // path
         Path p= new Path();
