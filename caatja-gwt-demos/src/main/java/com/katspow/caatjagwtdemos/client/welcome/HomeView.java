@@ -254,11 +254,11 @@ public class HomeView extends Composite {
 
             switch (demo) {
             case SHOWCASE:
-                new Showcase().start(director);
+                Showcase.start(director);
                 break;
 
             case HYPERNUMBER:
-                new HyperNumber().start(director);
+                HyperNumber.start(director);
                 break;
 
             case DEMOS_WITH_SOURCE:
