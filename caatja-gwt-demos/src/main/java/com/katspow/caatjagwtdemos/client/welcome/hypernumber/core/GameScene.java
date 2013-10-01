@@ -93,7 +93,7 @@ public class GameScene implements ContextListener {
         
         CaatjaImage image2 = director.getImage("buttons");
         this.buttonImage= new CompoundImage().initialize(
-                image2, 6,4 );
+                image2, 7,4 );
 
 //        this.context= new Context().
 //                create( this.gameRows, this.gameColumns, this.imageBricksH ).
