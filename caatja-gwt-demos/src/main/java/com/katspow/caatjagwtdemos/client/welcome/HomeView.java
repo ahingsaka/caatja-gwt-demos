@@ -61,10 +61,12 @@ public class HomeView extends Composite {
 
 
     private Director director;
-    private HomeScene welcomeScene;
+    private HomeScene homeScene;
    
     private StackPanel demosStackPanel;
     private CaatjaCanvas canvas;
+    private TextActor oadingText;
+    private TextActor loadingText;
 
     public HomeView() throws Exception {
        
@@ -80,16 +82,16 @@ public class HomeView extends Composite {
     private void setupCaatja() throws Exception {
        
         canvas = Caatja.createCanvas();
-        welcomeScene = new HomeScene();
+        homeScene = new HomeScene();
         director = new Director();
 
         director.initialize(CANVAS_WIDTH, CANVAS_HEIGHT, canvas);
-        director.addScene(welcomeScene);
+        director.addScene(homeScene);
 //        director.setScene(0);
 
-        welcomeScene.load(director);
+        homeScene.load(director);
 
-        createLoadingText();
+        loadingText = createLoadingText();
 
         Caatja.addCanvas(canvas);
         Caatja.loop(60);
@@ -161,10 +163,14 @@ public class HomeView extends Composite {
         //director.emptyScenes();
        
         demosStackPanel.setVisible(true);
+        
+        homeScene.removeChild(loadingText);
+        homeScene.showIntroduction();
+        
 //        loadShowcaseScenes();
     }
 
-    private void createLoadingText() throws Exception {
+    private TextActor createLoadingText() throws Exception {
         TextActor loading = new TextActor();
         loading.setFont("30px sans-serif").setTextBaseline("top").setText("Loading ...").calcTextSize(director)
                 .setTextFillStyle("white");
@@ -172,7 +178,9 @@ public class HomeView extends Composite {
         loading.setLocation((director.canvas.getCoordinateSpaceWidth() - loading.width) / 2,
                 (director.canvas.getCoordinateSpaceHeight()) / 2);
 
-        welcomeScene.addChild(loading);
+        homeScene.addChild(loading);
+        
+        return loading;
     }
 
     private void createGridMenu() {
@@ -270,7 +278,7 @@ public class HomeView extends Composite {
                 break;
                
             case HOME:
-                director.setScene(director.getSceneIndex(welcomeScene));
+                director.setScene(director.getSceneIndex(homeScene));
                 break;
 
             default:

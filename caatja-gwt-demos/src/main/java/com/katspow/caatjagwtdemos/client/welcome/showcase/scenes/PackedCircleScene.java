@@ -70,7 +70,6 @@ public class PackedCircleScene {
                         packedCircle.setTargetChaseSpeed(packedCircle.targetChaseSpeed + Math.random() * 0.004 - 0.002);
                 }
                 
-                
             }
         };
         
