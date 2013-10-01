@@ -33,6 +33,8 @@ public class Scene3 {
         Scene scene = new Scene() {
             @Override
             public void paint(Director director, double time) {
+                super.paint(director, time);
+                
                 CaatjaContext2d canvas = director.ctx;
 
                 canvas.setStrokeStyle(CaatjaColor.valueOf("black"));
@@ -48,6 +50,8 @@ public class Scene3 {
             }
 
         };
+        
+        scene.setFillStrokeStyle(CaatjaColor.valueOf("#FFFFFF"));
 
         CaatjaGradient gradient = director.ctx.createLinearGradient(0, 0, 0, 50);
         gradient.addColorStop(0, "blue");
