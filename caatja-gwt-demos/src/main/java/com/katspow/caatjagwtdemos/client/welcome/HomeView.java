@@ -5,10 +5,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.StackPanel;
@@ -24,19 +21,30 @@ import com.katspow.caatjagwtdemos.client.welcome.hypernumber.HyperNumber;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.Showcase;
 import com.katspow.caatjagwtdemos.client.welcome.tutorials.Tutorials;
 
+/**
+ * This defines the first view of the application.<br>
+ * User can choose between different demos in this view.<br>
+ * When he chooses one of them, the canvas part of the view is updated and the
+ * content replaced.
+ * 
+ */
 public class HomeView extends Composite {
 
+    // MESSAGES
     private static final String NOT_YET_IMPLEMENTED = "Not yet implemented !";
+    
+    // CANVAS DIMENSIONS
     private static final int CANVAS_HEIGHT = 500;
     private static final int CANVAS_WIDTH = 680;
+    
+    // MENU (widget on the right side) DIMENSIONS
+    private static final String STACK_MENU_HEIGHT = CANVAS_HEIGHT + "px";
+    private static final String STACK_MENU_WIDTH = "250px";
     private static final int STACK_PANEL_X = CANVAS_WIDTH;
-   
-    private static final String HEIGHT = "500px";
-    private static final String WIDTH = "680px";
-   
-    private static final String WELCOME_TEXT = "Welcome to the CAATJA-GWT demos !<br>"
-            + "Choose one of the examples on the left<br> " + "by clicking on the icon";
+    
+    private StackPanel demosStackPanel;
 
+    // EACH STACK ENTRY HAS A LABEL AND A DESCRIPTION GIVEN BY THIS ENUM
     private enum Demo {
         HOME("Home", "Welcome to the CAATJA demos ! <br>Please select an entry below to watch them in action !<p>This is a BETA version, some features are missing"),
         SHOWCASE("Showcase", "With the showcase, you'll have an overview of the features of Caatja"),
@@ -61,42 +69,43 @@ public class HomeView extends Composite {
         }
     }
 
+    // Only ONE director for the WHOLE application
+    private final Director director = new Director();
 
-    private Director director;
-    private HomeScene homeScene;
-   
-    private StackPanel demosStackPanel;
-    private CaatjaCanvas canvas;
+    // This view is associated with ONE scene for loading images and the intro
+    private final HomeScene homeScene = new HomeScene();
+    
+    // The canvas, all animations will be shown here
+    private final CaatjaCanvas canvas = Caatja.createCanvas();
+    
+    // A text is displayed when images are being loaded
     private TextActor loadingText;
 
     public HomeView() throws Exception {
-       
         createStackMenu();
         setupCaatja();
         loadImages();
        
         initWidget(new SimplePanel());
         RootPanel.get().add(demosStackPanel, STACK_PANEL_X, 0);
-
     }
 
+    /**
+     * Director is initialized with the homescene and the loading text.<br>
+     * The animation loop starts here.
+     * 
+     * @throws Exception
+     */
     private void setupCaatja() throws Exception {
        
-        canvas = Caatja.createCanvas();
-        homeScene = new HomeScene();
-        director = new Director();
-
         director.initialize(CANVAS_WIDTH, CANVAS_HEIGHT, canvas);
         director.addScene(homeScene);
-//        director.setScene(0);
-
         homeScene.load(director);
 
         loadingText = createLoadingText();
 
         Caatja.addCanvas(canvas);
         Caatja.loop(60);
-       
     }
    
     /**
@@ -161,20 +170,28 @@ public class HomeView extends Composite {
     private void finishImageLoading() throws Exception {
         director.imagesCache = Caatja.getCaatjaImagePreloader().getCaatjaImages();
        
-        //director.emptyScenes();
-       
         demosStackPanel.setVisible(true);
         
         homeScene.removeChild(loadingText);
         homeScene.showIntroduction();
         
-//        loadShowcaseScenes();
     }
 
+    /**
+     * The "Loading ..." text to be displayed when the images are being loaded,
+     * is created here.<br>
+     * The text is centered in the canvas.
+     * 
+     * @return the text "Loading ..."
+     * @throws Exception
+     */
     private TextActor createLoadingText() throws Exception {
         TextActor loading = new TextActor();
-        loading.setFont("30px sans-serif").setTextBaseline("top").setText("Loading ...").calcTextSize(director)
-                .setTextFillStyle("white");
+        loading.setFont("30px sans-serif").
+            setTextBaseline("top").
+            setText("Loading ...").
+            calcTextSize(director).
+            setTextFillStyle("white");
 
         loading.setLocation((director.canvas.getCoordinateSpaceWidth() - loading.width) / 2,
                 (director.canvas.getCoordinateSpaceHeight()) / 2);
@@ -184,86 +201,29 @@ public class HomeView extends Composite {
         return loading;
     }
 
-    @Deprecated
-    private void createGridMenu() {
-        FlexTable grid = new FlexTable();
-        grid.setSize(WIDTH, HEIGHT);
-
-        grid.setText(0, 0, "CAATJA-GWT demos");
-        grid.getFlexCellFormatter().setColSpan(0, 0, 3);
-        grid.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
-
-        HTML showcase = createHTMLEntry(Demo.SHOWCASE);
-        HTML demos = createHTMLEntry(Demo.DEMOS);
-        HTML demosWithSourceCode = createHTMLEntry(Demo.DEMOS_WITH_SOURCE);
-        HTML hypernumber = createHTMLEntry(Demo.HYPERNUMBER);
-
-        grid.setWidget(1, 0, showcase);
-        grid.setWidget(2, 0, demos);
-        grid.setWidget(3, 0, demosWithSourceCode);
-        grid.setWidget(4, 0, hypernumber);
-
-        grid.setWidget(1, 2, new HTML(WELCOME_TEXT));
-        grid.getFlexCellFormatter().setColSpan(1, 2, 2);
-        grid.getFlexCellFormatter().setRowSpan(1, 2, 4);
-        grid.getFlexCellFormatter().setHorizontalAlignment(1, 2, HasHorizontalAlignment.ALIGN_CENTER);
-        grid.getFlexCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_MIDDLE);
-    }
-
+    /**
+     * Creates a menu with redirection entries to the demos.
+     */
     private void createStackMenu() {
         demosStackPanel = new StackPanel();
+        demosStackPanel.setHeight(STACK_MENU_HEIGHT);
+        demosStackPanel.setWidth(STACK_MENU_WIDTH);
+        demosStackPanel.setVisible(false);
        
-//        createHTMLStackEntry(Demo.HOME);
-//        createHTMLStackEntry(Demo.SHOWCASE);
-//        createHTMLStackEntry(Demo.DEMOS);
-//        createHTMLStackEntry(Demo.DEMOS_WITH_SOURCE);
-//        createHTMLStackEntry(Demo.HYPERNUMBER);
-        
         createStackEntryWidget(Demo.HOME);
         createStackEntryWidget(Demo.SHOWCASE);
         createStackEntryWidget(Demo.DEMOS);
         createStackEntryWidget(Demo.DEMOS_WITH_SOURCE);
         createStackEntryWidget(Demo.HYPERNUMBER);
-       
-//        demosStackPanel.add(new HTML("Welcome to the CAATJA demos ! <br>Please select an entry below to watch them in action !"), "Home");
-//        demosStackPanel.add(new HTML("With the showcase, you'll have an overview of the features of Caatja"), "Showcase");
-//        demosStackPanel.add(new HTML("A more precise demo for each feature"), "Demos");
-//        demosStackPanel.add(new HTML("With the tutorials, you'll learn to use caatja"), "Tutorials");
-//        demosStackPanel.add(new HTML("Hypernumber is a small game, it is in beta but playable"), "Hypernumber (BETA)");
-       
-        demosStackPanel.setHeight("500px");
-        demosStackPanel.setWidth("250px");
-        demosStackPanel.setVisible(false);
-       
     }
    
-    @Deprecated
-    private HTML createHTMLEntry(final Demo demo) {
-        HTML htmlEntry = new HTML(demo.getLabel());
-        htmlEntry.addClickHandler(new ClickHandler() {
-            public void onClick(ClickEvent event) {
-                loadDemo(demo);
-            }
-        });
-       
-        return htmlEntry;
-    }
-   
-    
-    private HTML createHTMLStackEntry(final Demo demo) {
-        HTML htmlEntry = new HTML(demo.getDesc());
-//        demosStackPanel.add(htmlEntry);
-//        demosStackPanel.setStackText(demo.ordinal(), demo.getLabel());
-       
-//        htmlEntry.addClickHandler(new ClickHandler() {
-//            public void onClick(ClickEvent event) {
-//                loadDemo(demo);
-//            }
-//        });
-       
-        return htmlEntry;
-    }
-    
+    /**
+     * Returns a button that redirects to a demo when clicked.
+     * 
+     * @param demo
+     *            the demo to be launched
+     * @return a redirection button
+     */
     private Button createLaunchLink(final Demo demo) {
         Button launch = new Button("Launch");
         
@@ -276,22 +236,38 @@ public class HomeView extends Composite {
         return launch;
     }
     
+    /**
+     * Returns a vertical panel with 2 widgets : a label and a redirection
+     * button.<br>
+     * The redirection button appears only for the showcase et hypernumber
+     * demos.<br>
+     * 
+     * @param demo
+     *            the demo to be launched
+     * @return a vertical panel with 2 widgets at most
+     */
     private VerticalPanel createStackEntryWidget(final Demo demo) {
         VerticalPanel vp = new VerticalPanel();
-        vp.add(createHTMLStackEntry(demo));
+        vp.add(new HTML(demo.getDesc()));
         
         if (demo == Demo.SHOWCASE || demo == Demo.HYPERNUMBER) {
             vp.add(new HTML("<br>"));
             vp.add(createLaunchLink(demo));
         }
-        
+
+        // FIXME Move this !
         demosStackPanel.add(vp);
         demosStackPanel.setStackText(demo.ordinal(), demo.getLabel());
         
         return vp;
     }
    
-
+    /**
+     * Called when the user clicks on one of the "Launch" button.
+     * 
+     * @param demo
+     *            the demo to be launched
+     */
     private void loadDemo(Demo demo) {
 
         try {
