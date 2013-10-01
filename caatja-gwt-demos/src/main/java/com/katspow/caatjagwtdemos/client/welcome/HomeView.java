@@ -3,6 +3,7 @@ package com.katspow.caatjagwtdemos.client.welcome;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
@@ -11,6 +12,7 @@ import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.StackPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.image.CaatjaImageLoader;
@@ -36,11 +38,11 @@ public class HomeView extends Composite {
             + "Choose one of the examples on the left<br> " + "by clicking on the icon";
 
     private enum Demo {
-        HOME("Home", "Welcome to the CAATJA demos ! <br>Please select an entry below to watch them in action !<br>(This is a BETA version)"),
+        HOME("Home", "Welcome to the CAATJA demos ! <br>Please select an entry below to watch them in action !<p>This is a BETA version, some features are missing"),
         SHOWCASE("Showcase", "With the showcase, you'll have an overview of the features of Caatja"),
-        DEMOS("Demos", "A more precise demo for each feature"),
-        DEMOS_WITH_SOURCE("Tutorials", "With the tutorials, you'll learn to use caatja"),
-        HYPERNUMBER("Hypernumber", "Hypernumber is a small game, it is in beta but playable<p>Click to Launch");
+        DEMOS("Demos", "A more precise demo for each feature (NOT AVAILABLE)"),
+        DEMOS_WITH_SOURCE("Tutorials", "With the tutorials, you'll learn to use caatja (NOT AVAILABLE)"),
+        HYPERNUMBER("Hypernumber", "Hypernumber is a small game where you have to choose digits to do sums");
        
         private String label;
         private String desc;
@@ -65,7 +67,6 @@ public class HomeView extends Composite {
    
     private StackPanel demosStackPanel;
     private CaatjaCanvas canvas;
-    private TextActor oadingText;
     private TextActor loadingText;
 
     public HomeView() throws Exception {
@@ -183,6 +184,7 @@ public class HomeView extends Composite {
         return loading;
     }
 
+    @Deprecated
     private void createGridMenu() {
         FlexTable grid = new FlexTable();
         grid.setSize(WIDTH, HEIGHT);
@@ -211,11 +213,17 @@ public class HomeView extends Composite {
     private void createStackMenu() {
         demosStackPanel = new StackPanel();
        
-        createHTMLStackEntry(Demo.HOME);
-        createHTMLStackEntry(Demo.SHOWCASE);
-        createHTMLStackEntry(Demo.DEMOS);
-        createHTMLStackEntry(Demo.DEMOS_WITH_SOURCE);
-        createHTMLStackEntry(Demo.HYPERNUMBER);
+//        createHTMLStackEntry(Demo.HOME);
+//        createHTMLStackEntry(Demo.SHOWCASE);
+//        createHTMLStackEntry(Demo.DEMOS);
+//        createHTMLStackEntry(Demo.DEMOS_WITH_SOURCE);
+//        createHTMLStackEntry(Demo.HYPERNUMBER);
+        
+        createStackEntryWidget(Demo.HOME);
+        createStackEntryWidget(Demo.SHOWCASE);
+        createStackEntryWidget(Demo.DEMOS);
+        createStackEntryWidget(Demo.DEMOS_WITH_SOURCE);
+        createStackEntryWidget(Demo.HYPERNUMBER);
        
 //        demosStackPanel.add(new HTML("Welcome to the CAATJA demos ! <br>Please select an entry below to watch them in action !"), "Home");
 //        demosStackPanel.add(new HTML("With the showcase, you'll have an overview of the features of Caatja"), "Showcase");
@@ -229,6 +237,7 @@ public class HomeView extends Composite {
        
     }
    
+    @Deprecated
     private HTML createHTMLEntry(final Demo demo) {
         HTML htmlEntry = new HTML(demo.getLabel());
         htmlEntry.addClickHandler(new ClickHandler() {
@@ -240,25 +249,52 @@ public class HomeView extends Composite {
         return htmlEntry;
     }
    
+    
     private HTML createHTMLStackEntry(final Demo demo) {
         HTML htmlEntry = new HTML(demo.getDesc());
-        demosStackPanel.add(htmlEntry);
-        demosStackPanel.setStackText(demo.ordinal(), demo.getLabel());
+//        demosStackPanel.add(htmlEntry);
+//        demosStackPanel.setStackText(demo.ordinal(), demo.getLabel());
        
-        htmlEntry.addClickHandler(new ClickHandler() {
+//        htmlEntry.addClickHandler(new ClickHandler() {
+//            public void onClick(ClickEvent event) {
+//                loadDemo(demo);
+//            }
+//        });
+       
+        return htmlEntry;
+    }
+    
+    private Button createLaunchLink(final Demo demo) {
+        Button launch = new Button("Launch");
+        
+        launch.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 loadDemo(demo);
             }
         });
-       
-        return htmlEntry;
+        
+        return launch;
+    }
+    
+    private VerticalPanel createStackEntryWidget(final Demo demo) {
+        VerticalPanel vp = new VerticalPanel();
+        vp.add(createHTMLStackEntry(demo));
+        
+        if (demo == Demo.SHOWCASE || demo == Demo.HYPERNUMBER) {
+            vp.add(new HTML("<br>"));
+            vp.add(createLaunchLink(demo));
+        }
+        
+        demosStackPanel.add(vp);
+        demosStackPanel.setStackText(demo.ordinal(), demo.getLabel());
+        
+        return vp;
     }
    
 
     private void loadDemo(Demo demo) {
 
         try {
-            //WelcomeView.this.setVisible(false);
 
             switch (demo) {
             case SHOWCASE:
