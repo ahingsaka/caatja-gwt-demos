@@ -140,7 +140,9 @@ public class Showcase {
      */
     private static  void finishShowcaseLoading() throws Exception {
         director.imagesCache = Caatja.getCaatjaImagePreloader().getCaatjaImages();
-        director.emptyScenes();
+        
+        //director.emptyScenes();
+        
         loadShowcaseScenes();
         // scene_loading.finishedLoading();
     }
@@ -163,18 +165,19 @@ public class Showcase {
         showcaseScenes.add(Scene8.init(director));
         showcaseScenes.add(Scene10.init(director));
         
-        // TODO Add acceleration scene when it is finished
+        // TODO Add touch/acceleration scene when it is finished
         //showcaseScenes.add(Scene11.init(director));
         
         for (Scene scene : showcaseScenes) {
             director.addScene(scene);
         }
         
-        director.setScene(director.getSceneIndex(showcaseScenes.get(0)));
+        int firstSceneIndex = director.getSceneIndex(showcaseScenes.get(0));
+//        director.setScene(firstSceneIndex);
         
         createSceneSwitchingButtons();
         
-        Effects.welcome(director);
+        Effects.welcome(firstSceneIndex, director);
     }
 
     /**
@@ -188,17 +191,19 @@ public class Showcase {
         double buttonX = (director.width - buttonW * numScenes) / 2;
 
         for (int i = 0; i < numScenes; i++) {
+            
+            Scene scene = showcaseScenes.get(i);
 
             if (i != 0) {
-                createPreviousButton(i);
+                createPreviousButton(i, scene);
             }
 
             if (i != numScenes - 1) {
-                createNextButton(i);
+                createNextButton(i, scene);
             }
 
             for (int j = 0; j < numScenes; j++) {
-                createAllSceneButtons(i, j, buttonX, buttonW);
+                createAllSceneButtons(i, j, scene, buttonX, buttonW);
             }
 
         }
@@ -206,14 +211,18 @@ public class Showcase {
 
     /**
      * Creates all the buttons on the bottom for scene navigation
+     * @param scene 
      * @throws Exception 
      */
-    private static  void createAllSceneButtons(int i, int j, double buttonX, double buttonW) throws Exception {
+    private static  void createAllSceneButtons(int i, int j, Scene scene, double buttonX, double buttonW) throws Exception {
 
         SpecialActor idx = new SpecialActor() {
             @Override
             public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                director.switchToScene(((SpecialActor)mouseEvent.source).__sceneIndex,1000,false,true);
+                
+                int sceneIndex = ((SpecialActor)mouseEvent.source).__sceneIndex;
+                director.switchToScene(director.getSceneIndex(showcaseScenes.get(sceneIndex)),1000,false,true);
+//                director.switchToScene(sceneIndex,1000,false,true);
             }
 
             @Override
@@ -260,16 +269,13 @@ public class Showcase {
             idx.fillStyle = CaatjaColor.valueOf("#c07f00");
         }
         
-//        Scene scene = director.scenes.get(i);
-        Scene scene = director.scenes.get(director.getSceneIndex(showcaseScenes.get(i)));
-        
-        scene.addChild(idx);
+        director.scenes.get(director.getSceneIndex(showcaseScenes.get(i))).addChild(idx);
 
         setupTRButtonPaintIndex(idx, j + 1);
         
     }
 
-    private static  void createNextButton(int index) throws Exception {
+    private static  void createNextButton(int index, Scene scene) throws Exception {
         
         Actor next = new Actor() {
             @Override
@@ -354,14 +360,14 @@ public class Showcase {
         next.setBounds(director.width - 20 - 5, 470, 20, 20);
         next.fillStyle = CaatjaColor.valueOf("#0000ff");
 
-        director.scenes.get(director.getSceneIndex(showcaseScenes.get(index)));
+        director.scenes.get(director.getSceneIndex(scene)).addChild(next);
         //director.scenes.get(index).addChild(next);
 
         setupTRButton(next);
         setupTRButtonPaint(next);
     }
 
-    private static  void createPreviousButton(int index) throws Exception {
+    private static  void createPreviousButton(int index, Scene scene) throws Exception {
         
         Actor prev = new Actor() {
             @Override
@@ -450,7 +456,7 @@ public class Showcase {
         prev.setRotation(Math.PI);
         prev.fillStyle = CaatjaColor.valueOf("#0000ff");
 
-        director.scenes.get(director.getSceneIndex(showcaseScenes.get(index)));
+        director.scenes.get(director.getSceneIndex(scene)).addChild(prev);
 //        director.scenes.get(index).addChild(prev);
 
         setupTRButton(prev);

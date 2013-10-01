@@ -7,9 +7,9 @@ import com.katspow.caatja.foundation.actor.Actor;
 
 public final class Effects {
     
-    public static void welcome(final Director director) {
+    public static void welcome(int firstSceneIndex, final Director director) {
         director.easeIn(
-                0,
+                firstSceneIndex,
                 Scene.Ease.SCALE,
                 2000,
                 false,
