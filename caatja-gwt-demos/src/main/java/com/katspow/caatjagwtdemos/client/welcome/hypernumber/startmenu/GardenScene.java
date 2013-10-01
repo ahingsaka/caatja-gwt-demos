@@ -57,7 +57,7 @@ public class GardenScene {
 
         CaatjaImage buttons = director.getImage("buttons");
         this.buttonImage= new CompoundImage().initialize(
-                buttons, 6,4 );
+                buttons, 7,4 );
 
         double bw=         this.buttonImage.singleWidth;
         double bh=         this.buttonImage.singleHeight;
