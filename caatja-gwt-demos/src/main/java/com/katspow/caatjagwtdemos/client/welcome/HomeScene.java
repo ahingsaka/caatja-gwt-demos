@@ -58,7 +58,7 @@ public class HomeScene extends Scene {
     private TextActor createDemoTxt() {
         TextActor demoTxt = new TextActor().
                 setFont("30px sans-serif").
-                setText("demos").
+                setText("GWT Implementation").
                 calcTextSize(director).
                 setTextFillStyle("white");
         

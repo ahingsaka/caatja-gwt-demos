@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.welcome.demos;
+package com.katspow.caatjagwtdemos.client.welcome.demos.simple;
 
 import java.util.Map;
 
@@ -17,6 +17,10 @@ import com.katspow.caatja.foundation.image.SpriteImage;
 import com.katspow.caatja.pathutil.CurvePath;
 import com.katspow.caatja.pathutil.Path;
 
+/**
+ * Logo frenzy 
+ *
+ */
 public class Demo15 {
     
     public void start(CaatjaCanvas canvas, Map<String, CaatjaImage> images) throws Exception {

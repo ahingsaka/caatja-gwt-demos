@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.welcome.demos;
+package com.katspow.caatjagwtdemos.client.welcome.demos.simple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +24,10 @@ import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.pathutil.Path;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.fish.FishScene12;
 
+/**
+ * Masking 
+ *
+ */
 public class Demo16 {
     
     private int pathIndex;

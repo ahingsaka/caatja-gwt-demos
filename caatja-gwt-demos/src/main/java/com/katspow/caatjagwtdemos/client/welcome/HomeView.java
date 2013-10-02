@@ -2,6 +2,10 @@ package com.katspow.caatjagwtdemos.client.welcome;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseDownHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
@@ -9,6 +13,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.StackPanel;
+import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
@@ -17,9 +22,9 @@ import com.katspow.caatja.core.image.CaatjaImageLoaderCallback;
 import com.katspow.caatja.core.image.CaatjaPreloader;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatjagwtdemos.client.welcome.demos.Demos;
 import com.katspow.caatjagwtdemos.client.welcome.hypernumber.HyperNumber;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.Showcase;
-import com.katspow.caatjagwtdemos.client.welcome.tutorials.Tutorials;
 
 /**
  * This defines the first view of the application.<br>
@@ -48,7 +53,7 @@ public class HomeView extends Composite {
     private enum Demo {
         HOME("Home", "Welcome to the CAATJA demos ! <br>Please select an entry below to watch them in action !<p>This is a BETA version, some features are missing"),
         SHOWCASE("Showcase", "With the showcase, you'll have an overview of the features of Caatja"),
-        DEMOS("Demos", "A more precise demo for each feature (NOT AVAILABLE)"),
+        DEMOS("Demos", "A more precise demo for each feature : "),
         DEMOS_WITH_SOURCE("Tutorials", "With the tutorials, you'll learn to use caatja (NOT AVAILABLE)"),
         HYPERNUMBER("Hypernumber", "Hypernumber is a small game where you have to choose digits to do sums");
        
@@ -66,6 +71,35 @@ public class HomeView extends Composite {
        
         public String getDesc() {
             return desc;
+        }
+    }
+    
+    public enum SimpleDemo {
+        LOGO_FRENZY("SpriteImage demo", "SpriteImage optimum usage. Adding PathBehaviors. Correct CompoundBehavior", "demo15"),
+        MASKING("Masking", "", "demo16"),
+        KEYBOARD("Keyboard demo", "", "demo18")
+        ;
+        
+        private String label;
+        private String desc;
+        private String img;
+       
+        private SimpleDemo(String label, String desc, String img) {
+            this.label = label;
+            this.desc = desc;
+            this.img = img;
+        }
+       
+        public String getLabel() {
+            return label;
+        }
+       
+        public String getDesc() {
+            return desc;
+        }
+        
+        public String getImg() {
+            return img;
         }
     }
 
@@ -113,6 +147,8 @@ public class HomeView extends Composite {
      */
     private void preloadImages() {
         final CaatjaPreloader preloader = Caatja.getCaatjaImagePreloader();
+        
+        // Showcase images
         preloader.addImage("fish", "anim1.png");
         preloader.addImage("fish2", "anim2.png");
         preloader.addImage("fish3", "anim3.png");
@@ -142,6 +178,10 @@ public class HomeView extends Composite {
         preloader.addImage("cloudb3", "nubefondo3.png");
         preloader.addImage("cloudb4", "nubefondo4.png");
        
+        // Specific demos images
+        preloader.addImage(SimpleDemo.LOGO_FRENZY.img, "demo15.png");
+        preloader.addImage(SimpleDemo.MASKING.img, "demo16.png");
+        preloader.addImage(SimpleDemo.KEYBOARD.img, "demo18.png");
     }
    
     /**
@@ -209,7 +249,21 @@ public class HomeView extends Composite {
         demosStackPanel.setHeight(STACK_MENU_HEIGHT);
         demosStackPanel.setWidth(STACK_MENU_WIDTH);
         demosStackPanel.setVisible(false);
-       
+        
+        demosStackPanel.addHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                int index = demosStackPanel.getSelectedIndex();
+                if (index == Demo.DEMOS.ordinal()) {
+                    try {
+                        Demos.start(director);
+                    } catch (Exception e) {
+                        Window.alert("Could not load " + Demo.DEMOS.name());
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, ClickEvent.getType());
+        
         createStackEntryWidget(Demo.HOME);
         createStackEntryWidget(Demo.SHOWCASE);
         createStackEntryWidget(Demo.DEMOS);
@@ -253,6 +307,9 @@ public class HomeView extends Composite {
         if (demo == Demo.SHOWCASE || demo == Demo.HYPERNUMBER) {
             vp.add(new HTML("<br>"));
             vp.add(createLaunchLink(demo));
+            
+        } else if (demo == Demo.DEMOS) {
+            vp.add(createTreeLinks());
         }
 
         // FIXME Move this !
@@ -261,7 +318,36 @@ public class HomeView extends Composite {
         
         return vp;
     }
-   
+
+    
+    private Tree createTreeLinks() {
+        Tree tree = new Tree();
+        
+        tree.addItem(new HTML("Path management"));
+        tree.addItem(new HTML("Procedural fishpond"));
+        tree.addItem(new HTML("Sprites traversing a random path"));
+        tree.addItem(new HTML("Pixel perfect collision detection with mouse"));
+        tree.addItem(new HTML("Sprites traversing a random path"));
+        tree.addItem(new HTML("Some actors behaviors"));
+        
+        for (SimpleDemo demo : SimpleDemo.values()) {
+            tree.addItem(createTreeEntryLink(demo));
+        }
+        
+        return tree;
+    }
+    
+    private HTML createTreeEntryLink(final SimpleDemo simpleDemo) {
+        HTML html = new HTML(simpleDemo.getLabel());
+        html.addMouseOverHandler(new MouseOverHandler() {
+            public void onMouseOver(MouseOverEvent event) {
+                Demos.preview(simpleDemo);
+            }
+        });
+        
+        return html;
+    }
+
     /**
      * Called when the user clicks on one of the "Launch" button.
      * 
@@ -282,11 +368,12 @@ public class HomeView extends Composite {
                 break;
 
             case DEMOS_WITH_SOURCE:
-                new Tutorials().start();
+                Window.alert(NOT_YET_IMPLEMENTED);
+                //new Tutorials().start();
                 break;
                
             case DEMOS:
-                Window.alert(NOT_YET_IMPLEMENTED);
+                Demos.start(director);
                 break;
                
             case HOME:

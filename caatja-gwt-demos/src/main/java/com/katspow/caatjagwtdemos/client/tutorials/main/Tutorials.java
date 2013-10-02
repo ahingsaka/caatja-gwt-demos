@@ -54,10 +54,7 @@ import com.katspow.caatjagwtdemos.client.welcome.demos.Demo11;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demo12;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demo121;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demo14;
-import com.katspow.caatjagwtdemos.client.welcome.demos.Demo15;
-import com.katspow.caatjagwtdemos.client.welcome.demos.Demo16;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demo17;
-import com.katspow.caatjagwtdemos.client.welcome.demos.Demo18;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demo19;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demo2;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demo3;
@@ -67,6 +64,9 @@ import com.katspow.caatjagwtdemos.client.welcome.demos.Demo6;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demo7;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demo8;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demo9;
+import com.katspow.caatjagwtdemos.client.welcome.demos.simple.Demo15;
+import com.katspow.caatjagwtdemos.client.welcome.demos.simple.Demo16;
+import com.katspow.caatjagwtdemos.client.welcome.demos.simple.Demo18;
 
 public class Tutorials {
 	

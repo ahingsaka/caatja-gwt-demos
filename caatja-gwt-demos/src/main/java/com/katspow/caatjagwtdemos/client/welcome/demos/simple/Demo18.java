@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.welcome.demos;
+package com.katspow.caatjagwtdemos.client.welcome.demos.simple;
 
 import com.katspow.caatja.CAATKeyListener;
 import com.katspow.caatja.behavior.RotateBehavior;
@@ -16,6 +16,10 @@ import com.katspow.caatja.foundation.timer.TimerTask;
 import com.katspow.caatja.foundation.ui.ShapeActor;
 import com.katspow.caatja.foundation.ui.StarActor;
 
+/**
+ * Keyboard demo 
+ *
+ */
 public class Demo18 {
 
     double prevTime=           -1;
