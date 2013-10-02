@@ -77,7 +77,8 @@ public class HomeView extends Composite {
     public enum SimpleDemo {
         LOGO_FRENZY("SpriteImage demo", "SpriteImage optimum usage. Adding PathBehaviors. Correct CompoundBehavior", "demo15"),
         MASKING("Masking", "", "demo16"),
-        KEYBOARD("Keyboard demo", "", "demo18")
+        KEYBOARD("Keyboard demo", "", "demo18"),
+        QUADTREE_BASED_COLLISION("Quadtree based collision", "", "demo19")
         ;
         
         private String label;
@@ -182,6 +183,7 @@ public class HomeView extends Composite {
         preloader.addImage(SimpleDemo.LOGO_FRENZY.img, "demo15.png");
         preloader.addImage(SimpleDemo.MASKING.img, "demo16.png");
         preloader.addImage(SimpleDemo.KEYBOARD.img, "demo18.png");
+        preloader.addImage(SimpleDemo.QUADTREE_BASED_COLLISION.img, "demo19.png");
     }
    
     /**
@@ -342,6 +344,12 @@ public class HomeView extends Composite {
         html.addMouseOverHandler(new MouseOverHandler() {
             public void onMouseOver(MouseOverEvent event) {
                 Demos.preview(simpleDemo);
+            }
+        });
+        
+        html.addMouseDownHandler(new MouseDownHandler() {
+            public void onMouseDown(MouseDownEvent event) {
+                Demos.launch(simpleDemo);
             }
         });
         

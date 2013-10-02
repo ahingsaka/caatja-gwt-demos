@@ -3,9 +3,10 @@ package com.katspow.caatjagwtdemos.client.welcome.demos;
 import com.katspow.caatja.core.canvas.CaatjaImage;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatjagwtdemos.client.welcome.HomeView.SimpleDemo;
+import com.katspow.caatjagwtdemos.client.welcome.demos.simple.Demo15;
 
 public class Demos {
-    
+
     private static Director director;
     private static DemosScene demosScene;
     private static boolean started;
@@ -17,7 +18,7 @@ public class Demos {
             director.addScene(demosScene);
             started = true;
         }
-        
+
         director.setScene(demosScene);
         preview(null);
     }
@@ -28,6 +29,22 @@ public class Demos {
             demosScene.setBackgroundImage(previewImage);
         } else {
             demosScene.setBackgroundImage(null);
+        }
+    }
+
+    public static void launch(SimpleDemo simpleDemo) {
+        switch (simpleDemo) {
+        case LOGO_FRENZY:
+            Demo15.start();
+            break;
+        case MASKING:
+            break;
+        case KEYBOARD:
+            break;
+        case QUADTREE_BASED_COLLISION:
+            break;
+        default:
+            break;
         }
     }
 

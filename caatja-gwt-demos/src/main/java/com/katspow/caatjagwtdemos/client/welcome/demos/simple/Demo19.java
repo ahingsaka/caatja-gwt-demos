@@ -1,4 +1,4 @@
-package com.katspow.caatjagwtdemos.client.welcome.demos;
+package com.katspow.caatjagwtdemos.client.welcome.demos.simple;
 
 import java.util.ArrayList;
 import java.util.List;

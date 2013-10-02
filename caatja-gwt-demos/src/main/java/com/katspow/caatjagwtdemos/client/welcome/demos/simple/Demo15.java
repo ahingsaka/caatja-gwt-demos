@@ -23,7 +23,7 @@ import com.katspow.caatja.pathutil.Path;
  */
 public class Demo15 {
     
-    public void start(CaatjaCanvas canvas, Map<String, CaatjaImage> images) throws Exception {
+    public static void start(CaatjaCanvas canvas, Map<String, CaatjaImage> images) throws Exception {
         final Director director = new Director().initialize(800, 500, canvas);
         director.imagesCache = images;
         final Scene slide = director.createScene();
