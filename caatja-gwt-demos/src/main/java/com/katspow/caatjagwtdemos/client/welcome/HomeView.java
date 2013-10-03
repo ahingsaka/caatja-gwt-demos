@@ -25,6 +25,7 @@ import com.katspow.caatja.foundation.ui.TextActor;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demos;
 import com.katspow.caatjagwtdemos.client.welcome.hypernumber.HyperNumber;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.Showcase;
+import com.katspow.caatjagwtdemos.client.welcome.tutorials.Tutorials;
 
 /**
  * This defines the first view of the application.<br>
@@ -53,9 +54,9 @@ public class HomeView extends Composite {
     private enum Demo {
         HOME("Home", "Welcome to the CAATJA demos ! <br>Please select an entry below to watch them in action !<p>This is a BETA version, some features are missing"),
         SHOWCASE("Showcase", "With the showcase, you'll have an overview of the features of Caatja"),
-        DEMOS("Demos", "A more precise demo for each feature : "),
-        DEMOS_WITH_SOURCE("Tutorials", "With the tutorials, you'll learn to use caatja (NOT AVAILABLE)"),
-        HYPERNUMBER("Hypernumber", "Hypernumber is a small game where you have to choose digits to do sums");
+        HYPERNUMBER("Hypernumber", "Hypernumber is a small game where you have to choose digits to do sums"),
+        DEMOS("Demos", "A more precise demo for each feature (NOT AVAILABLE)"),
+        DEMOS_WITH_SOURCE("Tutorials", "With the tutorials, you'll learn to use caatja : ");
        
         private String label;
         private String desc;
@@ -102,6 +103,21 @@ public class HomeView extends Composite {
         public String getImg() {
             return img;
         }
+    }
+    
+    public enum SimpleTutorial {
+        GETTING_STARTED("Getting started");
+        
+        private String label;
+       
+        private SimpleTutorial(String label) {
+            this.label = label;
+        }
+       
+        public String getLabel() {
+            return label;
+        }
+       
     }
 
     // Only ONE director for the WHOLE application
@@ -252,24 +268,35 @@ public class HomeView extends Composite {
         demosStackPanel.setWidth(STACK_MENU_WIDTH);
         demosStackPanel.setVisible(false);
         
-        demosStackPanel.addHandler(new ClickHandler() {
-            public void onClick(ClickEvent event) {
-                int index = demosStackPanel.getSelectedIndex();
-                if (index == Demo.DEMOS.ordinal()) {
-                    try {
-                        Demos.start(director);
-                    } catch (Exception e) {
-                        Window.alert("Could not load " + Demo.DEMOS.name());
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }, ClickEvent.getType());
+        // TODO Add when DEMOS and DEMOS WITH SOURCE finished 
+//        demosStackPanel.addHandler(new ClickHandler() {
+//            public void onClick(ClickEvent event) {
+//                int index = demosStackPanel.getSelectedIndex();
+//                if (index == Demo.DEMOS.ordinal()) {
+//                    try {
+//                        Demos.start(director);
+//                    } catch (Exception e) {
+//                        Window.alert("Could not load " + Demo.DEMOS.name());
+//                        e.printStackTrace();
+//                    }
+//                } else if (index == Demo.DEMOS_WITH_SOURCE.ordinal()) {
+//                    try {
+//                        Tutorials.start(director);
+//                    } catch (Exception e) {
+//                        Window.alert("Could not load Tutorials");
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }, ClickEvent.getType());
         
         createStackEntryWidget(Demo.HOME);
         createStackEntryWidget(Demo.SHOWCASE);
-        createStackEntryWidget(Demo.DEMOS);
-        createStackEntryWidget(Demo.DEMOS_WITH_SOURCE);
+        
+     // TODO Add when DEMOS and DEMOS WITH SOURCE finished 
+//        createStackEntryWidget(Demo.DEMOS);
+//        createStackEntryWidget(Demo.DEMOS_WITH_SOURCE);
+        
         createStackEntryWidget(Demo.HYPERNUMBER);
     }
    
@@ -306,15 +333,28 @@ public class HomeView extends Composite {
         VerticalPanel vp = new VerticalPanel();
         vp.add(new HTML(demo.getDesc()));
         
-        if (demo == Demo.SHOWCASE || demo == Demo.HYPERNUMBER) {
+        switch (demo) {
+        
+        case SHOWCASE:
+        case HYPERNUMBER:
             vp.add(new HTML("<br>"));
             vp.add(createLaunchLink(demo));
+            break;
             
-        } else if (demo == Demo.DEMOS) {
-            vp.add(createTreeLinks());
+            // TODO Add when finished
+//        case DEMOS:
+//            vp.add(createDemosTreeLinks());
+//            break;
+//            
+//        case DEMOS_WITH_SOURCE:
+//            vp.add(createTutorialsTreeLinks());
+//            break;
+            
+        default:
+            break;
+            
         }
-
-        // FIXME Move this !
+        
         demosStackPanel.add(vp);
         demosStackPanel.setStackText(demo.ordinal(), demo.getLabel());
         
@@ -322,7 +362,29 @@ public class HomeView extends Composite {
     }
 
     
-    private Tree createTreeLinks() {
+    private Tree createTutorialsTreeLinks() {
+        Tree tree = new Tree();
+        
+        for (SimpleTutorial simpleTutorial : SimpleTutorial.values()) {
+            tree.addItem(createTutorialTreeEntryLink(simpleTutorial));
+        }
+        
+        return tree;
+    }
+
+    private HTML createTutorialTreeEntryLink(final SimpleTutorial simpleTutorial) {
+        HTML html = new HTML(simpleTutorial.getLabel());
+        
+        html.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                Tutorials.launch(simpleTutorial);
+            }
+        });
+        
+        return html;
+    }
+
+    private Tree createDemosTreeLinks() {
         Tree tree = new Tree();
         
         tree.addItem(new HTML("Path management"));
@@ -376,8 +438,7 @@ public class HomeView extends Composite {
                 break;
 
             case DEMOS_WITH_SOURCE:
-                Window.alert(NOT_YET_IMPLEMENTED);
-                //new Tutorials().start();
+                Tutorials.start(director);
                 break;
                
             case DEMOS:

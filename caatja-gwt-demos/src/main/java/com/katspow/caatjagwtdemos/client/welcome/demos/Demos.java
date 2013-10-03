@@ -35,7 +35,7 @@ public class Demos {
     public static void launch(SimpleDemo simpleDemo) {
         switch (simpleDemo) {
         case LOGO_FRENZY:
-            Demo15.start();
+            //Demo15.start();
             break;
         case MASKING:
             break;

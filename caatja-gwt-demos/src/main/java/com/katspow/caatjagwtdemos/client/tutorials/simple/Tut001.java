@@ -1,5 +1,6 @@
 package com.katspow.caatjagwtdemos.client.tutorials.simple;
 
+import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.foundation.Director;
@@ -14,11 +15,11 @@ import com.katspow.caatja.foundation.ui.ShapeActor;
  */
 public class Tut001 {
 
-    public static final void init(CaatjaCanvas canvas, Director director) throws Exception {
+    public static final void init() throws Exception {
 
-//        CaatjaCanvas canvas = Caatja.createCanvas();
-//        Caatja.addCanvas(canvas);
-//        Director director = new Director().initialize(100, 100, canvas);
+        CaatjaCanvas canvas = Caatja.createCanvas();
+        Caatja.addCanvas(canvas);
+        Director director = new Director().initialize(100, 100, canvas);
         
         Scene scene = director.createScene();
         scene.setFillStyle("#ffffff");
