@@ -10,6 +10,7 @@ import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -97,19 +98,30 @@ public class Demo4 {
         final Scene scene = director.createScene();
         
         ActorContainer cc= new ActorContainer() {
-            @Override
-            public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                
-                oldMouseMove(mouseEvent, mouseEvent.source);
-                
-                coords.setText("Local Coord: (" + mouseEvent.point.x + "," + mouseEvent.point.y + ")");
-                coords2.setText("");
-                coords3.setText("");
-
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                
+//                oldMouseMove(mouseEvent, mouseEvent.source);
+//                
+//                coords.setText("Local Coord: (" + mouseEvent.point.x + "," + mouseEvent.point.y + ")");
+//                coords2.setText("");
+//                coords3.setText("");
+//
+//            }
             
         }.
                 setBounds( 0,0,director.width,director.height );
+        
+            cc.setMouseMoveListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    oldMouseMove(e, e.source);
+                    coords.setText("Local Coord: (" + e.point.x + "," + e.point.y + ")");
+                    coords2.setText("");
+                    coords3.setText("");
+                }
+            });
+            
             cc.setGestureEnabled(true);
             scene.addChild(cc);
 
@@ -153,7 +165,7 @@ public class Demo4 {
             for ( i = 0; i < np; i++) {
                 double sc= 1+Math.random()*.25;
 
-                ActorContainer p = new ActorContainer() {
+                final ActorContainer p = new ActorContainer() {
 
                     @Override
                     public void paint(Director director, double time) {
@@ -189,25 +201,29 @@ public class Demo4 {
                                             canvas.stroke();
                     }
 
-                    @Override
-                    public void mouseEnter(CAATMouseEvent mouseEvent) {
-                        this.pointed= true;
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                        this.pointed= true;
+//                    }
 
-                    @Override
-                    public void mouseExit(CAATMouseEvent mouseEvent) {
-                        this.pointed= false;
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseExit(CAATMouseEvent mouseEvent) {
+//                        this.pointed= false;
+//                    }
 
-                    @Override
-                    public void mouseDblClick(CAATMouseEvent mouseEvent) throws Exception {
-                        dblclick(mouseEvent);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseDblClick(CAATMouseEvent mouseEvent) throws Exception {
+//                        dblclick(mouseEvent);
+//                    }
 
-                    @Override
-                    public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                        mouseMoveHandler(i, scene, mouseEvent);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                        mouseMoveHandler(i, scene, mouseEvent);
+//                    }
                     
                     
                 }.
@@ -220,6 +236,30 @@ public class Demo4 {
                     setScale( sc, sc ).
                     setFillStyle( i==0 ? "#00f" : "#ff3fff");
                 
+                p.setMouseMoveListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        mouseMoveHandler(i, scene, e);
+                    }
+                });
+                
+                p.setMouseDblClickListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        dblclick(e);
+                    }
+                });
+                
+                p.setMouseEnterListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        p.pointed = true;
+                    }
+                });
+                
+                p.setMouseExitListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        p.pointed= false;
+                    }
+                });
+                
                 p.setGestureEnabled(true);
 
                 cc.addChild(p);
@@ -231,20 +271,34 @@ public class Demo4 {
                         fpaint(director, time, this.parent, this.fillStyle, this.pointed, this.width, this.height);
                     }
 
-                    @Override
-                    public void mouseDblClick(CAATMouseEvent mouseEvent) throws Exception {
-                        dblclick(mouseEvent);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseDblClick(CAATMouseEvent mouseEvent) throws Exception {
+//                        dblclick(mouseEvent);
+//                    }
                     
-                    @Override
-                    public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                        mouseMoveHandler(i, scene, mouseEvent);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                        mouseMoveHandler(i, scene, mouseEvent);
+//                    }
                     
                 }.
                     setBounds( s/4, s/4, s/4, s/4 ).
                     setRotation( Math.PI*2*Math.random() ).
                     setFillStyle("#a03f00");
+                
+                p.setMouseMoveListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        mouseMoveHandler(i, scene, e);
+                    }
+                });
+                
+                p.setMouseDblClickListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        dblclick(e);
+                    }
+                });
                 
                 p.addChild(p0);
 
@@ -254,19 +308,32 @@ public class Demo4 {
                         fpaint(director, time, this.parent, this.fillStyle, this.pointed, this.width, this.height);
                     }
 
-                    @Override
-                    public void mouseDblClick(CAATMouseEvent mouseEvent) throws Exception {
-                        dblclick(mouseEvent);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseDblClick(CAATMouseEvent mouseEvent) throws Exception {
+//                        dblclick(mouseEvent);
+//                    }
                     
-                    @Override
-                    public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                        mouseMoveHandler(i, scene, mouseEvent);
-                    }
+//                    @Override
+//                    public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                        mouseMoveHandler(i, scene, mouseEvent);
+//                    }
                 }.
                     setBounds( s/2, s/2, s/4, s/4 ).
                     setRotation( Math.PI*2*Math.random() ).
                     setFillStyle("#ffff3f");
+                
+                p.setMouseDblClickListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        dblclick(e);
+                    }
+                });
+                
+                p.setMouseMoveListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        mouseMoveHandler(i, scene, e);
+                    }
+                });
 
                 p.addChild(p1);
                 p1.enableDrag();

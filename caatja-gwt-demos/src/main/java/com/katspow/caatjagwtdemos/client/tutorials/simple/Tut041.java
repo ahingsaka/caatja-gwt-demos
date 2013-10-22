@@ -10,6 +10,7 @@ import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.ui.Dock;
@@ -111,44 +112,90 @@ public class Tut041 {
                 }
 
                 InterpolatorActor actor = (InterpolatorActor) new InterpolatorActor() {
-                    @Override
-                    public void mouseMove(CAATMouseEvent mouseEvent) {
-                        
-                        html.setHTML("<code>" + mouseEvent.source.name
-                                + "</code>");
+                    
+                    // TODO Remove
+//                    @Override
+//                    public void mouseMove(CAATMouseEvent mouseEvent) {
+//                        
+//                        html.setHTML("<code>" + mouseEvent.source.name
+//                                + "</code>");
+//
+//                        ((Dock) mouseEvent.source.parent).actorPointed(mouseEvent.point.x, mouseEvent.point.y, mouseEvent.source);
+//                    }
 
-                        ((Dock) mouseEvent.source.parent).actorPointed(mouseEvent.point.x, mouseEvent.point.y, mouseEvent.source);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseExit(CAATMouseEvent mouseEvent) {
+//                        if (mouseEvent.source != selectedInterpolatorActor) {
+//                            mouseEvent.source.setFillStrokeStyle(null);
+//                        }
+//                        
+//                        ((Dock) mouseEvent.source.parent).actorMouseExit(mouseEvent);
+//                    }
 
-                    @Override
-                    public void mouseExit(CAATMouseEvent mouseEvent) {
-                        if (mouseEvent.source != selectedInterpolatorActor) {
-                            mouseEvent.source.setFillStrokeStyle(null);
-                        }
-                        
-                        ((Dock) mouseEvent.source.parent).actorMouseExit(mouseEvent);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                        
+//                        ((Dock) mouseEvent.source.parent).actorMouseEnter(mouseEvent);
+//                        
+//                        if (mouseEvent.source != selectedInterpolatorActor) {
+//                            mouseEvent.source.setFillStyle("#f0f0f0");
+//                        }
+//                    }
 
-                    @Override
-                    public void mouseEnter(CAATMouseEvent mouseEvent) {
-                        
-                        ((Dock) mouseEvent.source.parent).actorMouseEnter(mouseEvent);
-                        
-                        if (mouseEvent.source != selectedInterpolatorActor) {
-                            mouseEvent.source.setFillStyle("#f0f0f0");
-                        }
-                    }
-
-                    @Override
-                    public void mouseClick(CAATMouseEvent mouseEvent) {
+                    // TODO Remove
+//                    @Override
+//                    public void mouseClick(CAATMouseEvent mouseEvent) {
+//                        if (null != selectedInterpolatorActor) {
+//                            selectedInterpolatorActor.setFillStrokeStyle(null);
+//                        }
+//                        selectedInterpolatorActor = (InterpolatorActor) mouseEvent.source;
+//                        mouseEvent.source.setFillStyle("#00ff00");
+//                        selectedInterpolatorActor = (InterpolatorActor) mouseEvent.source;
+//                    }
+                }.setInterpolator((Interpolator) lerps.values().toArray()[(j * cols + i)], null).setBounds(0, 0, min, min);
+                
+                actor.setMouseClickListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
                         if (null != selectedInterpolatorActor) {
                             selectedInterpolatorActor.setFillStrokeStyle(null);
                         }
-                        selectedInterpolatorActor = (InterpolatorActor) mouseEvent.source;
-                        mouseEvent.source.setFillStyle("#00ff00");
-                        selectedInterpolatorActor = (InterpolatorActor) mouseEvent.source;
+                        selectedInterpolatorActor = (InterpolatorActor) e.source;
+                        e.source.setFillStyle("#00ff00");
+                        selectedInterpolatorActor = (InterpolatorActor) e.source;
                     }
-                }.setInterpolator((Interpolator) lerps.values().toArray()[(j * cols + i)], null).setBounds(0, 0, min, min);
+                });
+                
+                actor.setMouseMoveListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        html.setHTML("<code>" + e.source.name
+                                + "</code>");
+
+                        ((Dock) e.source.parent).actorPointed(e.point.x, e.point.y, e.source);
+                    }
+                });
+                
+                
+                actor.setMouseEnterListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        ((Dock) e.source.parent).actorMouseEnter(e);
+                        
+                        if (e.source != selectedInterpolatorActor) {
+                            e.source.setFillStyle("#f0f0f0");
+                        }
+                    }
+                });
+                
+                actor.setMouseExitListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        if (e.source != selectedInterpolatorActor) {
+                            e.source.setFillStrokeStyle(null);
+                        }
+                        
+                        ((Dock) e.source.parent).actorMouseExit(e);
+                    }
+                });
                 
                 actor.name = (String) lerps.keySet().toArray()[i];
 

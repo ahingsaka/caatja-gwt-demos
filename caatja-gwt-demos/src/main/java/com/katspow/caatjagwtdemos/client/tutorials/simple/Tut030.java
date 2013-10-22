@@ -6,6 +6,7 @@ import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -66,25 +67,26 @@ public class Tut030 {
                     crx.stroke();
                 }
 
-                @Override
-                public void mouseMove(CAATMouseEvent mouseEvent) {
-                    // get the scene Actor the event was generated for.
-                  Actor actor= mouseEvent.source;
-
-                  // show some event info:
-                  html.setHTML(
-                          "<b>Actor:</b>"+ actor.name+" "+
-                          "<b>Local Coord:</b> ("+
-                              // with all this stuff i'm just stripping
-                              // off any decimal beyond .99
-                              ((int)(mouseEvent.point.x*100)>>0)/100+","+
-                              ((int)(mouseEvent.point.y*100)>>0)/100+") "+
-                          "<b>Screen Coord:</b> ("+
-                              mouseEvent.screenPoint.x+","+
-                              mouseEvent.screenPoint.y+") "+
-                          "<b>Parent Coord:</b> ("+
-                              actor.x+","+actor.y+")");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseMove(CAATMouseEvent mouseEvent) {
+//                    // get the scene Actor the event was generated for.
+//                  Actor actor= mouseEvent.source;
+//
+//                  // show some event info:
+//                  html.setHTML(
+//                          "<b>Actor:</b>"+ actor.name+" "+
+//                          "<b>Local Coord:</b> ("+
+//                              // with all this stuff i'm just stripping
+//                              // off any decimal beyond .99
+//                              ((int)(mouseEvent.point.x*100)>>0)/100+","+
+//                              ((int)(mouseEvent.point.y*100)>>0)/100+") "+
+//                          "<b>Screen Coord:</b> ("+
+//                              mouseEvent.screenPoint.x+","+
+//                              mouseEvent.screenPoint.y+") "+
+//                          "<b>Parent Coord:</b> ("+
+//                              actor.x+","+actor.y+")");
+//                }
                 
                 
                 
@@ -93,6 +95,27 @@ public class Tut030 {
                    
                     setRotation( Math.PI*2*Math.random() ).
                     setFillStrokeStyle(CaatjaColor.valueOf("#ff3fff"));
+            
+            _c1_container.setMouseMoveListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    // get the scene Actor the event was generated for.
+                    Actor actor= e.source;
+
+                    // show some event info:
+                    html.setHTML(
+                            "<b>Actor:</b>"+ actor.name+" "+
+                            "<b>Local Coord:</b> ("+
+                                // with all this stuff i'm just stripping
+                                // off any decimal beyond .99
+                                ((int)(e.point.x*100)>>0)/100+","+
+                                ((int)(e.point.y*100)>>0)/100+") "+
+                            "<b>Screen Coord:</b> ("+
+                                e.screenPoint.x+","+
+                                e.screenPoint.y+") "+
+                            "<b>Parent Coord:</b> ("+
+                                actor.x+","+actor.y+")");
+                }
+            });
 
             _c1_container.name = "rectangle"+i;
 
@@ -134,30 +157,53 @@ public class Tut030 {
                     ctx.fill();
                 }
                 
-                @Override
-                public void mouseMove(CAATMouseEvent mouseEvent) {
-                    // get the scene Actor the event was generated for.
-                  Actor actor= mouseEvent.source;
-
-                  // show some event info:
-                  html.setHTML(
-                          "<b>Actor:</b>"+ actor.name+" "+
-                          "<b>Local Coord:</b> ("+
-                              // with all this stuff i'm just stripping
-                              // off any decimal beyond .99
-                              ((int)(mouseEvent.point.x*100)>>0)/100+","+
-                              ((int)(mouseEvent.point.y*100)>>0)/100+") "+
-                          "<b>Screen Coord:</b> ("+
-                              mouseEvent.screenPoint.x+","+
-                              mouseEvent.screenPoint.y+") "+
-                          "<b>Parent Coord:</b> ("+
-                              actor.x+","+actor.y+")");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseMove(CAATMouseEvent mouseEvent) {
+//                    // get the scene Actor the event was generated for.
+//                  Actor actor= mouseEvent.source;
+//
+//                  // show some event info:
+//                  html.setHTML(
+//                          "<b>Actor:</b>"+ actor.name+" "+
+//                          "<b>Local Coord:</b> ("+
+//                              // with all this stuff i'm just stripping
+//                              // off any decimal beyond .99
+//                              ((int)(mouseEvent.point.x*100)>>0)/100+","+
+//                              ((int)(mouseEvent.point.y*100)>>0)/100+") "+
+//                          "<b>Screen Coord:</b> ("+
+//                              mouseEvent.screenPoint.x+","+
+//                              mouseEvent.screenPoint.y+") "+
+//                          "<b>Parent Coord:</b> ("+
+//                              actor.x+","+actor.y+")");
+//                }
                 
             }.
                     setBounds(s/2,s/2,s/4,s/4).
                     setRotation( Math.PI*2*Math.random() ).
                     setFillStrokeStyle(CaatjaColor.valueOf("#00ff00"));
+            
+            _c1_container.setMouseMoveListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    // get the scene Actor the event was generated for.
+                    Actor actor= e.source;
+
+                    // show some event info:
+                    html.setHTML(
+                            "<b>Actor:</b>"+ actor.name+" "+
+                            "<b>Local Coord:</b> ("+
+                                // with all this stuff i'm just stripping
+                                // off any decimal beyond .99
+                                ((int)(e.point.x*100)>>0)/100+","+
+                                ((int)(e.point.y*100)>>0)/100+") "+
+                            "<b>Screen Coord:</b> ("+
+                                e.screenPoint.x+","+
+                                e.screenPoint.y+") "+
+                            "<b>Parent Coord:</b> ("+
+                                actor.x+","+actor.y+")");
+                    
+                }
+            });;
 
             // set a custom paint function for children inside containers.
 

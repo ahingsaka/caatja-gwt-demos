@@ -16,6 +16,7 @@ import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.core.canvas.CaatjaImage;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -32,7 +33,7 @@ public class Demo16 {
     
     private int pathIndex;
     private Path[] path;
-
+    
     public void start(CaatjaCanvas canvas, Map<String, CaatjaImage> images) throws Exception {
         final Director director = new Director().initialize(800, 500, canvas);
         director.imagesCache = images;
@@ -41,18 +42,33 @@ public class Demo16 {
         CaatjaGradient gradient= director.ctx.createLinearGradient(0,0,director.width,director.height);
         gradient.addColorStop(0,"#000000");
         gradient.addColorStop(1,"#00007f");
+        
+//        ActorContainer gr= new ActorContainer() {
+//            @Override
+//            public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                pathIndex++;
+//                setClip( true, path[ pathIndex%path.length ] );
+//            }
+//            
+//        }.
 
-        ActorContainer gr= new ActorContainer() {
-            @Override
-            public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                pathIndex++;
-                setClip( true, path[ pathIndex%path.length ] );
-            }
-            
-        }.
+        final ActorContainer gr= new ActorContainer().
+//                setMouseClickListener(new MouseListener() {
+//                    public void call(CAATMouseEvent e) {
+//                        pathIndex++;
+//                        gr.setClip( true, path[ pathIndex%path.length ] );
+//                    }
+//                }).
                 setBounds(0,0,director.width,director.height).
                 setFillStrokeStyle(gradient);
                 gr.cacheAsBitmap();
+                
+         gr.setMouseClickListener(new MouseListener() {
+            public void call(CAATMouseEvent e) {
+                pathIndex++;
+                gr.setClip( true, path[ pathIndex%path.length ] );
+            }
+        });
 
         scene.addChild(gr);
         

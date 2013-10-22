@@ -13,6 +13,7 @@ import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -150,9 +151,27 @@ public class Scene3 {
 
         for (i = 0; i < N; i++) {
             SpriteActor p2 = new SpriteActor() {
-                @Override
-                public void mouseEnter(CAATMouseEvent mouseEvent) {
-                    Actor actor = mouseEvent.source;
+                // TODO Remove
+//                @Override
+//                public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                    Actor actor = mouseEvent.source;
+//                    if (null == actor) {
+//                        return;
+//                    }
+//                    BaseBehavior behaviour = actor.behaviorList.get(0);
+//                    if (null == behaviour) {
+//                        return;
+//                    }
+//
+//                    if (behaviour.status == Status.EXPIRED) {
+//                        actor.behaviorList.get(0).setFrameTime(mouseEvent.source.time, 1000);
+//                    }
+//                }
+            };
+            
+            p2.setMouseEnterListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Actor actor = e.source;
                     if (null == actor) {
                         return;
                     }
@@ -162,10 +181,10 @@ public class Scene3 {
                     }
 
                     if (behaviour.status == Status.EXPIRED) {
-                        actor.behaviorList.get(0).setFrameTime(mouseEvent.source.time, 1000);
+                        actor.behaviorList.get(0).setFrameTime(e.source.time, 1000);
                     }
                 }
-            };
+            });
 
             p2.setAnimationImageIndex(Arrays.asList(0, 1, 2, 1));
             p2.setSpriteImage(conpoundimage);

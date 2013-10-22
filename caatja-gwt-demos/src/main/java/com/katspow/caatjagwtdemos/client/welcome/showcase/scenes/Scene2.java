@@ -10,6 +10,7 @@ import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -60,8 +61,70 @@ public class Scene2 {
             for (j = 0; j < cols; j++) {
 
                 SpriteActor actor = new SpriteActor() {
-                    @Override
-                    public void mouseDblClick(CAATMouseEvent mouseEvent) {
+                    // TODO Remove
+//                    @Override
+//                    public void mouseDblClick(CAATMouseEvent mouseEvent) {
+//                        Actor actor = mouseEvent.source;
+//                        if (null == actor) {
+//                            return;
+//                        }
+//                        BaseBehavior behaviour = actor.behaviorList.get(0);
+//                        if (null == behaviour) {
+//                            return;
+//                        }
+//
+//                        if (behaviour.status == Status.EXPIRED) {
+//                            actor.parent.setZOrder(actor.parent, Integer.MAX_VALUE);
+//                            actor.behaviorList.get(0).setFrameTime(mouseEvent.source.time, 1000);
+//                        }
+//                    }
+
+                    // TODO Remove
+//                    @Override
+//                    public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                        Actor actor = mouseEvent.source;
+//                        if (null == actor) {
+//                            return;
+//                        }
+//                        BaseBehavior behaviour = actor.behaviorList.get(0);
+//                        if (null == behaviour) {
+//                            return;
+//                        }
+//
+//                        if (behaviour.status == Status.NOT_STARTED || behaviour.status == Status.EXPIRED) {
+//                            
+//                            actor.parent.setZOrder(actor, Integer.MAX_VALUE);
+//
+//                            actor.behaviorList.get(0).setFrameTime(mouseEvent.source.time, 500);
+//                            actor.behaviorList.get(1).setFrameTime(mouseEvent.source.time, 500);
+//                        }
+//                    }
+
+                };
+                
+                actor.setMouseEnterListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        Actor actor = e.source;
+                        if (null == actor) {
+                            return;
+                        }
+                        BaseBehavior behaviour = actor.behaviorList.get(0);
+                        if (null == behaviour) {
+                            return;
+                        }
+
+                        if (behaviour.status == Status.NOT_STARTED || behaviour.status == Status.EXPIRED) {
+                            
+                            actor.parent.setZOrder(actor, Integer.MAX_VALUE);
+
+                            actor.behaviorList.get(0).setFrameTime(e.source.time, 500);
+                            actor.behaviorList.get(1).setFrameTime(e.source.time, 500);
+                        }
+                    }
+                });
+                
+                actor.setMouseDblClickListener(new MouseListener() {
+                    public void call(CAATMouseEvent mouseEvent) throws Exception {
                         Actor actor = mouseEvent.source;
                         if (null == actor) {
                             return;
@@ -76,28 +139,7 @@ public class Scene2 {
                             actor.behaviorList.get(0).setFrameTime(mouseEvent.source.time, 1000);
                         }
                     }
-
-                    @Override
-                    public void mouseEnter(CAATMouseEvent mouseEvent) {
-                        Actor actor = mouseEvent.source;
-                        if (null == actor) {
-                            return;
-                        }
-                        BaseBehavior behaviour = actor.behaviorList.get(0);
-                        if (null == behaviour) {
-                            return;
-                        }
-
-                        if (behaviour.status == Status.NOT_STARTED || behaviour.status == Status.EXPIRED) {
-                            
-                            actor.parent.setZOrder(actor, Integer.MAX_VALUE);
-
-                            actor.behaviorList.get(0).setFrameTime(mouseEvent.source.time, 500);
-                            actor.behaviorList.get(1).setFrameTime(mouseEvent.source.time, 500);
-                        }
-                    }
-
-                };
+                });
 
                 actor.setBounds(j * w + padding, i * h + padding, w, h).
                     setSpriteImage(conpoundimage).

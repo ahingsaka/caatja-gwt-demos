@@ -13,6 +13,7 @@ import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
 import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -61,18 +62,76 @@ public class Scene7 {
                 director.ctx.drawImage( director.getImage("plants"), 0, 0, this.width, this.height );
             }
 
-            @Override
-            public void mouseEnter (CAATMouseEvent mouseEvent) {
-                
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseEnter (CAATMouseEvent mouseEvent) {
+//                
+//            }
             
-            @Override
-            public void mouseExit (CAATMouseEvent mouseEvent) {
-                
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseExit (CAATMouseEvent mouseEvent) {
+//                
+//            }
             
-            @Override
-            public void mouseMove (CAATMouseEvent mouseEvent) throws Exception {
+            // TODO Remove
+//            @Override
+//            public void mouseMove (CAATMouseEvent mouseEvent) throws Exception {
+//                int imgIndex= ((int)(Math.random()*3.99) >> 0)+1;
+//                
+//                CompoundImage conpoundimage = new CompoundImage();
+//                conpoundimage.initialize(director.getImage("buble"+imgIndex),1,1);
+//
+//                SpriteActor burbuja= new SpriteActor();
+//                burbuja.setAnimationImageIndex(Arrays.asList(0) );
+//                burbuja.setSpriteImage( conpoundimage );
+//                burbuja.setLocation( mouseEvent.point.x, mouseEvent.point.y );
+//                burbuja.mouseEnabled= false;
+//                
+//                this.addChild(burbuja);
+//
+//                ContainerBehavior cb= new ContainerBehavior();
+//                cb.actor= burbuja;
+//
+//                cb.setFrameTime( scene.time+2000+1000*Math.random(), 500 );
+//                cb.addListener(new BehaviorListener() {
+//                    @Override
+//                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
+//                        behaviour.actor.discardable= true;
+//                        behaviour.actor.setExpired(true);
+//                    }
+//
+//                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
+//                            SetForTimeReturnValue value) {
+//                    }
+//
+//                    @Override
+//                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                        
+//                    }
+//                });
+//                
+//                AlphaBehavior ab = new AlphaBehavior();
+//                ab.setFrameTime(0, 500);
+//                ab.startAlpha = 1;
+//                ab.endAlpha = 0;
+//                cb.addBehavior(ab);
+//
+//                PathBehavior tb = new PathBehavior();
+//                tb.setFrameTime(0, 500);
+//                tb.setPath(new Path().setLinear(burbuja.x, burbuja.y, burbuja.x, burbuja.y - 100 - 100 * Math.random()));
+//                cb.addBehavior(tb);
+//
+//                burbuja.addBehavior(cb);
+//
+//            }
+            
+        };
+        
+        root.setMouseEnterListener(null);
+        root.setMouseExitListener(null);
+        root.setMouseMoveListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
                 int imgIndex= ((int)(Math.random()*3.99) >> 0)+1;
                 
                 CompoundImage conpoundimage = new CompoundImage();
@@ -81,10 +140,10 @@ public class Scene7 {
                 SpriteActor burbuja= new SpriteActor();
                 burbuja.setAnimationImageIndex(Arrays.asList(0) );
                 burbuja.setSpriteImage( conpoundimage );
-                burbuja.setLocation( mouseEvent.point.x, mouseEvent.point.y );
+                burbuja.setLocation( e.point.x, e.point.y );
                 burbuja.mouseEnabled= false;
-
-                this.addChild(burbuja);
+                
+                root.addChild(burbuja);
 
                 ContainerBehavior cb= new ContainerBehavior();
                 cb.actor= burbuja;
@@ -121,8 +180,7 @@ public class Scene7 {
                 burbuja.addBehavior(cb);
 
             }
-            
-        };
+        });
         
         root.setBounds(0,0,director.canvas.getCoordinateSpaceWidth(),director.canvas.getCoordinateSpaceHeight());
       //root.setImage( director.getImage('plants') );

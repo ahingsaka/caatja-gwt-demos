@@ -14,6 +14,7 @@ import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.core.canvas.CaatjaImage;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -54,16 +55,24 @@ public class Demo3 {
         gradient.addColorStop(0,"#000000");
         gradient.addColorStop(1,"#00007f");
 
-        ActorContainer gr= new ActorContainer() {
-            @Override
-            public void mouseClick(CAATMouseEvent ev) throws Exception {
-                addFish(scene, ev.point.x,ev.point.y, conpoundimagefish);
-            }
-        }.
+        ActorContainer gr= new ActorContainer().
+                // TODO Remove
+        //{
+//            @Override
+//            public void mouseClick(CAATMouseEvent ev) throws Exception {
+//                addFish(scene, ev.point.x,ev.point.y, conpoundimagefish);
+//            }
+//        }.
                 setBounds(0,0,director.width,director.height).
                 setFillStrokeStyle(gradient).
                 enableEvents(false);
                 gr.cacheAsBitmap();
+                
+                gr.setMouseClickListener(new MouseListener() {
+                    public void call(CAATMouseEvent ev) throws Exception {
+                        addFish(scene, ev.point.x,ev.point.y, conpoundimagefish);
+                    }
+                });
 
         scene.addChild(gr);
 

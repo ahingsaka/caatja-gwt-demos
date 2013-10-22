@@ -8,6 +8,7 @@ import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.event.CAATKeyEvent;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -95,38 +96,54 @@ public class Demo18 {
             }
         });
         
-        Actor s0 = new Actor() {
-            @Override
-            public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                Demo18.this.mouseClick(this);
-            }
+        final Actor s0 = new Actor() {
+            // TODO Remove
+//            @Override
+//            public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                Demo18.this.mouseClick(this);
+//            }
             
         }.
                 setFillStyle( "#f00" ).
                 setBounds(
                         40 + Math.random() * (director.width - 80),
                         40 + Math.random() * (director.height - 80), size, size);
+        
+        s0.setMouseClickListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                Demo18.this.mouseClick(s0);
+            }
+        });
+        
         scene.addChild(s0);
 
-        ShapeActor s1 = new ShapeActor() {
-            @Override
-            public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                Demo18.this.mouseClick(this);
-            }
+        final ShapeActor s1 = new ShapeActor() {
+            // TODO Remove
+//            @Override
+//            public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                Demo18.this.mouseClick(this);
+//            }
         }.
                 setShape( ShapeActor.Shape.CIRCLE ).
                 setFillStyle( "#0f0" ).
                 setBounds(
                         40 + Math.random() * (director.width - 80),
                         40 + Math.random() * (director.height - 80), size, size);
+        
+        s1.setMouseClickListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                Demo18.this.mouseClick(s1);
+            }
+        });
 
         scene.addChild(s1);
 
-        StarActor s2= new StarActor() {
-            @Override
-            public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                Demo18.this.mouseClick(this);
-            }
+        final StarActor s2= new StarActor() {
+            // TODO Remove
+//            @Override
+//            public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                Demo18.this.mouseClick(this);
+//            }
         }.
         setBounds(
                 40 + Math.random() * (director.width - 80),
@@ -135,6 +152,13 @@ public class Demo18 {
                 setFilled( false ).
                 setOutlined( true ).
                 initialize( 12, size, size/2 );
+        
+        s2.setMouseClickListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                Demo18.this.mouseClick(s2);
+            }
+        });
+        
         scene.addChild( s2 );
 
         s0.mouseClick(null);

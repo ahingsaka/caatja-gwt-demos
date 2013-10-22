@@ -13,6 +13,7 @@ import com.katspow.caatja.core.CAAT;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.ui.Dock;
@@ -70,24 +71,27 @@ public class Tut71 {
                         selectedInterpolatorActor = (InterpolatorActor) mouseEvent.source;
                     }
 
-                    @Override
-                    public void mouseEnter(CAATMouseEvent mouseEvent) {
-                        if (mouseEvent.source != selectedInterpolatorActor) {
-                            mouseEvent.source.setFillStyle("#bbb");
-                        }
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                        if (mouseEvent.source != selectedInterpolatorActor) {
+//                            mouseEvent.source.setFillStyle("#bbb");
+//                        }
+//                    }
 
-                    @Override
-                    public void mouseExit(CAATMouseEvent mouseEvent) {
-                        if ( mouseEvent.source!=selectedInterpolatorActor ) {
-                          mouseEvent.source.setFillStyle(null);
-                      }
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseExit(CAATMouseEvent mouseEvent) {
+//                        if ( mouseEvent.source!=selectedInterpolatorActor ) {
+//                          mouseEvent.source.setFillStyle(null);
+//                      }
+//                    }
 
-                    @Override
-                    public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                        label.setText(mouseEvent.source.name);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                        label.setText(mouseEvent.source.name);
+//                    }
                     
                     
                     
@@ -96,10 +100,35 @@ public class Tut71 {
                      setBounds( 0, 0, min, min ).
                      setFillStyle("#fff").
                      setStringStrokeStyle( "#000" );
+                
+                
                 if ( i==0 && j == 0 ) {
                     actor.setFillStyle("#373");
                     selectedInterpolatorActor= actor;
                 }
+                
+                actor.setMouseExitListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        if (e.source != selectedInterpolatorActor) {
+                            e.source.setFillStyle(null);
+                        }
+                    }
+                });
+                
+                actor.setMouseEnterListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        if (e.source != selectedInterpolatorActor) {
+                            e.source.setFillStyle("#bbb");
+                        }
+                    }
+                });
+                
+                actor.setMouseMoveListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        label.setText(e.source.name);
+                    }
+                });
+                
                 actor.name= (String) lerps.keySet().toArray()[i];
 
                 root.addChild( actor );
@@ -112,23 +141,26 @@ public class Tut71 {
         for( i=0; i<3; i++ ) {
             TextActor _text_r0= new TextActor() {
 
-                @Override
-                public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                    if (null != selectedInterpolatorActor) {
-                        mouseEvent.source.behaviorList.get(0).setInterpolator(
-                                selectedInterpolatorActor.getInterpolator());
-                    }
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                    if (null != selectedInterpolatorActor) {
+//                        mouseEvent.source.behaviorList.get(0).setInterpolator(
+//                                selectedInterpolatorActor.getInterpolator());
+//                    }
+//                }
 
-                @Override
-                public void mouseEnter(CAATMouseEvent mouseEvent) {
-                    Caatja.setCursor("pointer");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                    Caatja.setCursor("pointer");
+//                }
 
-                @Override
-                public void mouseExit(CAATMouseEvent mouseEvent) {
-                	Caatja.setCursor("default");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseExit(CAATMouseEvent mouseEvent) {
+//                	Caatja.setCursor("default");
+//                }
                 
             }.
                     setFont("50px sans-serif").
@@ -138,7 +170,32 @@ public class Tut71 {
                     setOutlineColor("gray").
                     setLocation( 30,60+140*i ).
                     calcTextSize(director);
+            
+            _text_r0.setMouseEnterListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Caatja.setCursor("pointer");
+                }
+            });
+            
+            _text_r0.setMouseExitListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Caatja.setCursor("default");
+                }
+            });
+            
+            _text_r0.setMouseClickListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    if (null != selectedInterpolatorActor) {
+                        e.source.behaviorList.get(0).setInterpolator(
+                                selectedInterpolatorActor.getInterpolator());
+                    }
+                }
+            });
+            
             _text_r0.cacheAsBitmap();
+            
+            
+            
             RotateBehavior text_r0_rb= new RotateBehavior().
                     setFrameTime(0,5000).
                     setAngles(0,Math.PI*2).
@@ -150,23 +207,26 @@ public class Tut71 {
         for( i=0; i<3; i++ ) {
             TextActor _text_r0= new TextActor() {
                 
-                @Override
-                public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                    if (null != selectedInterpolatorActor) {
-                        mouseEvent.source.behaviorList.get(0).setInterpolator(
-                                selectedInterpolatorActor.getInterpolator());
-                    }
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                    if (null != selectedInterpolatorActor) {
+//                        mouseEvent.source.behaviorList.get(0).setInterpolator(
+//                                selectedInterpolatorActor.getInterpolator());
+//                    }
+//                }
 
-                @Override
-                public void mouseEnter(CAATMouseEvent mouseEvent) {
-                	Caatja.setCursor("pointer");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                	Caatja.setCursor("pointer");
+//                }
 
-                @Override
-                public void mouseExit(CAATMouseEvent mouseEvent) {
-                	Caatja.setCursor("default");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseExit(CAATMouseEvent mouseEvent) {
+//                	Caatja.setCursor("default");
+//                }
                 
             }.
                     setFont("50px sans-serif").
@@ -176,7 +236,31 @@ public class Tut71 {
                     setOutlineColor("gray").
                     setLocation( 250,60+140*i ).
                     calcTextSize(director);
+            
+            _text_r0.setMouseExitListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Caatja.setCursor("default");
+                }
+            });
+            
+            _text_r0.setMouseClickListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    if (null != selectedInterpolatorActor) {
+                        e.source.behaviorList.get(0).setInterpolator(
+                                selectedInterpolatorActor.getInterpolator());
+                    }
+                }
+            });
+            
+            _text_r0.setMouseEnterListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Caatja.setCursor("pointer");
+                }
+            });
+            
             _text_r0.cacheAsBitmap();
+            
+            
             ScaleBehavior text_r0_rb= new ScaleBehavior().
                     setFrameTime(0,5000).
                     setValues(1, 2, 1, 2).
@@ -188,28 +272,55 @@ public class Tut71 {
 
         for( i=0; i<3; i++ ) {
             ShapeActor _text_r0= new ShapeActor() {
-                @Override
-                public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                    if (null != selectedInterpolatorActor) {
-                        mouseEvent.source.behaviorList.get(0).setInterpolator(
-                                selectedInterpolatorActor.getInterpolator());
-                    }
-                }
+                
+                // TODO Remove
+//                @Override
+//                public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                    if (null != selectedInterpolatorActor) {
+//                        mouseEvent.source.behaviorList.get(0).setInterpolator(
+//                                selectedInterpolatorActor.getInterpolator());
+//                    }
+//                }
 
-                @Override
-                public void mouseEnter(CAATMouseEvent mouseEvent) {
-                	Caatja.setCursor("pointer");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                	Caatja.setCursor("pointer");
+//                }
 
-                @Override
-                public void mouseExit(CAATMouseEvent mouseEvent) {
-                	Caatja.setCursor("default");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseExit(CAATMouseEvent mouseEvent) {
+//                	Caatja.setCursor("default");
+//                }
             }.
                     setShape( ShapeActor.Shape.CIRCLE ).
                     setFillStyle("red").
                     setStringStrokeStyle("orange").
                     setBounds( 470,60+130*i, 80, 80 );
+            
+            _text_r0.setMouseEnterListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Caatja.setCursor("pointer");
+                }
+            });
+            
+            _text_r0.setMouseExitListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Caatja.setCursor("default");
+                }
+            });
+            
+            _text_r0.setMouseClickListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    if (null != selectedInterpolatorActor) {
+                        e.source.behaviorList.get(0).setInterpolator(
+                                selectedInterpolatorActor.getInterpolator());
+                    }
+                }
+            });
+            
+            
             AlphaBehavior text_r0_rb= new AlphaBehavior().
                     setFrameTime(0,5000).
                     setValues(0, 1).
@@ -222,28 +333,54 @@ public class Tut71 {
         for( i=0; i<3; i++ ) {
 
             ShapeActor shape= new ShapeActor() {
-                @Override
-                public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                    if (null != selectedInterpolatorActor) {
-                        mouseEvent.source.behaviorList.get(0).setInterpolator(
-                                selectedInterpolatorActor.getInterpolator());
-                    }
-                }
+                
+                // TODO Remove
+//                @Override
+//                public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                    if (null != selectedInterpolatorActor) {
+//                        mouseEvent.source.behaviorList.get(0).setInterpolator(
+//                                selectedInterpolatorActor.getInterpolator());
+//                    }
+//                }
 
-                @Override
-                public void mouseEnter(CAATMouseEvent mouseEvent) {
-                	Caatja.setCursor("pointer");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                	Caatja.setCursor("pointer");
+//                }
 
-                @Override
-                public void mouseExit(CAATMouseEvent mouseEvent) {
-                	Caatja.setCursor("default");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseExit(CAATMouseEvent mouseEvent) {
+//                	Caatja.setCursor("default");
+//                }
             }.
                     setShape(ShapeActor.Shape.CIRCLE ).
                     setFillStyle("yellow").
                     setStringStrokeStyle("blue").
                     setBounds(0,0,40,40);
+            
+            shape.setMouseExitListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Caatja.setCursor("default");
+                }
+            });
+            
+            shape.setMouseEnterListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Caatja.setCursor("pointer");
+                }
+            });
+            
+            shape.setMouseClickListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    if (null != selectedInterpolatorActor) {
+                        e.source.behaviorList.get(0).setInterpolator(
+                                selectedInterpolatorActor.getInterpolator());
+                    }
+                }
+            });
+            
 
             Path path= new Path().
                     setInteractive(false).

@@ -14,6 +14,7 @@ import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaImage;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -74,85 +75,88 @@ public class Demo9 {
     for( int i=0; i<rows; i++ ) {
         for( int j=0; j<columns; j++ ) {
 
-            Actor number= new Actor() {
+            final Actor number= new Actor() {
 
-                @Override
-                public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                    int NS= 20;
-                  for( int i=0; i<NS; i++ ) {
-                      Actor star= starCache.get((i+starCacheIndex++)%starCache.size());
-  
-                      double x= this.x+this.width/2;
-                      double y= this.y+this.height/2;
-                      int sgnX = (Math.random()<.5?1:-1);
-                      int sgnY= (Math.random()<.5?1:-1);
-                      double cpx = x+ (20+Math.random()*80)*sgnX;
-                      double cpy= y+ (20+Math.random()*40)*sgnY;
-  
-                      double fpy = director.height+(50*Math.random());
-                      double fpx= cpx+(80*Math.random())*sgnX;
-                      
-                      star.emptyBehaviorList().
-                              addBehavior(
-                                      new PathBehavior().
-                                              setFrameTime( this.time, 600+(400*Math.random()) ).
-                                              setPath(
-                                                      new Path().
-                                                              beginPath( x,y ).
-                                                              addQuadricTo( cpx, cpy, fpx, fpy ).
-                                                              endPath()
-                                              ).
-                                              addListener(
-                                                      new BehaviorListener() {
-                                                        
-                                                        @Override
-                                                        public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
-                                                            actor.setExpired(true);
-                                                        }
-                                                        
-                                                        @Override
-                                                        public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                                                                throws Exception {
-                                                            
-                                                        }
+                // TODO Remove
+//                @Override
+//                public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                    int NS= 20;
+//                  for( int i=0; i<NS; i++ ) {
+//                      Actor star= starCache.get((i+starCacheIndex++)%starCache.size());
+//  
+//                      double x= this.x+this.width/2;
+//                      double y= this.y+this.height/2;
+//                      int sgnX = (Math.random()<.5?1:-1);
+//                      int sgnY= (Math.random()<.5?1:-1);
+//                      double cpx = x+ (20+Math.random()*80)*sgnX;
+//                      double cpy= y+ (20+Math.random()*40)*sgnY;
+//  
+//                      double fpy = director.height+(50*Math.random());
+//                      double fpx= cpx+(80*Math.random())*sgnX;
+//                      
+//                      star.emptyBehaviorList().
+//                              addBehavior(
+//                                      new PathBehavior().
+//                                              setFrameTime( this.time, 600+(400*Math.random()) ).
+//                                              setPath(
+//                                                      new Path().
+//                                                              beginPath( x,y ).
+//                                                              addQuadricTo( cpx, cpy, fpx, fpy ).
+//                                                              endPath()
+//                                              ).
+//                                              addListener(
+//                                                      new BehaviorListener() {
+//                                                        
+//                                                        @Override
+//                                                        public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                                                            actor.setExpired(true);
+//                                                        }
+//                                                        
+//                                                        @Override
+//                                                        public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                                                                throws Exception {
+//                                                            
+//                                                        }
+//
+//                                                        @Override
+//                                                        public void behaviorStarted(BaseBehavior behavior, double time,
+//                                                                Actor actor) {
+//                                                            
+//                                                        }
+//                                                    }
+//                                      )).
+//                              setDiscardable(true).
+//                              setFrameTime( this.time, Double.MAX_VALUE );
+//                      
+//                      starContainer.addChild(star);
+//                  }
+//                }
 
-                                                        @Override
-                                                        public void behaviorStarted(BaseBehavior behavior, double time,
-                                                                Actor actor) {
-                                                            
-                                                        }
-                                                    }
-                                      )).
-                              setDiscardable(true).
-                              setFrameTime( this.time, Double.MAX_VALUE );
-                      
-                      starContainer.addChild(star);
-                  }
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                    this.parent.setZOrder( this, Integer.MAX_VALUE );
+//                  this.emptyBehaviorList();
+//                  this.addBehavior(
+//                          new ScaleBehavior().
+//                                  setFrameTime( this.time, 500 ).
+//                                  setValues( 1, 2, 1, 2 ).
+//                                  setPingPong()
+//                          ).
+//                      addBehavior(
+//                          new RotateBehavior().
+//                                  setFrameTime( this.time, 500 ).
+//                                  setValues( 0, 2*Math.PI )
+//                          );
+//  
+//                  Caatja.setCursor("pointer");
+//                }
 
-                @Override
-                public void mouseEnter(CAATMouseEvent mouseEvent) {
-                    this.parent.setZOrder( this, Integer.MAX_VALUE );
-                  this.emptyBehaviorList();
-                  this.addBehavior(
-                          new ScaleBehavior().
-                                  setFrameTime( this.time, 500 ).
-                                  setValues( 1, 2, 1, 2 ).
-                                  setPingPong()
-                          ).
-                      addBehavior(
-                          new RotateBehavior().
-                                  setFrameTime( this.time, 500 ).
-                                  setValues( 0, 2*Math.PI )
-                          );
-  
-                  Caatja.setCursor("pointer");
-                }
-
-                @Override
-                public void mouseExit(CAATMouseEvent mouseEvent) {
-                	Caatja.setCursor("default");
-                }
+                // TODO Remove
+//                @Override
+//                public void mouseExit(CAATMouseEvent mouseEvent) {
+//                	Caatja.setCursor("default");
+//                }
                 
                 
             }.
@@ -161,6 +165,89 @@ public class Demo9 {
                         paddingLeft + j*(numberPadding/2+numberW),
                         paddingTop  + i*(numberPadding/2+numberH)).
                     setSpriteIndex( (int)(Math.random()*ci.rows*ci.columns)>>0 );
+            
+            number.setMouseExitListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Caatja.setCursor("default");
+                }
+            });
+            
+            number.setMouseEnterListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    number.parent.setZOrder( number, Integer.MAX_VALUE );
+                    number.emptyBehaviorList();
+                    number.addBehavior(
+                            new ScaleBehavior().
+                                    setFrameTime( number.time, 500 ).
+                                    setValues( 1, 2, 1, 2 ).
+                                    setPingPong()
+                            ).
+                        addBehavior(
+                            new RotateBehavior().
+                                    setFrameTime( number.time, 500 ).
+                                    setValues( 0, 2*Math.PI )
+                            );
+    
+                    Caatja.setCursor("pointer");
+                }
+            });
+            
+            number.setMouseClickListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    
+                    int NS= 20;
+                    for( int i=0; i<NS; i++ ) {
+                        Actor star= starCache.get((i+starCacheIndex++)%starCache.size());
+    
+                        double x= number.x+number.width/2;
+                        double y= number.y+number.height/2;
+                        int sgnX = (Math.random()<.5?1:-1);
+                        int sgnY= (Math.random()<.5?1:-1);
+                        double cpx = x+ (20+Math.random()*80)*sgnX;
+                        double cpy= y+ (20+Math.random()*40)*sgnY;
+    
+                        double fpy = director.height+(50*Math.random());
+                        double fpx= cpx+(80*Math.random())*sgnX;
+                        
+                        star.emptyBehaviorList().
+                                addBehavior(
+                                        new PathBehavior().
+                                                setFrameTime( number.time, 600+(400*Math.random()) ).
+                                                setPath(
+                                                        new Path().
+                                                                beginPath( x,y ).
+                                                                addQuadricTo( cpx, cpy, fpx, fpy ).
+                                                                endPath()
+                                                ).
+                                                addListener(
+                                                        new BehaviorListener() {
+                                                          
+                                                          @Override
+                                                          public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+                                                              actor.setExpired(true);
+                                                          }
+                                                          
+                                                          @Override
+                                                          public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+                                                                  throws Exception {
+                                                              
+                                                          }
+
+                                                          @Override
+                                                          public void behaviorStarted(BaseBehavior behavior, double time,
+                                                                  Actor actor) {
+                                                              
+                                                          }
+                                                      }
+                                        )).
+                                setDiscardable(true).
+                                setFrameTime( number.time, Double.MAX_VALUE );
+                        
+                        starContainer.addChild(star);
+                    }
+                    
+                }
+            });
 
             numberContainer.addChild(number);
         }

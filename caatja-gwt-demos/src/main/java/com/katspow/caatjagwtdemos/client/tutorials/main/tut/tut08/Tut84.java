@@ -7,6 +7,7 @@ import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -134,24 +135,42 @@ public class Tut84 {
                       pathBehavior.setInterpolator( ((InterpolatorActor) mouseEvent.source).getInterpolator() );
                     }
 
-                    @Override
-                    public void mouseEnter(CAATMouseEvent mouseEvent) {
-                        if (mouseEvent.source != selectedInterpolatorActor) {
-                            mouseEvent.source.setFillStyle("#f0f0f0");
-                        }
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                        if (mouseEvent.source != selectedInterpolatorActor) {
+//                            mouseEvent.source.setFillStyle("#f0f0f0");
+//                        }
+//                    }
 
-                    @Override
-                    public void mouseExit(CAATMouseEvent mouseEvent) {
-                        if (mouseEvent.source != selectedInterpolatorActor) {
-                            mouseEvent.source.setFillStyle(null);
-                        }
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseExit(CAATMouseEvent mouseEvent) {
+//                        if (mouseEvent.source != selectedInterpolatorActor) {
+//                            mouseEvent.source.setFillStyle(null);
+//                        }
+//                    }
                     
                 }.
                      setInterpolator((Interpolator) lerps.values().toArray()[(j*cols+i)], null ).
                      setBounds( 0, 0, min, min ).
                      setStringStrokeStyle( "blue" );
+                
+                actor.setMouseExitListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        if (e.source != selectedInterpolatorActor) {
+                            e.source.setFillStyle(null);
+                        }
+                    }
+                });
+                
+                actor.setMouseEnterListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        if (e.source != selectedInterpolatorActor) {
+                            e.source.setFillStyle("#f0f0f0");
+                        }
+                    }
+                });
 
                 root.addChildImmediately( actor );
             }

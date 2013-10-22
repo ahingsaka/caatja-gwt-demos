@@ -7,6 +7,7 @@ import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -74,13 +75,21 @@ public class PackedCircleScene {
         };
         
         this.root = new ActorContainer() {
-            @Override
-            public void mouseMove(CAATMouseEvent mouseEvent) {
-                mousePosition.set(mouseEvent.point.x, mouseEvent.point.y);
-            }
+            
+            // TODO Remove
+//            @Override
+//            public void mouseMove(CAATMouseEvent mouseEvent) {
+//                mousePosition.set(mouseEvent.point.x, mouseEvent.point.y);
+//            }
             
         }.
             setBounds(0,0, director.canvas.getCoordinateSpaceWidth(), director.canvas.getCoordinateSpaceHeight());
+        
+        root.setMouseMoveListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                mousePosition.set(e.point.x, e.point.y);
+            }
+        });
         
         this.scene.addChild( this.root );
 

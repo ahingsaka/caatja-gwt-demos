@@ -21,6 +21,7 @@ import com.katspow.caatja.core.image.CaatjaImageLoaderCallback;
 import com.katspow.caatja.core.image.CaatjaPreloader;
 import com.katspow.caatja.event.CAATKeyEvent;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -121,51 +122,55 @@ public class ShowcaseOld {
 
             if ( i!=0 ) {
                 Actor prev = new Actor() {
-                    @Override
-                    public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                        director.switchToPrevScene(1000,false,true);
-                    }
+                    
+                    // TODO Remove
+//                    @Override
+//                    public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                        director.switchToPrevScene(1000,false,true);
+//                    }
 
-                    @Override
-                    public void mouseEnter(CAATMouseEvent mouseEvent) {
-                      Actor actor= mouseEvent.source;
-                      if( null==actor ) {
-                          return;
-                      }
-                      
-                      BaseBehavior behaviour = actor.behaviorList.get(0);
-                      if( null==behaviour ) {
-                          return;
-                      }
-                      
-                      actor.pointed= true;
-                      
-                      if ( behaviour.status == Status.EXPIRED) {
-                          actor.behaviorList.get(0).
-                              setFrameTime( mouseEvent.source.time, 1000 ).
-                              setCycle(true);
-                          actor.behaviorList.get(1).
-                              setFrameTime( mouseEvent.source.time, 1000 ).
-                              setCycle(true);
-                      }
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                      Actor actor= mouseEvent.source;
+//                      if( null==actor ) {
+//                          return;
+//                      }
+//                      
+//                      BaseBehavior behaviour = actor.behaviorList.get(0);
+//                      if( null==behaviour ) {
+//                          return;
+//                      }
+//                      
+//                      actor.pointed= true;
+//                      
+//                      if ( behaviour.status == Status.EXPIRED) {
+//                          actor.behaviorList.get(0).
+//                              setFrameTime( mouseEvent.source.time, 1000 ).
+//                              setCycle(true);
+//                          actor.behaviorList.get(1).
+//                              setFrameTime( mouseEvent.source.time, 1000 ).
+//                              setCycle(true);
+//                      }
+//                    }
 
-                    @Override
-                    public void mouseExit(CAATMouseEvent mouseEvent) {
-                      Actor actor= mouseEvent.source;
-                      if( null==actor ) {
-                          return;
-                      }
-                      BaseBehavior behaviour = actor.behaviorList.get(0);
-                      if( null==behaviour ) {
-                          return;
-                      }
-                      
-                      actor.pointed= false;
-                      
-                      actor.behaviorList.get(0).setExpired(actor,mouseEvent.source.time);
-                      actor.behaviorList.get(1).setExpired(actor,mouseEvent.source.time);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseExit(CAATMouseEvent mouseEvent) {
+//                      Actor actor= mouseEvent.source;
+//                      if( null==actor ) {
+//                          return;
+//                      }
+//                      BaseBehavior behaviour = actor.behaviorList.get(0);
+//                      if( null==behaviour ) {
+//                          return;
+//                      }
+//                      
+//                      actor.pointed= false;
+//                      
+//                      actor.behaviorList.get(0).setExpired(actor,mouseEvent.source.time);
+//                      actor.behaviorList.get(1).setExpired(actor,mouseEvent.source.time);
+//                    }
 
                     @Override
                     public void paint(Director director, double time) {
@@ -203,6 +208,55 @@ public class ShowcaseOld {
                     
                     
                 };
+                
+                prev.setMouseEnterListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        Actor actor= e.source;
+                        if( null==actor ) {
+                            return;
+                        }
+                        
+                        BaseBehavior behaviour = actor.behaviorList.get(0);
+                        if( null==behaviour ) {
+                            return;
+                        }
+                        
+                        actor.pointed= true;
+                        
+                        if ( behaviour.status == Status.EXPIRED) {
+                            actor.behaviorList.get(0).
+                                setFrameTime( e.source.time, 1000 ).
+                                setCycle(true);
+                            actor.behaviorList.get(1).
+                                setFrameTime( e.source.time, 1000 ).
+                                setCycle(true);
+                        }
+                    }
+                });
+                
+                prev.setMouseExitListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        Actor actor= e.source;
+                        if( null==actor ) {
+                            return;
+                        }
+                        BaseBehavior behaviour = actor.behaviorList.get(0);
+                        if( null==behaviour ) {
+                            return;
+                        }
+                        
+                        actor.pointed= false;
+                        
+                        actor.behaviorList.get(0).setExpired(actor,e.source.time);
+                        actor.behaviorList.get(1).setExpired(actor,e.source.time);
+                    }
+                });
+                
+                prev.setMouseClickListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        director.switchToPrevScene(1000, false, true);
+                    }
+                });
                 
                 prev.setBounds(5,470,20,20);
                 prev.setRotation( Math.PI );
@@ -216,49 +270,52 @@ public class ShowcaseOld {
             if ( i!=director.getNumScenes()-1 ) {
                 Actor next= new Actor() {
 
-                    @Override
-                    public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                        director.switchToNextScene(1000,false,true);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                        director.switchToNextScene(1000,false,true);
+//                    }
                     
-                    @Override
-                    public void mouseEnter(CAATMouseEvent mouseEvent) {
-                      Actor actor= mouseEvent.source;
-                      if( null==actor ) {
-                          return;
-                      }
-                      
-                      BaseBehavior behaviour = actor.behaviorList.get(0);
-                      if( null==behaviour ) {
-                          return;
-                      }
-                      
-                      actor.pointed= true;
-                      
-                      if ( behaviour.status == Status.EXPIRED ) {
-                          actor.behaviorList.get(0).setFrameTime( mouseEvent.source.time, 1000 );
-                          actor.behaviorList.get(0).setCycle(true);
-                          actor.behaviorList.get(1).setFrameTime( mouseEvent.source.time, 1000 );
-                          actor.behaviorList.get(1).setCycle(true);
-                      }
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                      Actor actor= mouseEvent.source;
+//                      if( null==actor ) {
+//                          return;
+//                      }
+//                      
+//                      BaseBehavior behaviour = actor.behaviorList.get(0);
+//                      if( null==behaviour ) {
+//                          return;
+//                      }
+//                      
+//                      actor.pointed= true;
+//                      
+//                      if ( behaviour.status == Status.EXPIRED ) {
+//                          actor.behaviorList.get(0).setFrameTime( mouseEvent.source.time, 1000 );
+//                          actor.behaviorList.get(0).setCycle(true);
+//                          actor.behaviorList.get(1).setFrameTime( mouseEvent.source.time, 1000 );
+//                          actor.behaviorList.get(1).setCycle(true);
+//                      }
+//                    }
 
-                    @Override
-                    public void mouseExit(CAATMouseEvent mouseEvent) {
-                      Actor actor= mouseEvent.source;
-                      if( null==actor ) {
-                          return;
-                      }
-                      BaseBehavior behaviour = actor.behaviorList.get(0);
-                      if( null==behaviour ) {
-                          return;
-                      }
-                      
-                      actor.pointed= false;
-                      
-                      actor.behaviorList.get(0).setExpired(actor,mouseEvent.source.time);
-                      actor.behaviorList.get(1).setExpired(actor,mouseEvent.source.time);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseExit(CAATMouseEvent mouseEvent) {
+//                      Actor actor= mouseEvent.source;
+//                      if( null==actor ) {
+//                          return;
+//                      }
+//                      BaseBehavior behaviour = actor.behaviorList.get(0);
+//                      if( null==behaviour ) {
+//                          return;
+//                      }
+//                      
+//                      actor.pointed= false;
+//                      
+//                      actor.behaviorList.get(0).setExpired(actor,mouseEvent.source.time);
+//                      actor.behaviorList.get(1).setExpired(actor,mouseEvent.source.time);
+//                    }
 
                     @Override
                     public void paint(Director director, double time) {
@@ -296,6 +353,53 @@ public class ShowcaseOld {
                     
                 };
                 
+                next.setMouseExitListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        Actor actor = e.source;
+                        if (null == actor) {
+                            return;
+                        }
+                        BaseBehavior behaviour = actor.behaviorList.get(0);
+                        if (null == behaviour) {
+                            return;
+                        }
+
+                        actor.pointed = false;
+
+                        actor.behaviorList.get(0).setExpired(actor, e.source.time);
+                        actor.behaviorList.get(1).setExpired(actor, e.source.time);
+                    }
+                });
+                
+                next.setMouseEnterListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        Actor actor= e.source;
+                        if( null==actor ) {
+                            return;
+                        }
+                        
+                        BaseBehavior behaviour = actor.behaviorList.get(0);
+                        if( null==behaviour ) {
+                            return;
+                        }
+                        
+                        actor.pointed= true;
+                        
+                        if ( behaviour.status == Status.EXPIRED ) {
+                            actor.behaviorList.get(0).setFrameTime( e.source.time, 1000 );
+                            actor.behaviorList.get(0).setCycle(true);
+                            actor.behaviorList.get(1).setFrameTime( e.source.time, 1000 );
+                            actor.behaviorList.get(1).setCycle(true);
+                        }
+                    }
+                });
+                
+                next.setMouseClickListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        director.switchToNextScene(1000,false,true);
+                    }
+                });
+                
                 next.setBounds(director.width-20-5,470,20,20);
                 next.fillStyle=CaatjaColor.valueOf("#0000ff");
 
@@ -308,10 +412,12 @@ public class ShowcaseOld {
             for( int j=0; j<director.getNumScenes(); j++ ) {
                 
                 SpecialActor idx = new SpecialActor() {
-                    @Override
-                    public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
-                        director.switchToScene(((SpecialActor)mouseEvent.source).__sceneIndex,1000,false,true);
-                    }
+                    
+                    // TODO Remove
+//                    @Override
+//                    public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                        director.switchToScene(((SpecialActor)mouseEvent.source).__sceneIndex,1000,false,true);
+//                    }
 
                     @Override
                     public void paint(Director director, double time) {
@@ -341,6 +447,12 @@ public class ShowcaseOld {
                     
                     
                 };
+                
+                idx.setMouseClickListener(new MouseListener() {
+                    public void call(CAATMouseEvent mouseEvent) throws Exception {
+                        director.switchToScene(((SpecialActor)mouseEvent.source).__sceneIndex,1000,false,true);
+                    }
+                });
                 
                 idx.name = "idx";
                 idx.__sceneIndex=j;
@@ -392,24 +504,90 @@ public class ShowcaseOld {
 
         final AnotherSpecialScene scene= new AnotherSpecialScene();
 
-        ActorContainer root= new ActorContainer() {
+        final ActorContainer root= new ActorContainer() {
             
-            @Override
-            public void mouseEnter (CAATMouseEvent mouseEvent) {
-                
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseEnter (CAATMouseEvent mouseEvent) {
+//                
+//            }
             
-            @Override
-            public void mouseExit (CAATMouseEvent mouseEvent) {
-                
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseExit (CAATMouseEvent mouseEvent) {
+//                
+//            }
             
-            @Override
-            public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                
+            // TODO Remove
+//            @Override
+//            public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                
+//                int r = (int) (1+10*Math.random());
+//                ShapeActor burbuja= new ShapeActor().
+//                        setLocation( mouseEvent.point.x, mouseEvent.point.y ).
+//                        enableEvents(false).
+//                        setCompositeOp("lighter").
+//                        setSize( 5+r, 5+r );
+//
+//                r = 192 + (int) (64 * Math.random()) >> 0;
+//                int g = (int) (64 * Math.random()) >> 0;
+//                int b = (int) (64 * Math.random()) >> 0;
+//                int a = 255;
+//
+//                burbuja.fillStyle = CaatjaColor.valueOf("rgba("+r+","+g+","+b+","+a+")");
+//                
+//                this.addChild(burbuja);
+//
+//                ContainerBehavior cb= new ContainerBehavior();
+//                cb.actor= burbuja;
+//
+//                cb.setFrameTime( scene.time+2000+1000*Math.random(), 500 );
+//                cb.addListener(new BehaviorListener() {
+//                    @Override
+//                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
+//                        behaviour.actor.discardable= true;
+//                        behaviour.actor.setExpired(true);
+//                    }
+//
+//                    @Override
+//                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
+//                            SetForTimeReturnValue value) {
+//                    }
+//
+//                    @Override
+//                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                        
+//                    }
+//                    
+//                });
+//                
+//                AlphaBehavior ab= new AlphaBehavior().
+//                    setFrameTime( 0, 500 ).
+//                    setValues(1,0);
+//                    
+//                    cb.addBehavior(ab);
+//
+//                    PathBehavior tb= new PathBehavior().
+//                            setFrameTime( 0, 500 ).
+//                            setPath(
+//                            new Path().setLinear(
+//                                    burbuja.x, burbuja.y,
+//                                    burbuja.x, burbuja.y-100-100*Math.random() ) );
+//                    cb.addBehavior(tb);
+//
+//                burbuja.addBehavior( cb );
+//                
+//            }
+            
+        };
+        
+        root.setMouseEnterListener(null);
+        root.setMouseExitListener(null);
+        root.setMouseMoveListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
                 int r = (int) (1+10*Math.random());
                 ShapeActor burbuja= new ShapeActor().
-                        setLocation( mouseEvent.point.x, mouseEvent.point.y ).
+                        setLocation( e.point.x, e.point.y ).
                         enableEvents(false).
                         setCompositeOp("lighter").
                         setSize( 5+r, 5+r );
@@ -420,8 +598,8 @@ public class ShowcaseOld {
                 int a = 255;
 
                 burbuja.fillStyle = CaatjaColor.valueOf("rgba("+r+","+g+","+b+","+a+")");
-
-                this.addChild(burbuja);
+                
+                root.addChild(burbuja);
 
                 ContainerBehavior cb= new ContainerBehavior();
                 cb.actor= burbuja;
@@ -463,8 +641,7 @@ public class ShowcaseOld {
                 burbuja.addBehavior( cb );
                 
             }
-            
-        };
+        });
         
         root.setBounds(0,0,director.canvas.getCoordinateSpaceWidth(),director.canvas.getCoordinateSpaceHeight());
         scene.addChild( root );
@@ -472,11 +649,18 @@ public class ShowcaseOld {
         root.fillStyle = CaatjaColor.valueOf("#000000");
 
         TextActor textLoading= new TextActor() {
-            @Override
-            public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+            // TODO Remove
+//            @Override
+//            public void mouseClick(CAATMouseEvent mouseEvent) throws Exception {
+//                __CAAT_director_initialize(director);
+//            }
+        };
+        
+        textLoading.setMouseClickListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
                 __CAAT_director_initialize(director);
             }
-        };
+        });
         
         textLoading.setFont("20px sans-serif").
             setTextBaseline("top").

@@ -11,6 +11,7 @@ import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
@@ -62,35 +63,38 @@ public class Scene1 {
 
                 InterpolatorActor actor= new InterpolatorActor() {
 
-                    @Override
-                    public void mouseClick(CAATMouseEvent mouseEvent) {
-                        if ( null!=selectedInterpolatorActor ) {
-                          selectedInterpolatorActor.setFillStyle(null);
-                      }
-                      selectedInterpolatorActor= (InterpolatorActor) mouseEvent.source;
-                      mouseEvent.source.setFillStyle("#00ff00");
-                      selectedInterpolatorActor= (InterpolatorActor) mouseEvent.source;
-  
-                      pathBehavior.setInterpolator( ((InterpolatorActor) mouseEvent.source).getInterpolator() );
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseClick(CAATMouseEvent mouseEvent) {
+//                        if ( null!=selectedInterpolatorActor ) {
+//                          selectedInterpolatorActor.setFillStyle(null);
+//                      }
+//                      selectedInterpolatorActor= (InterpolatorActor) mouseEvent.source;
+//                      mouseEvent.source.setFillStyle("#00ff00");
+//                      selectedInterpolatorActor= (InterpolatorActor) mouseEvent.source;
+//  
+//                      pathBehavior.setInterpolator( ((InterpolatorActor) mouseEvent.source).getInterpolator() );
+//                    }
 
-                    @Override
-                    public void mouseEnter(CAATMouseEvent mouseEvent) {
-//                        ((Dock) mouseEvent.source.parent).actorMouseEnter(mouseEvent);
+                    // TODO Remove
+//                    @Override
+//                    public void mouseEnter(CAATMouseEvent mouseEvent) {
+////                        ((Dock) mouseEvent.source.parent).actorMouseEnter(mouseEvent);
+//
+//                        if (mouseEvent.source != selectedInterpolatorActor) {
+//                            mouseEvent.source.setFillStyle("#f0f0f0");
+//                        }
+//                    }
 
-                        if (mouseEvent.source != selectedInterpolatorActor) {
-                            mouseEvent.source.setFillStyle("#f0f0f0");
-                        }
-                    }
-
-                    @Override
-                    public void mouseExit(CAATMouseEvent mouseEvent) {
-                        if ( mouseEvent.source!=selectedInterpolatorActor ) {
-                          mouseEvent.source.setFillStrokeStyle(null);
-                      }
-  
-//                        ((Dock) mouseEvent.source.parent).actorMouseExit(mouseEvent);
-                    }
+                    // TODO Remove
+//                    @Override
+//                    public void mouseExit(CAATMouseEvent mouseEvent) {
+//                        if ( mouseEvent.source!=selectedInterpolatorActor ) {
+//                          mouseEvent.source.setFillStrokeStyle(null);
+//                      }
+//  
+////                        ((Dock) mouseEvent.source.parent).actorMouseExit(mouseEvent);
+//                    }
 
 //                    @Override
 //                    public void mouseMove(CAATMouseEvent mouseEvent) {
@@ -101,6 +105,41 @@ public class Scene1 {
                      setInterpolator((Interpolator) lerps.values().toArray()[(j*cols+i)], null ).
                      setBounds( 0, 0, min, min ).
                      setStringStrokeStyle("blue" );
+                
+                actor.setMouseExitListener(new MouseListener() {
+                    public void call(CAATMouseEvent e) throws Exception {
+                        if ( e.source!=selectedInterpolatorActor ) {
+                            e.source.setFillStrokeStyle(null);
+                        }
+    
+//                          ((Dock) mouseEvent.source.parent).actorMouseExit(mouseEvent);
+                    }
+                });
+                
+                actor.setMouseEnterListener(new MouseListener() {
+                    @Override
+                    public void call(CAATMouseEvent e) throws Exception {
+//                      ((Dock) mouseEvent.source.parent).actorMouseEnter(mouseEvent);
+
+                      if (e.source != selectedInterpolatorActor) {
+                          e.source.setFillStyle("#f0f0f0");
+                      }
+                    }
+                });
+                
+                
+                actor.setMouseClickListener(new MouseListener() {
+                    public void call(CAATMouseEvent mouseEvent) {
+                        if (null != selectedInterpolatorActor) {
+                            selectedInterpolatorActor.setFillStyle(null);
+                        }
+                        selectedInterpolatorActor = (InterpolatorActor) mouseEvent.source;
+                        mouseEvent.source.setFillStyle("#00ff00");
+                        selectedInterpolatorActor = (InterpolatorActor) mouseEvent.source;
+
+                        pathBehavior.setInterpolator(((InterpolatorActor) mouseEvent.source).getInterpolator());
+                    }
+                });
 
                 root.addChild( actor );
             }
@@ -144,12 +183,20 @@ public class Scene1 {
                 super.paint(director, time);
             }
 
-            @Override
-            public void mouseDblClick(CAATMouseEvent mouseEvent) {
-                fish.pathMeasure.interpolator = interpolatorReal;
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseDblClick(CAATMouseEvent mouseEvent) {
+//                fish.pathMeasure.interpolator = interpolatorReal;
+//            }
 
         };
+        
+        ia.setMouseDblClickListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                fish.pathMeasure.interpolator = interpolatorReal;
+            }
+        });
+        
         ia.setInterpolator(interpolatorReal, null);
         ia.setBounds(x, y, S, S);
         ia.fillStyle = CaatjaColor.valueOf("#c0c0c0");

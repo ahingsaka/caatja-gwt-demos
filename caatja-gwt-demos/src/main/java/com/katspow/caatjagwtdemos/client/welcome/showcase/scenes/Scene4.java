@@ -6,6 +6,7 @@ import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -17,13 +18,24 @@ public class Scene4 {
 
     public static Scene init(Director director) throws Exception {
         Scene scene = new Scene() {
-            @Override
-            public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                mouseEvent.source.mouseMove(mouseEvent);
-                ((TextActor) ((ActorContainer) mouseEvent.source).childrenList.get(1)).setText("");
-                ((TextActor) ((ActorContainer) mouseEvent.source).childrenList.get(2)).setText("");
-            }
+            
+            // TODO Remove
+//            @Override
+//            public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                mouseEvent.source.mouseMove(mouseEvent);
+//                ((TextActor) ((ActorContainer) mouseEvent.source).childrenList.get(1)).setText("");
+//                ((TextActor) ((ActorContainer) mouseEvent.source).childrenList.get(2)).setText("");
+//            }
         };
+        
+        scene.setMouseMoveListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                e.source.mouseMove(e);
+                ((TextActor) ((ActorContainer) e.source).childrenList.get(1)).setText("");
+                ((TextActor) ((ActorContainer) e.source).childrenList.get(2)).setText("");
+            }
+        });
+        
         
         ActorContainer cc= new ActorContainer();
         cc.setBounds( 0,0,director.canvas.getCoordinateSpaceWidth(),director.canvas.getCoordinateSpaceHeight() );
@@ -93,9 +105,59 @@ public class Scene4 {
                     canvas.stroke();
                 }
                 
-                @Override
-                public void mouseDblClick(CAATMouseEvent mouseEvent) {
-                    Actor actor= mouseEvent.source;
+                // TODO Remove
+//                @Override
+//                public void mouseDblClick(CAATMouseEvent mouseEvent) {
+//                    Actor actor= mouseEvent.source;
+//                    if( null==actor ) {
+//                        return;
+//                    }
+//
+//                    ActorContainer parent= actor.parent;
+//                    parent.setZOrder(actor,Integer.MAX_VALUE);
+//                }
+                
+                // TODO Remove
+//                @Override
+//                public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                    Actor actor= mouseEvent.source;
+//                    super.mouseMove(mouseEvent);
+//                    
+//                    // bugbug, subiendo hasta scena
+//                    ((TextActor) actor.parent.parent.childrenList.get(1)).setText("Local Coord: ("+
+//                            ((int)(mouseEvent.point.x*100)>>0)/100+","+
+//                            ((int)(mouseEvent.point.y*100)>>0)/100+")");
+//                    ((TextActor) actor.parent.parent.childrenList.get(2)).setText("Screen Coord: ("+
+//                            mouseEvent.screenPoint.x+","+
+//                            mouseEvent.screenPoint.y+")");
+//                    ((TextActor) actor.parent.parent.childrenList.get(3)).setText(
+//                            "Parent Pos: ("+((int)(actor.x*100)>>0)/100+","+((int)(actor.y*100)>>0)/100+")" );           
+//                }
+                
+            };
+            
+            p.setMouseMoveListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Actor actor= e.source;
+                    
+                    // TODO Useful ?
+//                    super.mouseMove(e);
+                    
+                    // bugbug, subiendo hasta scena
+                    ((TextActor) actor.parent.parent.childrenList.get(1)).setText("Local Coord: ("+
+                            ((int)(e.point.x*100)>>0)/100+","+
+                            ((int)(e.point.y*100)>>0)/100+")");
+                    ((TextActor) actor.parent.parent.childrenList.get(2)).setText("Screen Coord: ("+
+                            e.screenPoint.x+","+
+                            e.screenPoint.y+")");
+                    ((TextActor) actor.parent.parent.childrenList.get(3)).setText(
+                            "Parent Pos: ("+((int)(actor.x*100)>>0)/100+","+((int)(actor.y*100)>>0)/100+")" );  
+                }
+            });
+            
+            p.setMouseDblClickListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Actor actor= e.source;
                     if( null==actor ) {
                         return;
                     }
@@ -103,24 +165,7 @@ public class Scene4 {
                     ActorContainer parent= actor.parent;
                     parent.setZOrder(actor,Integer.MAX_VALUE);
                 }
-                
-                @Override
-                public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                    Actor actor= mouseEvent.source;
-                    super.mouseMove(mouseEvent);
-                    
-                    // bugbug, subiendo hasta scena
-                    ((TextActor) actor.parent.parent.childrenList.get(1)).setText("Local Coord: ("+
-                            ((int)(mouseEvent.point.x*100)>>0)/100+","+
-                            ((int)(mouseEvent.point.y*100)>>0)/100+")");
-                    ((TextActor) actor.parent.parent.childrenList.get(2)).setText("Screen Coord: ("+
-                            mouseEvent.screenPoint.x+","+
-                            mouseEvent.screenPoint.y+")");
-                    ((TextActor) actor.parent.parent.childrenList.get(3)).setText(
-                            "Parent Pos: ("+((int)(actor.x*100)>>0)/100+","+((int)(actor.y*100)>>0)/100+")" );           
-                }
-                
-            };
+            });
             
             int s = 80;
             p.setBounds(Math.random() * director.canvas.getCoordinateSpaceWidth(), Math.random()* director.canvas.getCoordinateSpaceHeight(), s, s);
@@ -140,26 +185,61 @@ public class Scene4 {
                     canvas.fillRect(1,1,5,5);
                 }
                 
-                @Override
-                public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                    Actor actor= mouseEvent.source;
-                    super.mouseMove(mouseEvent);
+                // TODO Remove
+//                @Override
+//                public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                    Actor actor= mouseEvent.source;
+//                    super.mouseMove(mouseEvent);
+//                    
+//                    // bugbug, subiendo hasta scena
+//                    ((TextActor) actor.parent.parent.parent.childrenList.get(1)).setText("Local Coord: ("+
+//                            ((int)(mouseEvent.point.x*100)>>0)/100+","+
+//                            ((int)(mouseEvent.point.y*100)>>0)/100+")");
+//                    ((TextActor) actor.parent.parent.parent.childrenList.get(2)).setText("Screen Coord: ("+
+//                            mouseEvent.screenPoint.x+","+
+//                            mouseEvent.screenPoint.y+")");
+//                    ((TextActor) actor.parent.parent.parent.childrenList.get(3)).setText(
+//                            "Parent Pos: ("+((int)(actor.x*100)>>0)/100+","+((int)(actor.y*100)>>0)/100+")" );            
+//                    
+//                }
+
+                // TODO Remove
+//                @Override
+//                public void mouseDblClick(CAATMouseEvent mouseEvent) throws Exception {
+//                    Actor actor= mouseEvent.source;
+//                    if( null==actor ) {
+//                        return;
+//                    }
+//
+//                    ActorContainer parent= actor.parent;
+//                    parent.removeChild(actor);
+//                    parent.addChild(actor);
+//                }
+                
+            };
+            
+            p0.setMouseMoveListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Actor actor= e.source;
+  
+                 // TODO Useful ?
+//                    super.mouseMove(e);
                     
                     // bugbug, subiendo hasta scena
                     ((TextActor) actor.parent.parent.parent.childrenList.get(1)).setText("Local Coord: ("+
-                            ((int)(mouseEvent.point.x*100)>>0)/100+","+
-                            ((int)(mouseEvent.point.y*100)>>0)/100+")");
+                            ((int)(e.point.x*100)>>0)/100+","+
+                            ((int)(e.point.y*100)>>0)/100+")");
                     ((TextActor) actor.parent.parent.parent.childrenList.get(2)).setText("Screen Coord: ("+
-                            mouseEvent.screenPoint.x+","+
-                            mouseEvent.screenPoint.y+")");
+                            e.screenPoint.x+","+
+                            e.screenPoint.y+")");
                     ((TextActor) actor.parent.parent.parent.childrenList.get(3)).setText(
                             "Parent Pos: ("+((int)(actor.x*100)>>0)/100+","+((int)(actor.y*100)>>0)/100+")" );            
-                    
                 }
-
-                @Override
-                public void mouseDblClick(CAATMouseEvent mouseEvent) throws Exception {
-                    Actor actor= mouseEvent.source;
+            });
+            
+            p0.setMouseDblClickListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Actor actor= e.source;
                     if( null==actor ) {
                         return;
                     }
@@ -168,8 +248,7 @@ public class Scene4 {
                     parent.removeChild(actor);
                     parent.addChild(actor);
                 }
-                
-            };
+            });
             
             p0.setBounds((double) s/4,(double) s/4,(double) s/4,(double) s/4 );
             p0.setRotation( Math.PI*2*Math.random() );
@@ -186,25 +265,59 @@ public class Scene4 {
                     canvas.fillRect(1,1,5,5);
                 }
 
-                @Override
-                public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                    Actor actor= mouseEvent.source;
-                    super.mouseMove(mouseEvent);
+                // TODO Remove
+//                @Override
+//                public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                    Actor actor= mouseEvent.source;
+//                    super.mouseMove(mouseEvent);
+//                    
+//                    // bugbug, subiendo hasta scena
+//                    ((TextActor) actor.parent.parent.parent.childrenList.get(1)).setText("Local Coord: ("+
+//                            ((int)(mouseEvent.point.x*100)>>0)/100+","+
+//                            ((int)(mouseEvent.point.y*100)>>0)/100+")");
+//                    ((TextActor) actor.parent.parent.parent.childrenList.get(2)).setText("Screen Coord: ("+
+//                            mouseEvent.screenPoint.x+","+
+//                            mouseEvent.screenPoint.y+")");
+//                    ((TextActor) actor.parent.parent.parent.childrenList.get(3)).setText(
+//                            "Parent Pos: ("+((int)(actor.x*100)>>0)/100+","+((int)(actor.y*100)>>0)/100+")" );
+//                }
+
+//                @Override
+//                public void mouseDblClick(CAATMouseEvent mouseEvent) throws Exception {
+//                    Actor actor= mouseEvent.source;
+//                    if( null==actor ) {
+//                        return;
+//                    }
+//
+//                    ActorContainer parent= actor.parent;
+//                    parent.removeChild(actor);
+//                    parent.addChild(actor);
+//                }
+                
+            };
+            
+            p1.setMouseMoveListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Actor actor= e.source;
+                    
+                 // TODO Useful ?
+//                    super.mouseMove(e);
                     
                     // bugbug, subiendo hasta scena
                     ((TextActor) actor.parent.parent.parent.childrenList.get(1)).setText("Local Coord: ("+
-                            ((int)(mouseEvent.point.x*100)>>0)/100+","+
-                            ((int)(mouseEvent.point.y*100)>>0)/100+")");
+                            ((int)(e.point.x*100)>>0)/100+","+
+                            ((int)(e.point.y*100)>>0)/100+")");
                     ((TextActor) actor.parent.parent.parent.childrenList.get(2)).setText("Screen Coord: ("+
-                            mouseEvent.screenPoint.x+","+
-                            mouseEvent.screenPoint.y+")");
+                            e.screenPoint.x+","+
+                            e.screenPoint.y+")");
                     ((TextActor) actor.parent.parent.parent.childrenList.get(3)).setText(
                             "Parent Pos: ("+((int)(actor.x*100)>>0)/100+","+((int)(actor.y*100)>>0)/100+")" );
                 }
-
-                @Override
-                public void mouseDblClick(CAATMouseEvent mouseEvent) throws Exception {
-                    Actor actor= mouseEvent.source;
+            });
+            
+            p1.setMouseDblClickListener(new MouseListener() {
+                public void call(CAATMouseEvent e) throws Exception {
+                    Actor actor= e.source;
                     if( null==actor ) {
                         return;
                     }
@@ -213,10 +326,8 @@ public class Scene4 {
                     parent.removeChild(actor);
                     parent.addChild(actor);
                 }
-                
-                
-                
-            };
+            });
+            
             p1.setBounds((double) s/2,(double) s/2,(double) s/4,(double) s/4 );
             p1.setRotation( Math.PI*2*Math.random() );
             p1.fillStyle=CaatjaColor.valueOf("#ffff3f");

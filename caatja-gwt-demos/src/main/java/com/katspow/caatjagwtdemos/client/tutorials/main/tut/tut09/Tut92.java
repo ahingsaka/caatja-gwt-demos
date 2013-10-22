@@ -12,6 +12,7 @@ import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaImage;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -42,67 +43,120 @@ public class Tut92 {
         // create a container, equals in size to the director.
         final ActorContainer root = new ActorContainer() {
 
-            @Override
-            public void mouseEnter(CAATMouseEvent mouseEvent) {
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseEnter(CAATMouseEvent mouseEvent) {
+//            }
 
-            @Override
-            public void mouseExit(CAATMouseEvent mouseEvent) {
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseExit(CAATMouseEvent mouseEvent) {
+//            }
 
-            @Override
-            public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                
-                double r = 10 + 15 * Math.random();
-                
-                            StarActor star = new StarActor().
-                                    initialize( 6, r, 5 ).
-                                    setInitialAngle( Math.random()*2*Math.PI ).
-                                    setLocation(mouseEvent.point.x, mouseEvent.point.y).
-                                    setSize(r, r).
-                                    enableEvents(false).
-                                    setCompositeOp("lighter").
-                                    setFillStyle( colors[(color_index++)%colors.length] );
-                
-                            this.addChild(star);
-                
-                            // fade from opacity to total transparency
-                            AlphaBehavior ab = new AlphaBehavior().
-                                    setFrameTime(_scene_8.time + 2000, 500 +  500 * Math.random()).
-                                    setValues(1, 0).
-                                    addListener(new BehaviorListener() {
-                                        
-                                        @Override
-                                        public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
-                                            actor.
-                                            setDiscardable(true).
-                                            setExpired(true);
-                                            
-                                        }
-                                        
-                                        @Override
-                                        public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                                                throws Exception {
-                                            
-                                        }
-
-                                        @Override
-                                        public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                                            
-                                        }
-                                    });
-                                
-                
-                            star.addBehavior(ab);
-                
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                
+//                double r = 10 + 15 * Math.random();
+//                
+//                            StarActor star = new StarActor().
+//                                    initialize( 6, r, 5 ).
+//                                    setInitialAngle( Math.random()*2*Math.PI ).
+//                                    setLocation(mouseEvent.point.x, mouseEvent.point.y).
+//                                    setSize(r, r).
+//                                    enableEvents(false).
+//                                    setCompositeOp("lighter").
+//                                    setFillStyle( colors[(color_index++)%colors.length] );
+//                
+//                            this.addChild(star);
+//                
+//                            // fade from opacity to total transparency
+//                            AlphaBehavior ab = new AlphaBehavior().
+//                                    setFrameTime(_scene_8.time + 2000, 500 +  500 * Math.random()).
+//                                    setValues(1, 0).
+//                                    addListener(new BehaviorListener() {
+//                                        
+//                                        @Override
+//                                        public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                                            actor.
+//                                            setDiscardable(true).
+//                                            setExpired(true);
+//                                            
+//                                        }
+//                                        
+//                                        @Override
+//                                        public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                                                throws Exception {
+//                                            
+//                                        }
+//
+//                                        @Override
+//                                        public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                                            
+//                                        }
+//                                    });
+//                                
+//                
+//                            star.addBehavior(ab);
+//                
+//            }
             
             
         }.
                 setBounds(0, 0,
                 _director_8.canvas.getCoordinateSpaceWidth(), _director_8.canvas.getCoordinateSpaceHeight()).
                 setFillStyle("#000000");
+        
+        root.setMouseEnterListener(null);
+        root.setMouseExitListener(null);
+        root.setMouseMoveListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                
+                double r = 10 + 15 * Math.random();
+                
+                StarActor star = new StarActor().
+                        initialize( 6, r, 5 ).
+                        setInitialAngle( Math.random()*2*Math.PI ).
+                        setLocation(e.point.x, e.point.y).
+                        setSize(r, r).
+                        enableEvents(false).
+                        setCompositeOp("lighter").
+                        setFillStyle( colors[(color_index++)%colors.length] );
+    
+                root.addChild(star);
+    
+                // fade from opacity to total transparency
+                AlphaBehavior ab = new AlphaBehavior().
+                        setFrameTime(_scene_8.time + 2000, 500 +  500 * Math.random()).
+                        setValues(1, 0).
+                        addListener(new BehaviorListener() {
+                            
+                            @Override
+                            public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+                                actor.
+                                setDiscardable(true).
+                                setExpired(true);
+                                
+                            }
+                            
+                            @Override
+                            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+                                    throws Exception {
+                                
+                            }
 
+                            @Override
+                            public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+                                
+                            }
+                        });
+                    
+    
+                star.addBehavior(ab);
+    
+                
+            }
+        });
 
         _scene_8.addChild(root);
         

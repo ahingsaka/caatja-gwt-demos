@@ -13,6 +13,7 @@ import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.core.canvas.CaatjaImage;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -37,34 +38,61 @@ public class Demo7 {
         final Director director = new Director().initialize(800, 500, canvas);
         director.imagesCache = images;
         
-        Scene scene = new Scene() {
+        final Scene scene = new Scene() {
 
-            @Override
-            public void mouseEnter(CAATMouseEvent mouseEvent) {
-                this.pointed= true;
-                if (circle != null) {
-              circle.setVisible(false);
-                }
-              
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseEnter(CAATMouseEvent mouseEvent) {
+//                this.pointed= true;
+//                if (circle != null) {
+//              circle.setVisible(false);
+//                }
+//              
+//            }
 
-            @Override
-            public void mouseExit(CAATMouseEvent mouseEvent) {
-              this.pointed= false;
-              if (circle != null) {
-                  circle.setVisible(true);
-              }
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseExit(CAATMouseEvent mouseEvent) {
+//              this.pointed= false;
+//              if (circle != null) {
+//                  circle.setVisible(true);
+//              }
+//            }
 
-            @Override
-            public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
-                double x= mouseEvent.point.x;
-                double y= mouseEvent.point.y;
+            // TODO Remove
+//            @Override
+//            public void mouseMove(CAATMouseEvent mouseEvent) throws Exception {
+//                double x= mouseEvent.point.x;
+//                double y= mouseEvent.point.y;
+//                fishLookAt(x,y, peces);
+//            }
+        };
+        
+        scene.setMouseMoveListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                double x= e.point.x;
+                double y= e.point.y;
                 fishLookAt(x,y, peces);
             }
-            
-            
-        };
+        });
+        
+        scene.setMouseExitListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                scene.pointed = false;
+                if (circle != null) {
+                    circle.setVisible(true);
+                }
+            }
+        });
+        
+        scene.setMouseEnterListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                scene.pointed = true;
+                if (circle != null) {
+                    circle.setVisible(false);
+                }
+            }
+        });
         
         director.addScene(scene);
         

@@ -4,6 +4,7 @@ import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -28,17 +29,24 @@ public class Tut26 {
               ctx.strokeRect(0,0,this.width,this.height);
             }
 
-            @Override
-            public void mouseMove(CAATMouseEvent e) throws Exception {
-                double angle= Math.atan2(
-                      e.y - arrow.height / 2,
-                      e.x - arrow.width / 2 );
-              arrow.setRotation(angle);
-            }
+            // TODO Remove
+//            @Override
+//            public void mouseMove(CAATMouseEvent e) throws Exception {
+//                double angle= Math.atan2(
+//                      e.y - arrow.height / 2,
+//                      e.x - arrow.width / 2 );
+//              arrow.setRotation(angle);
+//            }
             
         }.
                 setBounds(0,0,director.width,director.height);
-
+        
+        bg.setMouseMoveListener(new MouseListener() {
+            public void call(CAATMouseEvent e) throws Exception {
+                double angle = Math.atan2(e.y - arrow.height / 2, e.x - arrow.width / 2);
+                arrow.setRotation(angle);
+            }
+        });
 
         scene.addChild(bg);
 
