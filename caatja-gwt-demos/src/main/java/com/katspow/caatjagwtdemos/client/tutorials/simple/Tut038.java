@@ -6,6 +6,8 @@ import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.ContainerBehavior;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorAppliedListener;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.event.MouseListener;
@@ -148,26 +150,33 @@ public class Tut038 {
                 ContainerBehavior cb= (ContainerBehavior) new ContainerBehavior().
                     setFrameTime( _scene_8.time+2000+1000*Math.random(), 500 ).
                     addListener(
-                            new BehaviorListener() {
-                                
-                                @Override
-                                public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
-                                    actor.
-                                    setDiscardable(true).
-                                    setExpired(true);
+                            BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                                public void call(BaseBehavior behavior, double time, Actor actor) {
+                                    actor.setDiscardable(true).setExpired(true);
                                 }
-
-                                @Override
-                                public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime,
-                                        Actor actor, SetForTimeReturnValue value) {
-                                    
-                                }
-
-                                @Override
-                                public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                                    
-                                }
-                            }
+                            })
+                            
+                            // TODO Remove
+//                            new BehaviorListener() {
+//                                
+//                                @Override
+//                                public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
+//                                    actor.
+//                                    setDiscardable(true).
+//                                    setExpired(true);
+//                                }
+//
+//                                @Override
+//                                public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime,
+//                                        Actor actor, SetForTimeReturnValue value) {
+//                                    
+//                                }
+//
+//                                @Override
+//                                public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                                    
+//                                }
+//                            }
                             );
 
                 AlphaBehavior ab= (AlphaBehavior) new AlphaBehavior().

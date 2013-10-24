@@ -11,6 +11,7 @@ import com.katspow.caatja.behavior.ContainerBehavior;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.canvas.CaatjaColor;
 import com.katspow.caatja.event.CAATMouseEvent;
 import com.katspow.caatja.event.MouseListener;
@@ -149,22 +150,33 @@ public class Scene7 {
                 cb.actor= burbuja;
 
                 cb.setFrameTime( scene.time+2000+1000*Math.random(), 500 );
-                cb.addListener(new BehaviorListener() {
-                    @Override
-                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
-                        behaviour.actor.discardable= true;
-                        behaviour.actor.setExpired(true);
-                    }
-
-                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
-                            SetForTimeReturnValue value) {
-                    }
-
-                    @Override
-                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+                cb.addListener(
                         
-                    }
-                });
+                        BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                            public void call(BaseBehavior behavior, double time, Actor actor) {
+                                behavior.actor.discardable= true;
+                                behavior.actor.setExpired(true);
+                            }
+                        })
+                        
+//                        new BehaviorListener() {
+//                    @Override
+//                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
+//                        behaviour.actor.discardable= true;
+//                        behaviour.actor.setExpired(true);
+//                    }
+//
+//                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
+//                            SetForTimeReturnValue value) {
+//                    }
+//
+//                    @Override
+//                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                        
+//                    }
+//                }
+                        
+                        );
                 
                 AlphaBehavior ab = new AlphaBehavior();
                 ab.setFrameTime(0, 500);
@@ -210,33 +222,55 @@ public class Scene7 {
             pbfish.setInterpolator( new Interpolator().createExponentialInOutInterpolator(2,false) );
             pbfish.setFrameTime( 0, 2500+2500*Math.random() );
             
-            pbfish.addListener(new BehaviorListener() {
-                @Override
-                public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
-                    Pt endCoord= ((PathBehavior) behaviour).path.endCurvePosition();
+            pbfish.addListener(
                     
-                    ((PathBehavior) behaviour).setPath( new Path().setCubic(
-                        endCoord.x,
-                        endCoord.y,
-                        Math.random()*director.width,
-                        Math.random()*director.height,
-                        Math.random()*director.width,
-                        Math.random()*director.height,
-                        Math.random()*director.width,
-                        Math.random()*director.height));
+                    BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                            Pt endCoord= ((PathBehavior) behavior).path.endCurvePosition();
+                            
+                            ((PathBehavior) behavior).setPath( new Path().setCubic(
+                                endCoord.x,
+                                endCoord.y,
+                                Math.random()*director.width,
+                                Math.random()*director.height,
+                                Math.random()*director.width,
+                                Math.random()*director.height,
+                                Math.random()*director.width,
+                                Math.random()*director.height));
+                            
+                            behavior.setFrameTime( scene.time, 3000+Math.random()*3000 );
+                        }
+                    })
                     
-                    behaviour.setFrameTime( scene.time, 3000+Math.random()*3000 );
-                }
-
-                public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
-                        SetForTimeReturnValue value) {
-                }
-
-                @Override
-                public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                    new BehaviorListener() {
+//                @Override
+//                public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
+//                    Pt endCoord= ((PathBehavior) behaviour).path.endCurvePosition();
+//                    
+//                    ((PathBehavior) behaviour).setPath( new Path().setCubic(
+//                        endCoord.x,
+//                        endCoord.y,
+//                        Math.random()*director.width,
+//                        Math.random()*director.height,
+//                        Math.random()*director.width,
+//                        Math.random()*director.height,
+//                        Math.random()*director.width,
+//                        Math.random()*director.height));
+//                    
+//                    behaviour.setFrameTime( scene.time, 3000+Math.random()*3000 );
+//                }
+//
+//                public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
+//                        SetForTimeReturnValue value) {
+//                }
+//
+//                @Override
+//                public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                    
+//                }
+//            }
                     
-                }
-            });
+                    );
             
             fish.addBehavior( pbfish );
         }

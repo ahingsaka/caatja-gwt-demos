@@ -6,6 +6,7 @@ import com.katspow.caatja.behavior.BaseBehavior;
 import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
@@ -61,10 +62,9 @@ public class Demo2 {
                     setCycle(true).
                     setAutoRotate(true).
                     addListener(
-                            new BehaviorListener() {
-                                
-                                @Override
-                                public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+                            
+                            BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                                public void call(BaseBehavior behavior, double time, Actor actor) {
                                     ((PathBehavior) behavior).path.setCubic(
                                             -fw - Math.random() * 300,
                                             Math.random() * director.height,
@@ -82,18 +82,42 @@ public class Demo2 {
                                     ((FishScene12) actor).born();
                                     
                                 }
-                                
-                                @Override
-                                public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                                        throws Exception {
-                                    
-                                }
-
-                                @Override
-                                public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                                    
-                                }
-                            }
+                            })
+                            
+                            // TODO Remove
+//                            new BehaviorListener() {
+//                                
+//                                @Override
+//                                public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                                    ((PathBehavior) behavior).path.setCubic(
+//                                            -fw - Math.random() * 300,
+//                                            Math.random() * director.height,
+//
+//                                            director.width * Math.random(),
+//                                            -Math.random() * director.height / 2 + Math.random() * director.height,
+//
+//                                            director.width * Math.random(),
+//                                            -Math.random() * director.height / 2 + Math.random() * director.height,
+//
+//                                            Math.random() < .5 ? director.width + fw + Math.random() * 150 : Math.random() * director.width,
+//                                            Math.random() < .5 ? -director.height * Math.random() - 300 : director.height + Math.random() * director.height
+//                                            );
+//                                    behavior.setFrameTime(scene.time, (int)(20000 + 5000 * Math.random()) >> 0);
+//                                    ((FishScene12) actor).born();
+//                                    
+//                                }
+//                                
+//                                @Override
+//                                public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                                        throws Exception {
+//                                    
+//                                }
+//
+//                                @Override
+//                                public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                                    
+//                                }
+//                            }
                             
                             );
 

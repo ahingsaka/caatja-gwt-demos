@@ -6,6 +6,7 @@ import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -78,36 +79,59 @@ public class SceneExperimental {
                                         Math.random()*ww,
                                         Math.random()*hh) ).
                                 setFrameTime( scene.time, 3000+Math.random()*3000 ).
-                                addListener(new BehaviorListener() {
-                                    
-                                    @Override
-                                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
-                                        PathBehavior pathBehavior = (PathBehavior) behaviour;
-                                        Pt endCoord = pathBehavior.path.endCurvePosition();
-                                        pathBehavior.setPath(
-                                                new Path().setCubic(
-                                                    endCoord.x,
-                                                    endCoord.y,
-                                                    Math.random()*ww,
-                                                    Math.random()*hh,
-                                                    Math.random()*ww,
-                                                    Math.random()*hh,
-                                                    Math.random()*ww,
-                                                    Math.random()*hh) );
-                                        behaviour.setFrameTime( scene.time, 3000+Math.random()*3000 );            
+                                addListener(
                                         
-                                    }
-                                    
-                                    @Override
-                                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
+                                        BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                                            public void call(BaseBehavior behavior, double time, Actor actor) {
+                                                PathBehavior pathBehavior = (PathBehavior) behavior;
+                                                Pt endCoord = pathBehavior.path.endCurvePosition();
+                                                pathBehavior.setPath(
+                                                        new Path().setCubic(
+                                                            endCoord.x,
+                                                            endCoord.y,
+                                                            Math.random()*ww,
+                                                            Math.random()*hh,
+                                                            Math.random()*ww,
+                                                            Math.random()*hh,
+                                                            Math.random()*ww,
+                                                            Math.random()*hh) );
+                                                behavior.setFrameTime( scene.time, 3000+Math.random()*3000 );       
+                                                
+                                            }
+                                        })
                                         
-                                    }
-
-                                    @Override
-                                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                                        new BehaviorListener() {
+//                                    
+//                                    @Override
+//                                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
+//                                        PathBehavior pathBehavior = (PathBehavior) behaviour;
+//                                        Pt endCoord = pathBehavior.path.endCurvePosition();
+//                                        pathBehavior.setPath(
+//                                                new Path().setCubic(
+//                                                    endCoord.x,
+//                                                    endCoord.y,
+//                                                    Math.random()*ww,
+//                                                    Math.random()*hh,
+//                                                    Math.random()*ww,
+//                                                    Math.random()*hh,
+//                                                    Math.random()*ww,
+//                                                    Math.random()*hh) );
+//                                        behaviour.setFrameTime( scene.time, 3000+Math.random()*3000 );            
+//                                        
+//                                    }
+//                                    
+//                                    @Override
+//                                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
+//                                        
+//                                    }
+//
+//                                    @Override
+//                                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                                        
+//                                    }
+//                                }
                                         
-                                    }
-                                }));
+                                        ));
                 container.addChild(css);
             }
         }

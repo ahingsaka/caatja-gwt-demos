@@ -7,6 +7,8 @@ import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorAppliedListener;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
@@ -81,38 +83,61 @@ public class Scene12 {
                                     * director.width, Math.random() < .5 ? -director.height * Math.random() - 300
                                     : director.height + Math.random() * director.height))
                     .setFrameTime(scene.time + inTime, (int) (20000 + 5000 * Math.random()) >> 0).setCycle(true)
-                    .setAutoRotate(true).addListener(new BehaviorListener() {
-
-                        @Override
-                        public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
-                            ((PathBehavior) behavior).path.setCubic(-fw - Math.random() * 300, Math.random()
-                                    * director.height,
-
-                            director.width * Math.random(), -Math.random() * director.height / 2 + Math.random()
-                                    * director.height,
-
-                            director.width * Math.random(), -Math.random() * director.height / 2 + Math.random()
-                                    * director.height,
-
-                            Math.random() < .5 ? director.width + fw + Math.random() * 150 : Math.random()
-                                    * director.width, Math.random() < .5 ? -director.height * Math.random() - 300
-                                    : director.height + Math.random() * director.height);
-                            behavior.setFrameTime(scene.time, (int) (20000 + 5000 * Math.random()) >> 0);
-                            ((FishScene12) actor).born();
-
-                        }
-
-                        @Override
-                        public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
-                                SetForTimeReturnValue value) {
-
-                        }
-
-                        @Override
-                        public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+                    .setAutoRotate(true).addListener(
                             
-                        }
-                    });
+                            BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                                public void call(BaseBehavior behavior, double time, Actor actor) {
+                                    ((PathBehavior) behavior).path.setCubic(-fw - Math.random() * 300, Math.random()
+                                            * director.height,
+
+                                    director.width * Math.random(), -Math.random() * director.height / 2 + Math.random()
+                                            * director.height,
+
+                                    director.width * Math.random(), -Math.random() * director.height / 2 + Math.random()
+                                            * director.height,
+
+                                    Math.random() < .5 ? director.width + fw + Math.random() * 150 : Math.random()
+                                            * director.width, Math.random() < .5 ? -director.height * Math.random() - 300
+                                            : director.height + Math.random() * director.height);
+                                    behavior.setFrameTime(scene.time, (int) (20000 + 5000 * Math.random()) >> 0);
+                                    ((FishScene12) actor).born();
+                                }
+                            })
+                            
+//                            new BehaviorListener() {
+//
+//                        @Override
+//                        public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                            ((PathBehavior) behavior).path.setCubic(-fw - Math.random() * 300, Math.random()
+//                                    * director.height,
+//
+//                            director.width * Math.random(), -Math.random() * director.height / 2 + Math.random()
+//                                    * director.height,
+//
+//                            director.width * Math.random(), -Math.random() * director.height / 2 + Math.random()
+//                                    * director.height,
+//
+//                            Math.random() < .5 ? director.width + fw + Math.random() * 150 : Math.random()
+//                                    * director.width, Math.random() < .5 ? -director.height * Math.random() - 300
+//                                    : director.height + Math.random() * director.height);
+//                            behavior.setFrameTime(scene.time, (int) (20000 + 5000 * Math.random()) >> 0);
+//                            ((FishScene12) actor).born();
+//
+//                        }
+//
+//                        @Override
+//                        public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
+//                                SetForTimeReturnValue value) {
+//
+//                        }
+//
+//                        @Override
+//                        public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                            
+//                        }
+//                    }
+                            
+                            );
 
             FishScene12 f = (FishScene12) new FishScene12().setBounds(300, 400, fw, fh);
             ((FishScene12) f.born().setFrameTime(scene.time + inTime, Double.MAX_VALUE)).setBodyColor(colors[i

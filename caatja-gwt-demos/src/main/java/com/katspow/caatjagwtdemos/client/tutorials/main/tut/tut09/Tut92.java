@@ -8,6 +8,7 @@ import com.katspow.caatja.behavior.AlphaBehavior;
 import com.katspow.caatja.behavior.BaseBehavior;
 import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaImage;
@@ -129,27 +130,38 @@ public class Tut92 {
                 AlphaBehavior ab = new AlphaBehavior().
                         setFrameTime(_scene_8.time + 2000, 500 +  500 * Math.random()).
                         setValues(1, 0).
-                        addListener(new BehaviorListener() {
-                            
-                            @Override
-                            public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
-                                actor.
-                                setDiscardable(true).
-                                setExpired(true);
+                        addListener(
                                 
-                            }
-                            
-                            @Override
-                            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                                    throws Exception {
+                                BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                                    public void call(BaseBehavior behavior, double time, Actor actor) {
+                                        actor.
+                                        setDiscardable(true).
+                                        setExpired(true);
+                                    }
+                                })
                                 
-                            }
-
-                            @Override
-                            public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                                
-                            }
-                        });
+//                                new BehaviorListener() {
+//                            
+//                            @Override
+//                            public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                                actor.
+//                                setDiscardable(true).
+//                                setExpired(true);
+//                                
+//                            }
+//                            
+//                            @Override
+//                            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                                    throws Exception {
+//                                
+//                            }
+//
+//                            @Override
+//                            public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                                
+//                            }
+//                        }
+                                );
                     
     
                 star.addBehavior(ab);

@@ -13,6 +13,8 @@ import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorAppliedListener;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.core.canvas.CaatjaImage;
 import com.katspow.caatja.event.CAATMouseEvent;
@@ -382,27 +384,40 @@ public class GameScene implements ContextListener {
                         enableEvents(false);
                 
                 actorCount = 0;
-                moveB.addListener(new BehaviorListener() {
-                    @Override
-                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
-                        actorCount++;
-                        if ( actorCount== gameRows * gameColumns ) {
-                            if ( context.status==context.ST_INITIALIZING ) {
-                                context.setStatus( context.ST_RUNNNING );
+                moveB.addListener(
+                        
+                    BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                            actorCount++;
+                            if ( actorCount== gameRows * gameColumns ) {
+                                if ( context.status==context.ST_INITIALIZING ) {
+                                    context.setStatus( context.ST_RUNNNING );
+                                }
                             }
                         }
-                    }
-
-                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
+                    })
                         
-                    }
-
-                    @Override
-                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                        
-                    }
-                    
-                });
+//                        new BehaviorListener() {
+//                    @Override
+//                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
+//                        actorCount++;
+//                        if ( actorCount== gameRows * gameColumns ) {
+//                            if ( context.status==context.ST_INITIALIZING ) {
+//                                context.setStatus( context.ST_RUNNNING );
+//                            }
+//                        }
+//                    }
+//
+//                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
+//                        
+//                    }
+//
+//                    @Override
+//                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                        
+//                    }
+//                }
+                    );
 
             }
         }
@@ -534,25 +549,38 @@ public class GameScene implements ContextListener {
           PathBehavior pathBehavior = (PathBehavior) new PathBehavior().
               setFrameTime(this.directorScene.time, 200);
               pathBehavior.setPath(path).
-              addListener(new BehaviorListener() {
-                  @Override
-                  public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
-                      count++;
-                      if ( count==maxCount ) {
-                          bricksContainer.enableEvents(true);
-                      }
-                  }
-
-                  @Override
-                  public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime,
-                          Actor actor, SetForTimeReturnValue value) {
-                  }
-
-                @Override
-                public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                    
-                }
-              }).
+              addListener(
+                      
+                      BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                            count++;
+                            if ( count==maxCount ) {
+                                bricksContainer.enableEvents(true);
+                            }
+                        }
+                    })
+                      
+//                      new BehaviorListener() {
+//                  @Override
+//                  public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
+//                      count++;
+//                      if ( count==maxCount ) {
+//                          bricksContainer.enableEvents(true);
+//                      }
+//                  }
+//
+//                  @Override
+//                  public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime,
+//                          Actor actor, SetForTimeReturnValue value) {
+//                  }
+//
+//                @Override
+//                public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                    
+//                }
+//              }
+                      
+                      ).
               setPingPong() ;
           
           actor.emptyBehaviorList().
@@ -583,40 +611,73 @@ public class GameScene implements ContextListener {
           PathBehavior pathBehavior = (PathBehavior) new PathBehavior()
               .setFrameTime( this.directorScene.time, 800 );
               pathBehavior.setPath(path)
-              .addListener(new BehaviorListener() {
-                          @Override
-                          public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
-                              actor.setExpired(true);
-                          }
-                          
-                          @Override
-                          public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) throws Exception {
-//                              System.out.println("behavior applied");
-                              List<String> colors= Arrays.asList("#00ff00","#ffff00","#00ffff");
-                              for(int i=0; i<3; i++ ) {
-                                  double offset0= Math.random()*10*(Math.random()<.5?1:-1);
-                                  double offset1= Math.random()*10*(Math.random()<.5?1:-1);
-                                  directorScene.addChild(
-                                      new ShapeActor().
-                                          
-                                          setBounds( offset0+actor.x-3, offset1+actor.y-3, 6, 6 ).
-                                          setShape( ShapeActor.Shape.CIRCLE).
-                                          setFillStyle( colors.get(i%3) ).
-                                          setDiscardable(true).
-                                          setFrameTime(directorScene.time, 300).
-                                          addBehavior(
-                                              new AlphaBehavior().
-                                                  setFrameTime(directorScene.time, 300).
-                                                  setValues( .6, .1 )
-                                          ) );
-                              }
-                          }
-
-                        @Override
-                        public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                            
+              .addListener(
+                      
+                      BehaviorListener.valueOfExpiredAndApplied(new BehaviorExpiredListener() {
+                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                            actor.setExpired(true);
                         }
-                      });
+                        
+                    }, new BehaviorAppliedListener() {
+                        public void call(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+                                throws Exception {
+                            List<String> colors= Arrays.asList("#00ff00","#ffff00","#00ffff");
+                            for(int i=0; i<3; i++ ) {
+                                double offset0= Math.random()*10*(Math.random()<.5?1:-1);
+                                double offset1= Math.random()*10*(Math.random()<.5?1:-1);
+                                directorScene.addChild(
+                                    new ShapeActor().
+                                        
+                                        setBounds( offset0+actor.x-3, offset1+actor.y-3, 6, 6 ).
+                                        setShape( ShapeActor.Shape.CIRCLE).
+                                        setFillStyle( colors.get(i%3) ).
+                                        setDiscardable(true).
+                                        setFrameTime(directorScene.time, 300).
+                                        addBehavior(
+                                            new AlphaBehavior().
+                                                setFrameTime(directorScene.time, 300).
+                                                setValues( .6, .1 )
+                                        ) );
+                            }
+                        }
+                    })
+                      
+//                      new BehaviorListener() {
+//                          @Override
+//                          public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                              actor.setExpired(true);
+//                          }
+//                          
+//                          @Override
+//                          public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) throws Exception {
+////                              System.out.println("behavior applied");
+//                              List<String> colors= Arrays.asList("#00ff00","#ffff00","#00ffff");
+//                              for(int i=0; i<3; i++ ) {
+//                                  double offset0= Math.random()*10*(Math.random()<.5?1:-1);
+//                                  double offset1= Math.random()*10*(Math.random()<.5?1:-1);
+//                                  directorScene.addChild(
+//                                      new ShapeActor().
+//                                          
+//                                          setBounds( offset0+actor.x-3, offset1+actor.y-3, 6, 6 ).
+//                                          setShape( ShapeActor.Shape.CIRCLE).
+//                                          setFillStyle( colors.get(i%3) ).
+//                                          setDiscardable(true).
+//                                          setFrameTime(directorScene.time, 300).
+//                                          addBehavior(
+//                                              new AlphaBehavior().
+//                                                  setFrameTime(directorScene.time, 300).
+//                                                  setValues( .6, .1 )
+//                                          ) );
+//                              }
+//                          }
+//
+//                        @Override
+//                        public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                            
+//                        }
+//                      }
+                      
+                      );
           
           
           actor.enableEvents(false).
@@ -721,23 +782,32 @@ public class GameScene implements ContextListener {
             setInterpolator(
                 new Interpolator().createBounceOutInterpolator(false) ).
                 
-            addListener(new BehaviorListener() {
-                
-                @Override
-                public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
-                    me_endGameActor.enableEvents(true);
-                }
-                
-                @Override
-                public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
+            addListener(
                     
-                }
-
-                @Override
-                public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+                    BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                            me_endGameActor.enableEvents(true);
+                        }
+                    })
                     
-                }
-           }));
+//                    new BehaviorListener() {
+//                
+//                @Override
+//                public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                    me_endGameActor.enableEvents(true);
+//                }
+//                
+//                @Override
+//                public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value) {
+//                    
+//                }
+//
+//                @Override
+//                public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                    
+//                }
+//           }
+                    ));
                 
            
     }

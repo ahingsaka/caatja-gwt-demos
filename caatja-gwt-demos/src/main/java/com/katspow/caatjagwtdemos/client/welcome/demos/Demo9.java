@@ -10,6 +10,7 @@ import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaImage;
@@ -220,25 +221,32 @@ public class Demo9 {
                                                                 endPath()
                                                 ).
                                                 addListener(
-                                                        new BehaviorListener() {
-                                                          
-                                                          @Override
-                                                          public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
-                                                              actor.setExpired(true);
-                                                          }
-                                                          
-                                                          @Override
-                                                          public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                                                                  throws Exception {
-                                                              
-                                                          }
-
-                                                          @Override
-                                                          public void behaviorStarted(BaseBehavior behavior, double time,
-                                                                  Actor actor) {
-                                                              
-                                                          }
-                                                      }
+                                                        
+                                                        BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                                                            public void call(BaseBehavior behavior, double time, Actor actor) {
+                                                                actor.setExpired(true);
+                                                            }
+                                                        })
+                                                        
+//                                                        new BehaviorListener() {
+//                                                          
+//                                                          @Override
+//                                                          public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                                                              actor.setExpired(true);
+//                                                          }
+//                                                          
+//                                                          @Override
+//                                                          public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                                                                  throws Exception {
+//                                                              
+//                                                          }
+//
+//                                                          @Override
+//                                                          public void behaviorStarted(BaseBehavior behavior, double time,
+//                                                                  Actor actor) {
+//                                                              
+//                                                          }
+//                                                      }
                                         )).
                                 setDiscardable(true).
                                 setFrameTime( number.time, Double.MAX_VALUE );

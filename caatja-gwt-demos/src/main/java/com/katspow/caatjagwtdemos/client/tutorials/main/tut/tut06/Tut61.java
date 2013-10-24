@@ -5,6 +5,7 @@ import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.RotateBehavior;
 import com.katspow.caatja.behavior.ScaleBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.foundation.Director;
@@ -47,39 +48,59 @@ public class Tut61 {
         _c4_rectangle_0.addBehavior(_rb_c4_text_0);
 
         // when scale Behavior finishes, start rotation Behavior.
-        _sb_c4_text_0.addListener(new BehaviorListener() {
-            @Override
-            public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
-                _rb_c4_text_0.setFrameTime(time, 3000);
-            }
-            
-            @Override
-            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                    throws Exception {
-            }
-
-            @Override
-            public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+        _sb_c4_text_0.addListener(
                 
-            }
-        });
+                BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                    public void call(BaseBehavior behavior, double time, Actor actor) {
+                        _rb_c4_text_0.setFrameTime(time, 3000);
+                    }
+                })
+                
+//                new BehaviorListener() {
+//            @Override
+//            public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                _rb_c4_text_0.setFrameTime(time, 3000);
+//            }
+//            
+//            @Override
+//            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                    throws Exception {
+//            }
+//
+//            @Override
+//            public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                
+//            }
+//        }
+                );
         
-        _rb_c4_text_0.addListener(new BehaviorListener() {
-            @Override
-            public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
-                _sb_c4_text_0.setFrameTime(time, 3000);
-            }
-            
-            @Override
-            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                    throws Exception {
-            }
-
-            @Override
-            public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+        _rb_c4_text_0.addListener(
                 
-            }
-        });
+                BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                    public void call(BaseBehavior behavior, double time, Actor actor) {
+                        _sb_c4_text_0.setFrameTime(time, 3000);
+                    }
+                })
+                
+                // TODO Remove
+//                new BehaviorListener() {
+//            @Override
+//            public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                _sb_c4_text_0.setFrameTime(time, 3000);
+//            }
+//            
+//            @Override
+//            public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                    throws Exception {
+//            }
+//
+//            @Override
+//            public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                
+//            }
+//        }
+                
+                );
         
         Caatja.loop(30);
         

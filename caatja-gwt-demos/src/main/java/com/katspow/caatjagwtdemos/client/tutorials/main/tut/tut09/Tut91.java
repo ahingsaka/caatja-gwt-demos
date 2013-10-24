@@ -10,6 +10,7 @@ import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.ContainerBehavior;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaImage;
@@ -175,26 +176,35 @@ public class Tut91 {
                 ContainerBehavior cb = new ContainerBehavior().
                         setFrameTime(_scene_8.time + 2000 + 1000 * Math.random(), 500).
                         addListener(
-                                new BehaviorListener() {
-                                    
-                                    @Override
-                                    public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+                                
+                                BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                                    public void call(BaseBehavior behavior, double time, Actor actor) {
                                         actor.
                                         setDiscardable(true).
                                         setExpired(true);
                                     }
-                                    
-                                    @Override
-                                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                                            throws Exception {
-                                        
-                                    }
-
-                                    @Override
-                                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                                        
-                                    }
-                                }
+                                })
+                                
+//                                new BehaviorListener() {
+//                                    
+//                                    @Override
+//                                    public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                                        actor.
+//                                        setDiscardable(true).
+//                                        setExpired(true);
+//                                    }
+//                                    
+//                                    @Override
+//                                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                                            throws Exception {
+//                                        
+//                                    }
+//
+//                                    @Override
+//                                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                                        
+//                                    }
+//                                }
                         // when the container behavior is expired, expire and discard
                         // the actor.
                        );

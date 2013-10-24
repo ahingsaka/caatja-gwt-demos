@@ -4,6 +4,7 @@ import com.katspow.caatja.CAATKeyListener;
 import com.katspow.caatja.behavior.AlphaBehavior;
 import com.katspow.caatja.behavior.BaseBehavior;
 import com.katspow.caatja.behavior.BaseBehavior.Status;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.ContainerBehavior;
 import com.katspow.caatja.behavior.Interpolator;
@@ -605,24 +606,35 @@ public class ShowcaseOld {
                 cb.actor= burbuja;
 
                 cb.setFrameTime( scene.time+2000+1000*Math.random(), 500 );
-                cb.addListener(new BehaviorListener() {
-                    @Override
-                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
-                        behaviour.actor.discardable= true;
-                        behaviour.actor.setExpired(true);
-                    }
-
-                    @Override
-                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
-                            SetForTimeReturnValue value) {
-                    }
-
-                    @Override
-                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+                cb.addListener(
                         
-                    }
-                    
-                });
+                        BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                            public void call(BaseBehavior behavior, double time, Actor actor) {
+                                behavior.actor.discardable= true;
+                                behavior.actor.setExpired(true);
+                            }
+                        })
+                        
+                        // TODO Remove
+//                        new BehaviorListener() {
+//                    @Override
+//                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
+//                        behaviour.actor.discardable= true;
+//                        behaviour.actor.setExpired(true);
+//                    }
+//
+//                    @Override
+//                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor,
+//                            SetForTimeReturnValue value) {
+//                    }
+//
+//                    @Override
+//                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                        
+//                    }
+//                    
+//                }
+                        );
                 
                 AlphaBehavior ab= new AlphaBehavior().
                     setFrameTime( 0, 500 ).

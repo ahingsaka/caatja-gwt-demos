@@ -7,6 +7,7 @@ import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.ContainerBehavior;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaImage;
@@ -67,24 +68,34 @@ public class Demo15 {
                                     )
                             ).
                             addListener(
-                                    new BehaviorListener() {
-                                        @Override
-                                        public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+                                    
+                                    BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                                        public void call(BaseBehavior behavior, double time, Actor actor) {
                                             ((CurvePath) ((PathBehavior) behavior).path.pathSegments.get(0)).curve.coordlist.get(0).set(
                                                     Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.width,
                                                     Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.height);
                                         }
-                                        
-                                        @Override
-                                        public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                                                throws Exception {
-                                        }
-
-                                        @Override
-                                        public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                                            
-                                        }
-                                    });
+                                    })
+                                    
+                                    // TODO Remove
+//                                    new BehaviorListener() {
+//                                        @Override
+//                                        public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                                            ((CurvePath) ((PathBehavior) behavior).path.pathSegments.get(0)).curve.coordlist.get(0).set(
+//                                                    Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.width,
+//                                                    Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.height);
+//                                        }
+//                                        
+//                                        @Override
+//                                        public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                                                throws Exception {
+//                                        }
+//
+//                                        @Override
+//                                        public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                                            
+//                                        }}
+                                    );
                 
                 PathBehavior b2= new PathBehavior().
                             setFrameTime( 15000+Math.random()*2000, 5000 ).
@@ -102,25 +113,37 @@ public class Demo15 {
                                     )
                             ).
                             addListener(
-                                    new BehaviorListener() {
-                                        @Override
-                                        public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+                                    
+                                    BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                                        public void call(BaseBehavior behavior, double time, Actor actor) {
                                             ((CurvePath) ((PathBehavior) behavior).path.pathSegments.get(0)).curve.coordlist.get(3).set(
                                                     Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.width,
                                                     Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.height
                                                 );
                                         }
-                                        
-                                        @Override
-                                        public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                                                throws Exception {
-                                        }
-
-                                        @Override
-                                        public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                                            
-                                        }
-                                    });
+                                    })
+                                    
+                                    // TODO Remove
+//                                    new BehaviorListener() {
+//                                        @Override
+//                                        public void behaviorExpired(BaseBehavior behavior, double time, Actor actor) {
+//                                            ((CurvePath) ((PathBehavior) behavior).path.pathSegments.get(0)).curve.coordlist.get(3).set(
+//                                                    Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.width,
+//                                                    Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.height
+//                                                );
+//                                        }
+//                                        
+//                                        @Override
+//                                        public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                                                throws Exception {
+//                                        }
+//
+//                                        @Override
+//                                        public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                                            
+//                                        }
+//                                    }
+            );
 
                 bc.addBehavior(b1);
                 bc.addBehavior(b2);

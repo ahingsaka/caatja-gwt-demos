@@ -7,6 +7,7 @@ import com.katspow.caatja.behavior.BehaviorListener;
 import com.katspow.caatja.behavior.Interpolator;
 import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.behavior.SetForTimeReturnValue;
+import com.katspow.caatja.behavior.listener.BehaviorExpiredListener;
 import com.katspow.caatja.core.Caatja;
 import com.katspow.caatja.core.canvas.CaatjaCanvas;
 import com.katspow.caatja.core.canvas.CaatjaImage;
@@ -41,10 +42,10 @@ public class Tut94 {
                             new Interpolator().createExponentialInOutInterpolator(2,false) ).
                         setFrameTime( scene.time, 10 ).
                         addListener(
-                                new BehaviorListener() {
-                                    @Override
-                                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
-                                        PathBehavior pathBehavior = (PathBehavior) behaviour;
+                                
+                                BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
+                                    public void call(BaseBehavior behavior, double time, Actor actor) {
+                                        PathBehavior pathBehavior = (PathBehavior) behavior;
                                         Pt endCoord= pathBehavior.path.endCurvePosition();
                                         pathBehavior.setPath(
                                                 new Path().setCubic(
@@ -56,21 +57,41 @@ public class Tut94 {
                                                     Math.random()*director.height,
                                                     Math.random()*director.width,
                                                     Math.random()*director.height) );
-                                        behaviour.setFrameTime( scene.time, 3000+Math.random()*3000 );
-                                        
+                                        behavior.setFrameTime( scene.time, 3000+Math.random()*3000 );
                                     }
-                                    
-                                    @Override
-                                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
-                                            throws Exception {
-                                        
-                                    }
-
-                                    @Override
-                                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
-                                        
-                                    }
-                        })
+                                })
+                                
+//                                new BehaviorListener() {
+//                                    @Override
+//                                    public void behaviorExpired(BaseBehavior behaviour, double time, Actor actor) {
+//                                        PathBehavior pathBehavior = (PathBehavior) behaviour;
+//                                        Pt endCoord= pathBehavior.path.endCurvePosition();
+//                                        pathBehavior.setPath(
+//                                                new Path().setCubic(
+//                                                    endCoord.x,
+//                                                    endCoord.y,
+//                                                    Math.random()*director.width,
+//                                                    Math.random()*director.height,
+//                                                    Math.random()*director.width,
+//                                                    Math.random()*director.height,
+//                                                    Math.random()*director.width,
+//                                                    Math.random()*director.height) );
+//                                        behaviour.setFrameTime( scene.time, 3000+Math.random()*3000 );
+//                                        
+//                                    }
+//                                    
+//                                    @Override
+//                                    public void behaviorApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+//                                            throws Exception {
+//                                        
+//                                    }
+//
+//                                    @Override
+//                                    public void behaviorStarted(BaseBehavior behavior, double time, Actor actor) {
+//                                        
+//                                    }
+//                        }
+                                )
                 );
             scene.addChild(fish);
         }
