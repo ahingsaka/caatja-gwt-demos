@@ -53,7 +53,7 @@ public class Demo5 {
             setTextBaseline("bottom").
             setPath(
                 p,
-                new Interpolator().createLinearInterpolator(false, false),
+                Interpolator.createLinearInterpolator(false, false),
                 30000d);
         scene.addChild(text);
 
@@ -74,7 +74,7 @@ public class Demo5 {
             setTextBaseline("top").
             setPath(
                 p,
-                new Interpolator().createExponentialInOutInterpolator(3, false), null).
+                Interpolator.createExponentialInOutInterpolator(3, false), null).
             setPathTraverseDirection( TextActor.TRAVERSE_PATH_BACKWARD );
         scene.addChild(text2);
 
@@ -95,7 +95,7 @@ public class Demo5 {
                 setFrameTime(0, 4000).
                 setValues( -Math.PI / 8, Math.PI / 8, .50, 0d ).
                 setInterpolator(
-                        new Interpolator().createCubicBezierInterpolator(
+                        Interpolator.createCubicBezierInterpolator(
                                 new Pt(0,0),
                                 new Pt(1,0),
                                 new Pt(0,1),

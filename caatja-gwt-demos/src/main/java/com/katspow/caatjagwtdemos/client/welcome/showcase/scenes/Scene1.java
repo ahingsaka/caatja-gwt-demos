@@ -288,7 +288,7 @@ public class Scene1 {
                     setFrameTime( 0, 4000 ).
                     setValues( -Math.PI/8, Math.PI/8 ).
                     setInterpolator(
-                        new Interpolator().createExponentialInOutInterpolator(3,true) ).
+                        Interpolator.createExponentialInOutInterpolator(3,true) ).
                     setAnchor(cc1)
             );
 

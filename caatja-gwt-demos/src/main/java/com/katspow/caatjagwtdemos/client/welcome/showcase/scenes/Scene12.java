@@ -59,7 +59,7 @@ public class Scene12 {
                 .addBehavior(new RotateBehavior().setValues(0, Math.PI * 2).setFrameTime(0, 5000).setCycle(true))
                 .addBehavior(
                         new ScaleBehavior().setValues(.2, 1, .2, 1).setFrameTime(0, 10000).setCycle(true)
-                                .setInterpolator(new Interpolator().createLinearInterpolator(true, false)));
+                                .setInterpolator(Interpolator.createLinearInterpolator(true, false)));
 
         ActorContainer ac = new ActorContainer().setBounds(0, 0, director.width, director.height)
                 .setFillStrokeStyle(gradient).enableEvents(false);

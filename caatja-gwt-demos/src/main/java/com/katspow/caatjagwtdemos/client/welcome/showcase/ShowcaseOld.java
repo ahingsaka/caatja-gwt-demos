@@ -114,7 +114,7 @@ public class ShowcaseOld {
                 2000,
                 false,
                 Actor.Anchor.CENTER,
-                new Interpolator().createElasticOutInterpolator(2.5, .4, false) );
+                Interpolator.createElasticOutInterpolator(2.5, .4, false) );
         
         double buttonW= 22.5;
         double buttonX= (director.width - buttonW*director.getNumScenes())/2;
@@ -690,7 +690,7 @@ public class ShowcaseOld {
                 setCycle(true).
                 setFrameTime( 0, 5000 ).
                 setValues( -Math.PI/4, Math.PI/4, .5, 0d ).
-                setInterpolator( new Interpolator().createCubicBezierInterpolator(new Pt().set(0, 0),new Pt().set(1, 0),new Pt().set(0, 1),new Pt().set(1, 1), true ) );
+                setInterpolator( Interpolator.createCubicBezierInterpolator(new Pt().set(0, 0),new Pt().set(1, 0),new Pt().set(0, 1),new Pt().set(1, 1), true ) );
         textLoading.addBehavior(rb);
 
         /**

@@ -180,7 +180,7 @@ public class Demo16 {
                     setFrameTime( 0,10000 ).
                     setCycle( true ).
                     setInterpolator(
-                        new Interpolator().createLinearInterpolator(true, false)
+                        Interpolator.createLinearInterpolator(true, false)
                 )
             );
         }

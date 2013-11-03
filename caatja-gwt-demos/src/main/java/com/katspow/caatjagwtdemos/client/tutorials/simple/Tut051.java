@@ -54,7 +54,7 @@ public class Tut051 {
                             setCycle(true).
                             setTranslation(25,25).
                             setInterpolator(
-                                new Interpolator().createLinearInterpolator(
+                                Interpolator.createLinearInterpolator(
                                         false,true)
                             )
                 ).

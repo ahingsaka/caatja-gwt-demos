@@ -71,7 +71,7 @@ public class Tut024 {
                 setFrameTime(0,5000).
                 setCycle(true).
                 setInterpolator(
-                    new Interpolator().createLinearInterpolator(
+                    Interpolator.createLinearInterpolator(
                             false,  // no pingpong.
                             true    // traverse the path inversely, from end to beginning.
                             ) );

@@ -89,7 +89,7 @@ public class Scene11 {
                             setFrameTime( 0, 4000 ).
                             setValues( -Math.PI/8, Math.PI/8, .5, 0d ).
                             setInterpolator(
-                                new Interpolator().createExponentialInOutInterpolator(3,true)
+                                Interpolator.createExponentialInOutInterpolator(3,true)
                             )
                 );
 

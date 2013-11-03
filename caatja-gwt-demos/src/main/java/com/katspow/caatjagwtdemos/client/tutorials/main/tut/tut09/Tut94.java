@@ -39,7 +39,7 @@ public class Tut94 {
                         setAutoRotate(true).
                         setPath( new Path().setLinear(0,0,0,0) ).
                         setInterpolator(
-                            new Interpolator().createExponentialInOutInterpolator(2,false) ).
+                            Interpolator.createExponentialInOutInterpolator(2,false) ).
                         setFrameTime( scene.time, 10 ).
                         addListener(
                                 

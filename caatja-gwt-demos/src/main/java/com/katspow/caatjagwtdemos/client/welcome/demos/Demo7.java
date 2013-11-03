@@ -157,7 +157,7 @@ public class Demo7 {
                                 setFrameTime(0, 4000).
                                 setValues(-Math.PI / 8,Math.PI / 8, 0.50, 0d).
                                 setInterpolator(
-                                        new Interpolator().createCubicBezierInterpolator(
+                                        Interpolator.createCubicBezierInterpolator(
                                                 new Pt(0,0),
                                                 new Pt(1,0),
                                                 new Pt(0,1),

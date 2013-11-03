@@ -42,7 +42,7 @@ public class Scene5 {
         text.textAlign="left";
         text.setTextFillStyle(gradient);
         text.textBaseline="bottom";
-        text.setPath(p, new Interpolator().createBounceInOutInterpolator(false), null);
+        text.setPath(p, Interpolator.createBounceInOutInterpolator(false), null);
         scene.addChild(text);
 
         
@@ -58,7 +58,7 @@ public class Scene5 {
         text2.textAlign="left";
         text2.setTextFillStyle(gradient2);
         text2.textBaseline="top";
-        text2.setPath( p, new Interpolator().createExponentialInOutInterpolator(3, false), null );
+        text2.setPath( p, Interpolator.createExponentialInOutInterpolator(3, false), null );
         scene.addChild(text2);
         
         text2.sign= -1;
@@ -80,7 +80,7 @@ public class Scene5 {
         rb.cycleBehavior= true;
         rb.setFrameTime( 0, 4000 );
         rb.setValues( -Math.PI/8, Math.PI/8, .5, 0d );
-        rb.setInterpolator( new Interpolator().createCubicBezierInterpolator(new Pt().set(0, 0),new Pt().set(1, 0), new Pt().set(0, 1), new Pt().set(1, 1), true ) );
+        rb.setInterpolator( Interpolator.createCubicBezierInterpolator(new Pt().set(0, 0),new Pt().set(1, 0), new Pt().set(0, 1), new Pt().set(1, 1), true ) );
         cc1.addBehavior(rb);
         
         CaatjaGradient gradient= director.ctx.createLinearGradient(0,0,0,30);

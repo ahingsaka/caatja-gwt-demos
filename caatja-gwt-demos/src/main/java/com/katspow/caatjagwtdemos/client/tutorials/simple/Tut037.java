@@ -135,7 +135,7 @@ public class Tut037 {
                 setOutlineColor("red").
                 calcTextSize(_director_7).
                 setPath( _path_c7,
-                         new Interpolator().createBounceInOutInterpolator(true),
+                         Interpolator.createBounceInOutInterpolator(true),
                          20000d );
         _scene_7.addChild( _text_21 );
 

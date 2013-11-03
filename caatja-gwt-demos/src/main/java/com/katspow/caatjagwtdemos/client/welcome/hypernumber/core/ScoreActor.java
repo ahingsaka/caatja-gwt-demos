@@ -10,7 +10,7 @@ public class ScoreActor extends TextActor implements ContextListener {
     
     public ScoreActor() {
         super();
-        this.interpolator= new Interpolator().createExponentialInOutInterpolator(2,false);
+        this.interpolator= Interpolator.createExponentialInOutInterpolator(2,false);
     }
     
     int incrementScore= 0;

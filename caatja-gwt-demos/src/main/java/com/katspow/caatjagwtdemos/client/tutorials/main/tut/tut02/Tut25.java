@@ -143,7 +143,7 @@ public class Tut25 {
                                     setFrameTime(scene.time, T).
                                     setValues( 1,5, 1,5 ).
                                     setInterpolator(
-                                        new Interpolator().createExponentialInInterpolator(
+                                        Interpolator.createExponentialInInterpolator(
                                             3,
                                             false)
                                     )
@@ -186,7 +186,7 @@ public class Tut25 {
                                     setFrameTime(scene.time, T).
                                     setValues( 1,5, 1,5 ).
                                     setInterpolator(
-                                        new Interpolator().createExponentialInInterpolator(
+                                        Interpolator.createExponentialInInterpolator(
                                             3,
                                             false)
                                     )

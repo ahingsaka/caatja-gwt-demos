@@ -162,7 +162,7 @@ public class PackedCircleScene {
         scaleBehavior.endScaleX = scaleBehavior.endScaleY = endScale;
         scaleBehavior.setFrameTime(starTime, starTime + endTime);
         scaleBehavior.setCycle(false);
-        scaleBehavior.setInterpolator(new Interpolator().createBounceOutInterpolator(false));
+        scaleBehavior.setInterpolator(Interpolator.createBounceOutInterpolator(false));
         actor.addBehavior(scaleBehavior);
 
         return scaleBehavior;
@@ -182,7 +182,7 @@ public class PackedCircleScene {
         fadeBehavior.endAlpha = endAlpha;
         fadeBehavior.setFrameTime(starTime, endTime);
         fadeBehavior.setCycle(false);
-        fadeBehavior.setInterpolator(new Interpolator().createExponentialOutInterpolator(2, false));
+        fadeBehavior.setInterpolator(Interpolator.createExponentialOutInterpolator(2, false));
         actor.addBehavior(fadeBehavior);
 
         return fadeBehavior;

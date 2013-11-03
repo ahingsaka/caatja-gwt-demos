@@ -105,7 +105,7 @@ public class Demo3 {
                 setPath(
                     new Path().setLinear( x,y, x,y ) ).
                 setInterpolator(
-                    new Interpolator().createExponentialInOutInterpolator(2,false) ).
+                    Interpolator.createExponentialInOutInterpolator(2,false) ).
                 setFrameTime( scene.time, 10 ).
                 addListener(
                         

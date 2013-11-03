@@ -37,8 +37,8 @@ public class Tut040 {
         
         
         Interpolator[] lerps= new Interpolator [] {
-                    new Interpolator().createLinearInterpolator(false, false),
-                    new Interpolator().createLinearInterpolator(true,  false)
+                    Interpolator.createLinearInterpolator(false, false),
+                    Interpolator.createLinearInterpolator(true,  false)
         };
 
             int i;
@@ -70,8 +70,8 @@ public class Tut040 {
             
             
             Interpolator[] lerps2 = new Interpolator [] {
-                        new Interpolator().createLinearInterpolator(false, true),
-                        new Interpolator().createLinearInterpolator(true,  true)
+                        Interpolator.createLinearInterpolator(false, true),
+                        Interpolator.createLinearInterpolator(true,  true)
             };
 
                 for( i=0; i<lerps2.length; i++) {

@@ -219,7 +219,7 @@ public class Scene7 {
                     Math.random()*director.height,
                     Math.random()*director.width,
                     Math.random()*director.height) );
-            pbfish.setInterpolator( new Interpolator().createExponentialInOutInterpolator(2,false) );
+            pbfish.setInterpolator( Interpolator.createExponentialInOutInterpolator(2,false) );
             pbfish.setFrameTime( 0, 2500+2500*Math.random() );
             
             pbfish.addListener(

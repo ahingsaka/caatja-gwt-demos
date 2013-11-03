@@ -68,7 +68,7 @@ public class Scene3 {
         rb.cycleBehavior = true;
         rb.setValues(-Math.PI/8,Math.PI/8, .5,0d);
         rb.setFrameTime(0, 4000);
-        rb.setInterpolator(new Interpolator().createCubicBezierInterpolator(new Pt().set(0, 0),
+        rb.setInterpolator(Interpolator.createCubicBezierInterpolator(new Pt().set(0, 0),
                 new Pt().set(1, 0), new Pt().set(0, 1), new Pt().set(1, 1), true));
         cc.addBehavior(rb);
 

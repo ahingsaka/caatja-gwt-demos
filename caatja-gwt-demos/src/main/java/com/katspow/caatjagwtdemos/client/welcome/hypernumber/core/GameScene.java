@@ -288,8 +288,8 @@ public class GameScene implements ContextListener {
                         a1,
                         1000,
                         false,
-                        new Interpolator().createExponentialInOutInterpolator(3,false),
-                        new Interpolator().createExponentialInOutInterpolator(3,false) );
+                        Interpolator.createExponentialInOutInterpolator(3,false),
+                        Interpolator.createExponentialInOutInterpolator(3,false) );
                 
             }
             
@@ -371,12 +371,12 @@ public class GameScene implements ContextListener {
                                  ).
 
                         setInterpolator(
-                                new Interpolator().createExponentialInOutInterpolator(3,false) );
+                                Interpolator.createExponentialInOutInterpolator(3,false) );
                 ScaleBehavior sb= (ScaleBehavior) new ScaleBehavior().
                         setFrameTime(this.directorScene.time , 1000+random);
                         sb.setValues( .1, 1, .1 , 1).
                         setInterpolator(
-                                new Interpolator().createExponentialInOutInterpolator(3,false) );
+                                Interpolator.createExponentialInOutInterpolator(3,false) );
 
                         brickActor.emptyBehaviorList().
                         addBehavior(moveB).
@@ -780,7 +780,7 @@ public class GameScene implements ContextListener {
             addBehavior(pb
                 .
             setInterpolator(
-                new Interpolator().createBounceOutInterpolator(false) ).
+                Interpolator.createBounceOutInterpolator(false) ).
                 
             addListener(
                     

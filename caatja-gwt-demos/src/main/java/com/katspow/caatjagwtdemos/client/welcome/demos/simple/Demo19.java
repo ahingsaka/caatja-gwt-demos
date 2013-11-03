@@ -173,8 +173,8 @@ public class Demo19 {
         double x,y;
 
         Interpolator[] lerp= new Interpolator[] {
-                new Interpolator().createBounceOutInterpolator(false),
-                new Interpolator().createExponentialInInterpolator(3,true)
+                Interpolator.createBounceOutInterpolator(false),
+                Interpolator.createExponentialInInterpolator(3,true)
         };
 
         enemies= new ArrayList<AABB>();

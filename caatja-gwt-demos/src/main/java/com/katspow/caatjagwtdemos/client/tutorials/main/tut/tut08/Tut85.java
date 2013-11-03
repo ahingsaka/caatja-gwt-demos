@@ -24,7 +24,7 @@ public class Tut85 {
         scene.addChild(
                 new InterpolatorActor().
                     setInterpolator(
-                        new Interpolator().createQuadricBezierInterpolator(
+                        Interpolator.createQuadricBezierInterpolator(
                                 new Pt(0, 0),
                                 new Pt(1, 0),
                                 new Pt(1, 1),
@@ -39,7 +39,7 @@ public class Tut85 {
         scene.addChild(
                 new InterpolatorActor().
                     setInterpolator(
-                        new Interpolator().createCubicBezierInterpolator(
+                        Interpolator.createCubicBezierInterpolator(
                                 new Pt(0, 0),
                                 new Pt(0, 1),
                                 new Pt(1, 0),

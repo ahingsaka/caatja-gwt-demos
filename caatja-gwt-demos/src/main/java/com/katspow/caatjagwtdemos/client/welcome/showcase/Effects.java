@@ -14,7 +14,7 @@ public final class Effects {
                 2000,
                 false,
                 Actor.Anchor.CENTER,
-                new Interpolator().createElasticOutInterpolator(2.5, .4, false) );
+                Interpolator.createElasticOutInterpolator(2.5, .4, false) );
     }
     
 

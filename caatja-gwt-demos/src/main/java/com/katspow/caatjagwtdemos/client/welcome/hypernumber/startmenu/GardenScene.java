@@ -79,8 +79,8 @@ public class GardenScene {
                         Actor.Anchor.LEFT,
                         1000,
                         false,
-                        new Interpolator().createExponentialInOutInterpolator(3,false),
-                        new Interpolator().createExponentialInOutInterpolator(3,false) );
+                        Interpolator.createExponentialInOutInterpolator(3,false),
+                        Interpolator.createExponentialInOutInterpolator(3,false) );
             }
         }.
                 
@@ -101,8 +101,8 @@ public class GardenScene {
                         Actor.Anchor.BOTTOM,
                         1000,
                         false,
-                        new Interpolator().createExponentialInOutInterpolator(3,false),
-                        new Interpolator().createExponentialInOutInterpolator(3,false) );
+                        Interpolator.createExponentialInOutInterpolator(3,false),
+                        Interpolator.createExponentialInOutInterpolator(3,false) );
             }
         }.
                 
@@ -123,8 +123,8 @@ public class GardenScene {
                     Actor.Anchor.TOP,
                     1000,
                     false,
-                    new Interpolator().createExponentialInOutInterpolator(3,false),
-                    new Interpolator().createExponentialInOutInterpolator(3,false) );
+                    Interpolator.createExponentialInOutInterpolator(3,false),
+                    Interpolator.createExponentialInOutInterpolator(3,false) );
             }
         }.
                 

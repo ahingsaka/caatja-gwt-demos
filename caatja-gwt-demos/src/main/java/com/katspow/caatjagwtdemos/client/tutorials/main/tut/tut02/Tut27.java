@@ -27,7 +27,7 @@ public class Tut27 {
                         setFrameTime(0, 4000).
                         setValues(-Math.PI / 8, Math.PI / 8, .50, 0d).    // anchor at 50%, 0%
                         setInterpolator(
-                        new Interpolator().createExponentialInOutInterpolator(3, true))
+                        Interpolator.createExponentialInOutInterpolator(3, true))
                 );
 
         CaatjaGradient gradient = director.ctx.createLinearGradient(0, 0, 0, 50);

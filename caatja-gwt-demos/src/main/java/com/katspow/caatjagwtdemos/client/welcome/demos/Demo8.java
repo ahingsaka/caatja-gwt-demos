@@ -101,7 +101,7 @@ public class Demo8 {
                                         
                                        ).
                                 setInterpolator(
-                                        new Interpolator().createBounceInInterpolator(true)
+                                        Interpolator.createBounceInInterpolator(true)
                                 )
                 );
 
@@ -141,7 +141,7 @@ public class Demo8 {
                         setFrameTime(0, 4000).
                         setValues(-Math.PI / 8, Math.PI / 8, .50, 0d).
                         setInterpolator(
-                            new Interpolator().
+                            Interpolator.
                                     createExponentialInOutInterpolator(3, true)
                         )
                 );

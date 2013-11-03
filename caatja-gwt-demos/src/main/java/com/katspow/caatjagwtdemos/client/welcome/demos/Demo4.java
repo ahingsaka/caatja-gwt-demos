@@ -372,7 +372,7 @@ public class Demo4 {
                                 setFrameTime( 0, 4000 ).
                                 setValues( -Math.PI/8, Math.PI/8, .50, 0d ).  // anchor at 50%, 0%
                                 setInterpolator(
-                                    new Interpolator().createCubicBezierInterpolator(
+                                    Interpolator.createCubicBezierInterpolator(
                                         new Pt(0,0),
                                         new Pt(1,0),
                                         new Pt(0,1),

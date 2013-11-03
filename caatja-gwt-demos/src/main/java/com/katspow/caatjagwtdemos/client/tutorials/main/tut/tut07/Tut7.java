@@ -11,61 +11,61 @@ public class Tut7 {
 
     public void start(CaatjaCanvas canvas) throws Exception {
 
-        Interpolator[] lerps = new Interpolator[] { new Interpolator().createLinearInterpolator(false, false),
-                new Interpolator().createLinearInterpolator(true, false) };
+        Interpolator[] lerps = new Interpolator[] { Interpolator.createLinearInterpolator(false, false),
+                Interpolator.createLinearInterpolator(true, false) };
         
-        Interpolator[] lerps2 = new Interpolator[] { new Interpolator().createLinearInterpolator(false, true),
-                new Interpolator().createLinearInterpolator(true, true) };
+        Interpolator[] lerps2 = new Interpolator[] { Interpolator.createLinearInterpolator(false, true),
+                Interpolator.createLinearInterpolator(true, true) };
         
         Interpolator[][] lerps3 = new Interpolator[][] {
-                { new Interpolator().createExponentialInInterpolator(2, false),
-                        new Interpolator().createExponentialOutInterpolator(2, false),
-                        new Interpolator().createExponentialInOutInterpolator(2, false),
+                { Interpolator.createExponentialInInterpolator(2, false),
+                        Interpolator.createExponentialOutInterpolator(2, false),
+                        Interpolator.createExponentialInOutInterpolator(2, false),
 
-                        new Interpolator().createExponentialInInterpolator(2, true),
-                        new Interpolator().createExponentialOutInterpolator(2, true),
-                        new Interpolator().createExponentialInOutInterpolator(2, true) },
-                { new Interpolator().createExponentialInInterpolator(4, false),
-                        new Interpolator().createExponentialOutInterpolator(4, false),
-                        new Interpolator().createExponentialInOutInterpolator(4, false),
+                        Interpolator.createExponentialInInterpolator(2, true),
+                        Interpolator.createExponentialOutInterpolator(2, true),
+                        Interpolator.createExponentialInOutInterpolator(2, true) },
+                { Interpolator.createExponentialInInterpolator(4, false),
+                        Interpolator.createExponentialOutInterpolator(4, false),
+                        Interpolator.createExponentialInOutInterpolator(4, false),
 
-                        new Interpolator().createExponentialInInterpolator(4, true),
-                        new Interpolator().createExponentialOutInterpolator(4, true),
-                        new Interpolator().createExponentialInOutInterpolator(4, true) },
-                { new Interpolator().createExponentialInInterpolator(6, false),
-                        new Interpolator().createExponentialOutInterpolator(6, false),
-                        new Interpolator().createExponentialInOutInterpolator(6, false),
+                        Interpolator.createExponentialInInterpolator(4, true),
+                        Interpolator.createExponentialOutInterpolator(4, true),
+                        Interpolator.createExponentialInOutInterpolator(4, true) },
+                { Interpolator.createExponentialInInterpolator(6, false),
+                        Interpolator.createExponentialOutInterpolator(6, false),
+                        Interpolator.createExponentialInOutInterpolator(6, false),
 
-                        new Interpolator().createExponentialInInterpolator(6, true),
-                        new Interpolator().createExponentialOutInterpolator(6, true),
-                        new Interpolator().createExponentialInOutInterpolator(6, true) } };
+                        Interpolator.createExponentialInInterpolator(6, true),
+                        Interpolator.createExponentialOutInterpolator(6, true),
+                        Interpolator.createExponentialInOutInterpolator(6, true) } };
         
-        Interpolator[][] lerps4 = new Interpolator[][] { { new Interpolator().createBounceInInterpolator(false),
-                new Interpolator().createBounceOutInterpolator(false),
-                new Interpolator().createBounceInOutInterpolator(false),
+        Interpolator[][] lerps4 = new Interpolator[][] { { Interpolator.createBounceInInterpolator(false),
+                Interpolator.createBounceOutInterpolator(false),
+                Interpolator.createBounceInOutInterpolator(false),
 
-                new Interpolator().createBounceInInterpolator(true),
-                new Interpolator().createBounceOutInterpolator(true),
-                new Interpolator().createBounceInOutInterpolator(true) } };
+                Interpolator.createBounceInInterpolator(true),
+                Interpolator.createBounceOutInterpolator(true),
+                Interpolator.createBounceInOutInterpolator(true) } };
         
         Interpolator[][] lerps5= new Interpolator[][] {
                 {
-                       new Interpolator().createElasticInInterpolator(    1.1, .4, false),
-                       new Interpolator().createElasticOutInterpolator(   1.1, .4, false),
-                       new Interpolator().createElasticInOutInterpolator( 1.1, .4, false),
+                       Interpolator.createElasticInInterpolator(    1.1, .4, false),
+                       Interpolator.createElasticOutInterpolator(   1.1, .4, false),
+                       Interpolator.createElasticInOutInterpolator( 1.1, .4, false),
 
-                       new Interpolator().createElasticInInterpolator(    1.1, .4, true),
-                       new Interpolator().createElasticOutInterpolator(   1.1, .4, true),
-                       new Interpolator().createElasticInOutInterpolator( 1.1, .4, true)
+                       Interpolator.createElasticInInterpolator(    1.1, .4, true),
+                       Interpolator.createElasticOutInterpolator(   1.1, .4, true),
+                       Interpolator.createElasticInOutInterpolator( 1.1, .4, true)
                 },
                 {
-                       new Interpolator().createElasticInInterpolator(    1.0, .2, false),
-                       new Interpolator().createElasticOutInterpolator(   1.0, .2, false),
-                       new Interpolator().createElasticInOutInterpolator( 1.0, .2, false),
+                       Interpolator.createElasticInInterpolator(    1.0, .2, false),
+                       Interpolator.createElasticOutInterpolator(   1.0, .2, false),
+                       Interpolator.createElasticInOutInterpolator( 1.0, .2, false),
 
-                       new Interpolator().createElasticInInterpolator(    1.0, .2, true),
-                       new Interpolator().createElasticOutInterpolator(   1.0, .2, true),
-                       new Interpolator().createElasticInOutInterpolator( 1.0, .2, true)
+                       Interpolator.createElasticInInterpolator(    1.0, .2, true),
+                       Interpolator.createElasticOutInterpolator(   1.0, .2, true),
+                       Interpolator.createElasticInOutInterpolator( 1.0, .2, true)
                 }
         };
 
