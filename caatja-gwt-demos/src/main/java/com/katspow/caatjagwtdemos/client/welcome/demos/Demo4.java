@@ -16,6 +16,7 @@ import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 
 public class Demo4 {
@@ -126,7 +127,7 @@ public class Demo4 {
             scene.addChild(cc);
 
             TextActor coords= new TextActor().
-                    setFont("20px sans-serif").
+                    setFont(new TextFont(20, "px", "sans-serif")).
                     setTextAlign("left").
                     setTextBaseline("top").
                     setText("").
@@ -137,7 +138,7 @@ public class Demo4 {
             scene.addChild(coords);
 
             TextActor coords2= new TextActor().
-                setFont("20px sans-serif").
+                setFont(new TextFont(20, "px", "sans-serif")).
                 setTextAlign("left").
                 setTextBaseline("top").
                 setText("").
@@ -148,7 +149,7 @@ public class Demo4 {
             scene.addChild(coords2);
 
             TextActor coords3= new TextActor().
-                setFont("20px sans-serif").
+                setFont(new TextFont(20, "px", "sans-serif")).
                 setTextAlign("left").
                 setTextBaseline("top").
                 setText("").
@@ -382,7 +383,7 @@ public class Demo4 {
             scene.addChild(cc1);
 
             TextActor text= new TextActor().
-                    setFont("30px sans-serif").
+                    setFont(new TextFont(30, "px", "sans-serif")).
                     setText("Perfect Pixel").
                     calcTextSize(director).
                     setTextAlign("center").
@@ -392,7 +393,7 @@ public class Demo4 {
             cc1.addChild(text.setLocation((cc1.width-text.width)/2,0));
 
             TextActor text2= new TextActor().
-                    setFont("30px sans-serif").
+                    setFont(new TextFont(30, "px", "sans-serif")).
                     setTextAlign("center").
                     setText("Collision detection").
                     calcTextSize(director).
@@ -402,7 +403,7 @@ public class Demo4 {
             cc1.addChild(text2.setLocation((cc1.width-text2.width)/2,30));
 
             TextActor text3= new TextActor().
-                    setFont("30px sans-serif").
+                    setFont(new TextFont(30, "px", "sans-serif")).
                     setTextAlign("center").
                     setText("Drag Enabled").
                     calcTextSize(director).
@@ -412,7 +413,7 @@ public class Demo4 {
             cc1.addChild(text3.setLocation((cc1.width-text3.width)/2,60));
 
             TextActor text4= new TextActor().
-                    setFont("20px sans-serif").
+                    setFont(new TextFont(20, "px", "sans-serif")).
                     setTextAlign("center").
                     setText("Drag + [Control,Shift,Alt]").
                     calcTextSize(director).
@@ -422,7 +423,7 @@ public class Demo4 {
             cc1.addChild(text4.setLocation((cc1.width-text4.width)/2,100));
 
             TextActor text5= new TextActor().
-                    setFont("20px sans-serif").
+                    setFont(new TextFont(20, "px", "sans-serif")).
                     setTextAlign("center").
                     setText("Double Click").
                     calcTextSize(director).

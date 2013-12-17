@@ -8,6 +8,7 @@ import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 
 public class HomeScene extends Scene {
 
@@ -29,7 +30,7 @@ public class HomeScene extends Scene {
     private TextActor createCaatjaTxt() {
 
         TextActor caatjaTxt = new TextActor().
-                setFont("35px sans-serif").
+                setFont(new TextFont(35, "px", "sans-serif")).
                 setText("CAATJA").
                 calcTextSize(director).
                 setTextFillStyle("white");
@@ -57,7 +58,7 @@ public class HomeScene extends Scene {
     
     private TextActor createDemoTxt() {
         TextActor demoTxt = new TextActor().
-                setFont("30px sans-serif").
+                setFont(new TextFont(30, "px", "sans-serif")).
                 setText("GWT Implementation").
                 calcTextSize(director).
                 setTextFillStyle("white");

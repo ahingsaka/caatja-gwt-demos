@@ -21,6 +21,7 @@ import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.image.SpriteImage;
 import com.katspow.caatja.foundation.ui.ShapeActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 
 /**
@@ -168,7 +169,7 @@ public class Demo7 {
         scene.addChild(cc);
 
         TextActor text = new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Anchored").
                 setTextAlign("center").
                 setTextFillStyle(gradient).
@@ -179,7 +180,7 @@ public class Demo7 {
         
 
         TextActor text2 = new TextActor().
-                setFont("35px sans-serif").
+                setFont(new TextFont(35, "px", "sans-serif")).
                 setTextAlign("center").
                 setText("Affine transforms").
                 setTextFillStyle(gradient).

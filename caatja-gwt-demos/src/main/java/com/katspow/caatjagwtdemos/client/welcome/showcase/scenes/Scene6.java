@@ -14,6 +14,7 @@ import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.actor.SpriteActor;
 import com.katspow.caatja.foundation.image.CompoundImage;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.actor.Circle;
 
@@ -132,7 +133,7 @@ public class Scene6 {
         cc.addBehavior(rb);    
         
         TextActor text= new TextActor();
-        text.setFont("50px sans-serif");
+        text.setFont(new TextFont(50, "px", "sans-serif"));
         text.setText("Fish");
         text.calcTextSize(director);
         text.setLocation((cc.width-text.width),0);
@@ -143,7 +144,7 @@ public class Scene6 {
         cc.addChild(text.setLocation((cc.width-text.textWidth)/2,0));
         
         TextActor text2= new TextActor();
-        text2.setFont("50px sans-serif");
+        text2.setFont(new TextFont(50, "px", "sans-serif"));
         text2.setText("Field");
         text2.calcTextSize(director);
         text2.setLocation((cc.width-text2.width)/2,50);

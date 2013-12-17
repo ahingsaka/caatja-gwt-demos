@@ -10,6 +10,7 @@ import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.ui.ShapeActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.modules.colorutil.Color;
 
 /**
@@ -162,7 +163,7 @@ public class Scene8 {
                 );
 
         TextActor text= new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Hierarchycal").
                 setTextFillStyle(gradient).
                 setOutline(true).
@@ -172,7 +173,7 @@ public class Scene8 {
         cc.addChild(text.setLocation((cc.width-text.width)/2,0));
 
         TextActor text2= new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Rotations").
                 calcTextSize(director).
                 setTextFillStyle(gradient).

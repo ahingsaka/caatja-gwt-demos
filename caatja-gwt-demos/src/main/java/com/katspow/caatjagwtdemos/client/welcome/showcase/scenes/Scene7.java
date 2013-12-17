@@ -22,6 +22,7 @@ import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.actor.SpriteActor;
 import com.katspow.caatja.foundation.image.CompoundImage;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.pathutil.Path;
 
@@ -30,7 +31,7 @@ public class Scene7 {
     public static Scene init(final Director director) throws Exception {
         
         final TextActor children= new TextActor();
-        children.setFont("20px sans-serif");
+        children.setFont(new TextFont(20, "px", "sans-serif"));
         children.textAlign="left";
         children.textBaseline="top";
         children.setText("");

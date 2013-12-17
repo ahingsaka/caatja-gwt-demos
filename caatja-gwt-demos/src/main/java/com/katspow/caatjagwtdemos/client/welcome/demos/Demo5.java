@@ -13,6 +13,7 @@ import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.ui.PathActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.pathutil.Path;
 
@@ -46,7 +47,7 @@ public class Demo5 {
         gradient.addColorStop(1, "blue");
 
         TextActor text = new TextActor().
-            setFont("40px sans-serif").
+            setFont(new TextFont(40, "px", "sans-serif")).
             setText("Text on path, easily traverse a path with text.").
             setTextAlign("left").
             setTextFillStyle(gradient).
@@ -109,7 +110,7 @@ public class Demo5 {
         gradient.addColorStop(1, "#d0d0d0");
 
         TextActor text = new TextActor().
-                setFont("40px sans-serif").
+                setFont(new TextFont(40, "px", "sans-serif")).
                 setText("Text on Path").
                 calcTextSize(director).
                 setTextFillStyle(gradient).
@@ -118,7 +119,7 @@ public class Demo5 {
         cc1.addChild(text.setLocation((cc1.width - text.width) / 2, 0));
 
         TextActor text2 = new TextActor().
-                setFont("40px sans-serif").
+                setFont(new TextFont(40, "px", "sans-serif")).
                 setText("Interpolated").
                 calcTextSize(director).
                 setTextFillStyle(gradient).
@@ -127,7 +128,7 @@ public class Demo5 {
         cc1.addChild(text2.setLocation((cc1.width - text2.width) / 2, 40));
 
         TextActor text4 = new TextActor().
-                setFont("40px sans-serif").
+                setFont(new TextFont(40, "px", "sans-serif")).
                 setText("As well").
                 calcTextSize(director).
                 setTextFillStyle(gradient).

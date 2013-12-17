@@ -18,6 +18,7 @@ import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.actor.SpriteActor;
 import com.katspow.caatja.foundation.image.CompoundImage;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 
 public class Scene2 {
@@ -184,7 +185,7 @@ public class Scene2 {
         cc1.addBehavior(rb1);
 
         TextActor text = new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("One Image.").
                 calcTextSize(director).
                 setTextFillStyle(gradient).
@@ -193,7 +194,7 @@ public class Scene2 {
         cc1.addChild( text.setLocation((cc1.width-text.textWidth)/2,0) );
 
         TextActor text2 = new TextActor().
-                setFont("30px sans-serif").
+                setFont(new TextFont(30, "px", "sans-serif")).
                 setText("Behaviors on").
                 calcTextSize(director).
                 setTextFillStyle(gradient).
@@ -202,7 +203,7 @@ public class Scene2 {
         cc1.addChild(text2.setLocation((cc1.width-text2.width)/2,50));
 
         TextActor text3 = new TextActor().
-                setFont("30px sans-serif").
+                setFont(new TextFont(30, "px", "sans-serif")).
                 setText("MouseMove").
                 calcTextSize(director).
                 setTextFillStyle(gradient).
@@ -211,7 +212,7 @@ public class Scene2 {
         cc1.addChild(text3.setLocation((cc1.width-text3.textWidth)/2,80));
 
         TextActor text4 = new TextActor().
-                setFont("10px sans-serif").
+                setFont(new TextFont(10, "px", "sans-serif")).
                 setText("and").
                 calcTextSize(director).
                 setTextFillStyle("black").
@@ -220,7 +221,7 @@ public class Scene2 {
         cc1.addChild(text4);
 
         TextActor text5 = new TextActor().
-                setFont("30px sans-serif").
+                setFont(new TextFont(30, "px", "sans-serif")).
                 setText("MouseDblClick").
                 calcTextSize(director).
                 setTextFillStyle(gradient).

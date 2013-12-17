@@ -9,6 +9,7 @@ import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.timer.Callback;
 import com.katspow.caatja.foundation.timer.TimerTask;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 
 public class Tut52 {
     
@@ -26,7 +27,7 @@ public class Tut52 {
     
     private TextActor createText(Director director, String color) {
         TextActor actor= new TextActor().
-                setFont("100px Lucida sans").
+                setFont(new TextFont(100, "px", "Lucida sans")).
                 calcTextSize(director).
                 setFillStyle(color).
                 setOutline(true).
@@ -68,7 +69,7 @@ public class Tut52 {
               ctx.stroke();
               ctx.restore();
   
-              ctx.setFont("10px sans-serif");
+              ctx.setFont(new TextFont(10, "px", "sans-serif"));
               ctx.setFillStyle("black");
               ctx.fillText(
                   rotated ? "Prev Scene" : "Next Scene",

@@ -5,6 +5,7 @@ import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.ui.ShapeActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 
 public class GettingStarted extends Scene {
     
@@ -21,7 +22,7 @@ public class GettingStarted extends Scene {
             getInstance().setFillStyle("#ffffff");
             
             TextActor intro = new TextActor().
-                    setFont("12px sans-serif").
+                    setFont(new TextFont(12, "px", "sans-serif")).
                     setTextBaseline("top").
                     setText("CAATJA uses Canvas as rendering engine. (CSS and WebGL are not supported at the moment) ").
                     calcTextSize(director).
@@ -30,7 +31,7 @@ public class GettingStarted extends Scene {
             intro.setLocation(5, 5);
             
             TextActor installation = new TextActor().
-                    setFont("12px sans-serif").
+                    setFont(new TextFont(12, "px", "sans-serif")).
                     setTextBaseline("top").
                     setText("CAATJA uses Maven, you just have to include the dependency in the pom.xml : ").
                     calcTextSize(director).

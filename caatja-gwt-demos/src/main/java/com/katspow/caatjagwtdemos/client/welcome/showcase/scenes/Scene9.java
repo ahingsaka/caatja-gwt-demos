@@ -10,6 +10,7 @@ import com.katspow.caatja.foundation.timer.Callback;
 import com.katspow.caatja.foundation.timer.TimerTask;
 import com.katspow.caatja.foundation.ui.IMActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.modules.image.imageprocess.IMBumpMapping;
 import com.katspow.caatja.modules.image.imageprocess.IMPlasma;
 
@@ -133,7 +134,7 @@ public class Scene9 {
         scene.addChild(cc);
 
         TextActor text= new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Image").
                 setTextFillStyle(gradient).
                 setOutline(true).
@@ -142,7 +143,7 @@ public class Scene9 {
         cc.addChild(text.setLocation((cc.width-text.textWidth)/2,0));
 
         TextActor text2= new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Processing").
                 calcTextSize(director).
                 setTextFillStyle(gradient).

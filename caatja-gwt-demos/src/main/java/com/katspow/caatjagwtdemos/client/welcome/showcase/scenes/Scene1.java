@@ -21,6 +21,7 @@ import com.katspow.caatja.foundation.ui.Dock;
 import com.katspow.caatja.foundation.ui.InterpolatorActor;
 import com.katspow.caatja.foundation.ui.PathActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.pathutil.Path;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.fish.Fish;
@@ -298,7 +299,7 @@ public class Scene1 {
         gradient.addColorStop(1, "blue");
 
         TextActor text = new TextActor().
-            setFont("20px sans-serif").
+            setFont(new TextFont(20, "px", "sans-serif")).
             setText("Conpound Path").
             calcTextSize(director).
             setTextFillStyle(gradient).
@@ -308,7 +309,7 @@ public class Scene1 {
         cc1.addChild(text.setLocation((cc1.width-text.textWidth)/2,0));
         
         TextActor text2 = new TextActor().
-            setFont("20px sans-serif").
+            setFont(new TextFont(20, "px", "sans-serif")).
             setText("Quadric,Cubic,Line segments").
             calcTextSize(director).
             setTextFillStyle(gradient).
@@ -317,7 +318,7 @@ public class Scene1 {
         cc1.addChild(text2.setLocation((cc1.width-text2.textWidth)/2,20));
         
         TextActor text4 = new TextActor().
-            setFont("20px sans-serif").
+            setFont(new TextFont(20, "px", "sans-serif")).
             setText("Fish Path").
             calcTextSize(director).
             setTextFillStyle(gradient).
@@ -326,7 +327,7 @@ public class Scene1 {
         cc1.addChild(text4.setLocation((cc1.width-text4.textWidth)/2,50));
         
         TextActor text3 = new TextActor().
-            setFont("20px sans-serif").
+            setFont(new TextFont(20, "px", "sans-serif")).
             setText("Interpolators").
             calcTextSize(director).
             setTextFillStyle(gradient).
@@ -335,7 +336,7 @@ public class Scene1 {
         cc1.addChild(text3.setLocation((cc1.width-text3.textWidth)/2,70));
 
         TextActor text5 = new TextActor().
-                setFont("20px sans-serif").
+                setFont(new TextFont(20, "px", "sans-serif")).
                 setText("DblClick to Select").
                 calcTextSize(director).
                 setTextFillStyle(gradient).

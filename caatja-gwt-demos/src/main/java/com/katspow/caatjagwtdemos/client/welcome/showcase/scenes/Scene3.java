@@ -22,6 +22,7 @@ import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.actor.SpriteActor;
 import com.katspow.caatja.foundation.image.CompoundImage;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 
 public class Scene3 {
@@ -73,7 +74,7 @@ public class Scene3 {
         cc.addBehavior(rb);
 
         TextActor text = new TextActor();
-        text.setFont("50px sans-serif");
+        text.setFont(new TextFont(50, "px", "sans-serif"));
         text.setText("Anchored");
         text.calcTextSize(director);
         text.setLocation((cc.width-text.width)/2, 0);
@@ -83,7 +84,7 @@ public class Scene3 {
         cc.addChild(text.setLocation((cc.width-text.textWidth)/2,0));
 
         TextActor text2 = new TextActor();
-        text2.setFont("50px sans-serif");
+        text2.setFont(new TextFont(50, "px", "sans-serif"));
         text2.setText("Affine");
         text2.calcTextSize(director);
         text2.setLocation((cc.width-text2.width)/2, 50);
@@ -93,7 +94,7 @@ public class Scene3 {
         cc.addChild(text2.setLocation((cc.width-text2.textWidth)/2,50));
 
         TextActor text3 = new TextActor();
-        text3.setFont("50px sans-serif");
+        text3.setFont(new TextFont(50, "px", "sans-serif"));
         text3.setText("Transforms");
         text3.calcTextSize(director);
         text3.setLocation((cc.width-text3.width)/2, 100);

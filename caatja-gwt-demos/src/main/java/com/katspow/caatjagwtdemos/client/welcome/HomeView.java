@@ -22,6 +22,7 @@ import com.katspow.caatja.core.image.CaatjaImageLoaderCallback;
 import com.katspow.caatja.core.image.CaatjaPreloader;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatjagwtdemos.client.welcome.demos.Demos;
 import com.katspow.caatjagwtdemos.client.welcome.hypernumber.HyperNumber;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.Showcase;
@@ -245,7 +246,7 @@ public class HomeView extends Composite {
      */
     private TextActor createLoadingText() throws Exception {
         TextActor loading = new TextActor();
-        loading.setFont("30px sans-serif").
+        loading.setFont(new TextFont(30, "px", "sans-serif")).
             setTextBaseline("top").
             setText("Loading ...").
             calcTextSize(director).

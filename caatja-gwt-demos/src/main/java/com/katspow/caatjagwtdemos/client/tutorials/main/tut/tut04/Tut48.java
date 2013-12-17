@@ -6,6 +6,7 @@ import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 
 public class Tut48 {
 
@@ -18,7 +19,7 @@ public class Tut48 {
         scene.addChild(root);
 
         TextActor text = new TextActor().
-                setFont("100px sans-serif").
+                setFont(new TextFont(100, "px", "sans-serif")).
                 setText("Rotate Device").
                 setFillStyle("red").
                 setOutlineColor("#ffff00").

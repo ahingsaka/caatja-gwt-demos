@@ -12,6 +12,7 @@ import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 
 public class Scene4 {
@@ -42,7 +43,7 @@ public class Scene4 {
         scene.addChild(cc); 
         
         TextActor coords= new TextActor();
-        coords.setFont("20px sans-serif");
+        coords.setFont(new TextFont(20, "px", "sans-serif"));
         coords.textAlign="left";
         coords.textBaseline="top";
         coords.setText("");
@@ -53,7 +54,7 @@ public class Scene4 {
         scene.addChild(coords);
 
         TextActor coords2= new TextActor();
-        coords2.setFont("20px sans-serif");
+        coords2.setFont(new TextFont(20, "px", "sans-serif"));
         coords2.textAlign="left";
         coords2.textBaseline="top";
         coords2.setText("");
@@ -64,7 +65,7 @@ public class Scene4 {
         scene.addChild(coords2);
 
         TextActor coords3= new TextActor();
-        coords3.setFont("20px sans-serif");
+        coords3.setFont(new TextFont(20, "px", "sans-serif"));
         coords3.textAlign="left";
         coords3.textBaseline="top";
         coords3.setText("");
@@ -403,7 +404,7 @@ public class Scene4 {
         cc1.addBehavior(rb);
         
         TextActor text= new TextActor();
-        text.setFont("30px sans-serif");
+        text.setFont(new TextFont(30, "px", "sans-serif"));
         text.setText("Perfect Pixel");
         text.calcTextSize(director);
         text.textAlign="center";
@@ -414,7 +415,7 @@ public class Scene4 {
         cc1.addChild(text.setLocation((cc1.width-text.textWidth)/2,0));
 
         TextActor text2= new TextActor();
-        text2.setFont("30px sans-serif");
+        text2.setFont(new TextFont(30, "px", "sans-serif"));
         text2.textAlign="center";
         text2.setText("Collision detection");
         text2.calcTextSize(director);
@@ -425,7 +426,7 @@ public class Scene4 {
         cc1.addChild(text2.setLocation((cc1.width-text2.textWidth)/2,30));
 
         TextActor text3= new TextActor();
-        text3.setFont("30px sans-serif");
+        text3.setFont(new TextFont(30, "px", "sans-serif"));
         text3.textAlign="center";
         text3.setText("Drag Enabled");
         text3.calcTextSize(director);
@@ -436,7 +437,7 @@ public class Scene4 {
         cc1.addChild(text3.setLocation((cc1.width-text3.textWidth)/2,60));
 
         TextActor text4= new TextActor();
-        text4.setFont("20px sans-serif");
+        text4.setFont(new TextFont(20, "px", "sans-serif"));
         text4.textAlign="center";
         text4.setText("Drag + [Control,Shift,Alt]");
         text4.calcTextSize(director);
@@ -446,7 +447,7 @@ public class Scene4 {
         cc1.addChild(text4.setLocation((cc1.width-text4.textWidth)/2,100));
 
         TextActor text5= new TextActor();
-        text5.setFont("20px sans-serif");
+        text5.setFont(new TextFont(20, "px", "sans-serif"));
         text5.textAlign="center";
         text5.setText("Double Click");
         text5.calcTextSize(director);

@@ -8,6 +8,7 @@ import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.actor.ActorRender;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 
 /**
  * Scene 11.
@@ -23,7 +24,7 @@ public class Scene11 {
         __scene11_text(director,scene);
 
         final TextActor text= new TextActor().
-                setFont("100px sans-serif").
+                setFont(new TextFont(100, "px", "sans-serif")).
                 setText("Rotate Device").
                 setTextFillStyle("red").
                 setOutline(true).
@@ -35,15 +36,15 @@ public class Scene11 {
         scene.addChild(text);
         
         TextActor alpha= new TextActor().
-                setFont("15px sans-serif").
+                setFont(new TextFont(15, "px", "sans-serif")).
                 setText("Alpha: ").
                 setLocation(10,80);
         TextActor beta= new TextActor().
-                setFont("15px sans-serif").
+                setFont(new TextFont(15, "px", "sans-serif")).
                 setText("Beta: ").
                 setLocation(10,100);
         TextActor gamma= new TextActor().
-                setFont("15px sans-serif").
+                setFont(new TextFont(15, "px", "sans-serif")).
                 setText("Gamma: ").
                 setLocation(10,120);
         scene.addChild(alpha);
@@ -94,7 +95,7 @@ public class Scene11 {
                 );
 
         TextActor text= new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Accelerometer").
                 setTextFillStyle(gradient).
                 setOutline(true).
@@ -103,7 +104,7 @@ public class Scene11 {
         cc.addChild(text.setLocation((cc.width-text.textWidth)/2,0));
 
         TextActor text2= new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Enabled").
                 calcTextSize(director).
                 setTextFillStyle(gradient).

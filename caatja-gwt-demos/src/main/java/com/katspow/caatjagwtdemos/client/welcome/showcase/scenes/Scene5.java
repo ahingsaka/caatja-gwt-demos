@@ -9,6 +9,7 @@ import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.ui.PathActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.pathutil.Path;
 
@@ -37,7 +38,7 @@ public class Scene5 {
         gradient.addColorStop(1,"blue");    
         
         TextActor text= new TextActor();
-        text.setFont("40px sans-serif");
+        text.setFont(new TextFont(40, "px", "sans-serif"));
         text.setText("Text on path   :D");
         text.textAlign="left";
         text.setTextFillStyle(gradient);
@@ -53,7 +54,7 @@ public class Scene5 {
         
         TextActor text2= new TextActor();
         
-        text2.setFont("40px sans-serif");
+        text2.setFont(new TextFont(40, "px", "sans-serif"));
         text2.setText("Text under path   :D");
         text2.textAlign="left";
         text2.setTextFillStyle(gradient2);
@@ -89,7 +90,7 @@ public class Scene5 {
         gradient.addColorStop(1,"#d0d0d0"); 
         
         TextActor text= new TextActor();
-        text.setFont("40px sans-serif");
+        text.setFont(new TextFont(40, "px", "sans-serif"));
         text.setText("Text on Path");
         text.calcTextSize(director);
         text.setLocation((cc1.width-text.width)/2,0);
@@ -99,7 +100,7 @@ public class Scene5 {
         cc1.addChild(text.setLocation((cc1.width-text.textWidth)/2,0));
 
         TextActor text2= new TextActor();
-        text2.setFont("40px sans-serif");
+        text2.setFont(new TextFont(40, "px", "sans-serif"));
         text2.setText("Interpolated");
         text2.calcTextSize(director);
         text2.setLocation((cc1.width-text2.width)/2,40);
@@ -109,7 +110,7 @@ public class Scene5 {
         cc1.addChild(text2.setLocation((cc1.width-text2.textWidth)/2,40));
 
         TextActor text4= new TextActor();
-        text4.setFont("40px sans-serif");
+        text4.setFont(new TextFont(40, "px", "sans-serif"));
         text4.setText("As well");
         text4.calcTextSize(director);
         text4.setLocation((cc1.width-text4.width)/2,80);

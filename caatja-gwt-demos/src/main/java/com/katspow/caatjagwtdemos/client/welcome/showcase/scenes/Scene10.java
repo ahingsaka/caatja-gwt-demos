@@ -7,6 +7,7 @@ import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 
 /**
  * Scene 10.
@@ -48,7 +49,7 @@ public class Scene10 {
                 );
 
         TextActor text= new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("PackedCircle").
                 setTextFillStyle(gradient).
                 setOutline(true).
@@ -57,7 +58,7 @@ public class Scene10 {
         cc.addChild(text.setLocation((cc.width-text.textWidth)/2,0));
 
         TextActor text2= new TextActor().
-                setFont("30px sans-serif").
+                setFont(new TextFont(30, "px", "sans-serif")).
                 setText("Collision demo").
                 calcTextSize(director).
                 setTextFillStyle(gradient).

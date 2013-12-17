@@ -29,6 +29,7 @@ import com.katspow.caatja.foundation.timer.Callback;
 import com.katspow.caatja.foundation.timer.TimerTask;
 import com.katspow.caatja.foundation.ui.ShapeActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.pathutil.CurvePath;
 import com.katspow.caatja.pathutil.LinearPath;
 import com.katspow.caatja.pathutil.Path;
@@ -203,7 +204,7 @@ public class GameScene implements ContextListener {
 
         this.levelActor= new TextActor().
                 
-                setFont("40px sans-serif").
+                setFont(new TextFont(40, "px", "sans-serif")).
                 setText("");
                 levelActor.setTextFillStyle( gradient ).
                 setOutline(true).
@@ -216,7 +217,7 @@ public class GameScene implements ContextListener {
         GuessNumberActor guess= (GuessNumberActor) new GuessNumberActor().
                 
                 setBounds((controls.width-80)/2, 50, 80, 30 );
-                guess.setFont("80px sans-serif").
+                guess.setFont(new TextFont(80, "px", "sans-serif")).
                 setText("").
                 setTextFillStyle("#000000").
                 setOutline(true).
@@ -236,7 +237,7 @@ public class GameScene implements ContextListener {
         this.scoreActor= (ScoreActor) new ScoreActor().
                 
                 setBounds( 2, 180, controls.width-4, 30 );
-                this.scoreActor.setFont( "40px sans-serif" ).
+                this.scoreActor.setFont(new TextFont(40, "px", "sans-serif")).
                 setTextFillStyle( gradient ).
                 setOutline( true ).
                 setOutlineColor( "0x7f7f00" );

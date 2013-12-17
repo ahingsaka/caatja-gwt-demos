@@ -29,6 +29,7 @@ import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.ui.ShapeActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.math.matrix.Matrix;
 import com.katspow.caatja.pathutil.Path;
@@ -439,7 +440,7 @@ public class ShowcaseOld {
                             
                         canvas.setFillStyle("#ffff00");
                         canvas.setTextBaseline("top");
-                        canvas.setFont("18px sans-serif");
+                        canvas.setFont(new TextFont(18, "px", "sans-serif"));
                         String str= ""+(this.__sceneIndex+1);
                         double w= canvas.measureTextWidth(str);
                         canvas.fillText( str, (this.width-w)/2, 0 );
@@ -674,7 +675,7 @@ public class ShowcaseOld {
             }
         });
         
-        textLoading.setFont("20px sans-serif").
+        textLoading.setFont(new TextFont(20, "px", "sans-serif")).
             setTextBaseline("top").
             setText("Loading").
             calcTextSize(director).

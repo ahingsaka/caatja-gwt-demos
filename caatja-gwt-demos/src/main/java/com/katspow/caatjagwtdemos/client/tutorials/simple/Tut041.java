@@ -17,6 +17,7 @@ import com.katspow.caatja.foundation.ui.Dock;
 import com.katspow.caatja.foundation.ui.InterpolatorActor;
 import com.katspow.caatja.foundation.ui.ShapeActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 
 /**
  * FIXME strokeStyle null ????
@@ -215,7 +216,7 @@ public class Tut041 {
                                 selectedInterpolatorActor.getInterpolator());
                     }
                 }
-            }.setFont("50px sans-serif").setText("CAAT").setFillStyle("green").setOutline(true)
+            }.setFont(new TextFont(50, "px", "sans-serif")).setText("CAAT").setFillStyle("green").setOutline(true)
                     .setOutlineColor("red").setLocation(30, 60 + 140 * i);
 
             RotateBehavior text_r0_rb = (RotateBehavior) new RotateBehavior().setFrameTime(0, 5000);
@@ -235,7 +236,7 @@ public class Tut041 {
                                 selectedInterpolatorActor.getInterpolator());
                     }
                 }
-            }.setFont("50px sans-serif").setText("CAAT").setFillStyle("green").setOutline(true)
+            }.setFont(new TextFont(50, "px", "sans-serif")).setText("CAAT").setFillStyle("green").setOutline(true)
                     .setOutlineColor("red").setLocation(250, 60 + 140 * i);
             ScaleBehavior text_r0_rb = (ScaleBehavior) new ScaleBehavior().setFrameTime(0, 5000);
             text_r0_rb.setValues(1, 2, 1, 2).setCycle(true);

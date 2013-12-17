@@ -8,6 +8,7 @@ import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 
 public class Tut44 {
     
@@ -49,7 +50,7 @@ public class Tut44 {
  // screat an actor with the text Scene1 or Scene2
     public Actor createNumber(Director director, int n, String color) {
         TextActor actor= new TextActor().
-                setFont("200px Lucida-sans").
+                setFont(new TextFont(200, "px", "Lucida-sans")).
                 setText("Scene "+n).
                 calcTextSize(director).
                 setAlign("center").
@@ -101,7 +102,7 @@ public class Tut44 {
               ctx.stroke();
               ctx.restore();
   
-              ctx.setFont("10px sans-serif");
+              ctx.setFont(new TextFont(10, "px", "sans-serif"));
               ctx.setFillStyle("black");
               ctx.fillText(
                   rotated ? "Prev Scene" : "Next Scene",

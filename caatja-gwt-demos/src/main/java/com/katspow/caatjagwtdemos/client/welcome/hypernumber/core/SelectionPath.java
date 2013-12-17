@@ -7,6 +7,7 @@ import com.katspow.caatja.behavior.PathBehavior;
 import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.actor.Actor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.math.Pt;
 import com.katspow.caatja.pathutil.Path;
 import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.brick.Brick;
@@ -121,7 +122,7 @@ public class SelectionPath extends Actor implements ContextListener {
 
                 ctx.setFillStyle("#ffff00");
                 ctx.beginPath();
-                ctx.setFont("40px sans-serif");
+                ctx.setFont(new TextFont(40, "px", "sans-serif"));
                 ctx.fillText( "x"+this.multiplier, pos.x, pos.y );
 
                 ctx.setLineWidth(2);

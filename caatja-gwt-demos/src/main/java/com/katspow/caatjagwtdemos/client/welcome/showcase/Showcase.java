@@ -18,6 +18,7 @@ import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.actor.SpecialActor;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene1;
 import com.katspow.caatjagwtdemos.client.welcome.showcase.scenes.Scene10;
@@ -247,7 +248,7 @@ public class Showcase {
                     
                 canvas.setFillStyle("#ffff00");
                 canvas.setTextBaseline("top");
-                canvas.setFont("18px sans-serif");
+                canvas.setFont(new TextFont(18, "px", "sans-serif"));
                 String str= ""+(this.__sceneIndex+1);
                 double w= canvas.measureTextWidth(str);
                 canvas.fillText( str, (this.width-w)/2, 0 );

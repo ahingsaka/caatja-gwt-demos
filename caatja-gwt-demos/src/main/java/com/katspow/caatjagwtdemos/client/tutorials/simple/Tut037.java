@@ -9,6 +9,7 @@ import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.ui.PathActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.pathutil.Path;
 
 /**
@@ -36,7 +37,7 @@ public class Tut037 {
 
         // outline text. no fillStyle since the text will just be outlined.
         TextActor _text_00= (TextActor) new TextActor();
-        _text_00.setFont("40px sans-serif").
+        _text_00.setFont(new TextFont(40, "px", "sans-serif")).
                 setText("CAAT").
                 setTextBaseline("top").
                 setFill(false).
@@ -46,7 +47,7 @@ public class Tut037 {
 
         // gradient text.
         TextActor _text_01= (TextActor) new TextActor();
-                _text_01.setFont("40px sans-serif").
+                _text_01.setFont(new TextFont(40, "px", "sans-serif")).
                 setText("CAAT").
                 setFillStrokeStyle(gradient_top);
                 
@@ -55,7 +56,7 @@ public class Tut037 {
 
         // gradient + outlined.
         TextActor _text_02= (TextActor) new TextActor().
-                setFont("40px sans-serif").
+                setFont(new TextFont(40, "px", "sans-serif")).
                 setText("CAAT").
                 setFillStrokeStyle(gradient_top);
                 
@@ -72,7 +73,7 @@ public class Tut037 {
 
         // a simple TextActor
         TextActor _text_10= (TextActor) new TextActor().
-                setFont("40px sans-serif").
+                setFont(new TextFont(40, "px", "sans-serif")).
                 setText("CAAT").
                 setFillStrokeStyle(gradient_top);
                 _text_10.setTextBaseline("top").
@@ -115,7 +116,7 @@ public class Tut037 {
 
         // make text traverse over the path
         TextActor _text_20= (TextActor) new TextActor().
-                setFont("30px sans-serif").
+                setFont(new TextFont(30, "px", "sans-serif")).
                 setText("CAAT").
                 setFillStyle("green");
                 _text_20.setTextBaseline("bottom").      // over the path
@@ -127,7 +128,7 @@ public class Tut037 {
 
 //        // make text traverse under the path
         TextActor _text_21= new TextActor().
-                setFont("40px sans-serif").
+                setFont(new TextFont(40, "px", "sans-serif")).
                 setText("CAAT").
                 setFillStrokeStyle(gradient_top).
                 setTextBaseline("top").         // under path

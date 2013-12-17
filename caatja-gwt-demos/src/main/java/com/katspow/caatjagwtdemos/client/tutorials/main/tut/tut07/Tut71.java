@@ -21,6 +21,7 @@ import com.katspow.caatja.foundation.ui.InterpolatorActor;
 import com.katspow.caatja.foundation.ui.PathActor;
 import com.katspow.caatja.foundation.ui.ShapeActor;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 import com.katspow.caatja.pathutil.Path;
 
 public class Tut71 {
@@ -163,7 +164,7 @@ public class Tut71 {
 //                }
                 
             }.
-                    setFont("50px sans-serif").
+                    setFont(new TextFont(50, "px", "sans-serif")).
                     setText("CAAT").
                     setFillStyle("yellow").
                     setOutline(true).
@@ -229,7 +230,7 @@ public class Tut71 {
 //                }
                 
             }.
-                    setFont("50px sans-serif").
+                    setFont(new TextFont(50, "px", "sans-serif")).
                     setText("CAAT").
                     setFillStyle("blue").
                     setOutline(true).

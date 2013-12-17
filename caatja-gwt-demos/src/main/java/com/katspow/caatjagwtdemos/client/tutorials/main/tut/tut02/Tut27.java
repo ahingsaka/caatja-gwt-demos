@@ -9,6 +9,7 @@ import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.ui.TextActor;
+import com.katspow.caatja.foundation.ui.TextFont;
 
 public class Tut27 {
 
@@ -36,7 +37,7 @@ public class Tut27 {
         gradient.addColorStop(1, "blue");
 
         TextActor text = new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Conpound Path").
                 calcTextSize(director).
                 setAlign("center").
@@ -47,7 +48,7 @@ public class Tut27 {
         cc1.addChild(text.setLocation((cc1.width - text.textWidth) / 2, 0));
 
         TextActor text2 = new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Quadric,Cubic,Line segments").
                 calcTextSize(director).
                 setAlign("center").
@@ -58,7 +59,7 @@ public class Tut27 {
         cc1.addChild(text2.setLocation((cc1.width - text2.textWidth) / 2, 50));
 
         TextActor text4 = new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Fish path").
                 calcTextSize(director).
                 setAlign("center").
@@ -69,7 +70,7 @@ public class Tut27 {
         cc1.addChild( text4.setLocation((cc1.width - text4.textWidth) / 2, 100) );
 
         TextActor text3 = new TextActor().
-                setFont("50px sans-serif").
+                setFont(new TextFont(50, "px", "sans-serif")).
                 setText("Interpolators").
                 calcTextSize(director).
                 setAlign("center").
