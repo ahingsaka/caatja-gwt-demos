@@ -1,6 +1,8 @@
 package com.katspow.caatjagwtdemos.client.tutorials.simple;
 
 import com.katspow.caatja.core.Caatja;
+import com.katspow.caatja.event.CAATMouseEvent;
+import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
@@ -27,7 +29,7 @@ public class Tut032 {
                 setBounds(10,20,80,80).
                 setFillStyle("#00ff00");
         _pulsating_actor_3_0.name= "no transformation";
-
+        
         // rotated 30 degrees
         Actor _pulsating_actor_3_1= new Actor().
                 setBounds(120,20,80,80).
@@ -68,19 +70,31 @@ public class Tut032 {
 //        };
 
         // change default mouse handler to report coordinates.
-//        _pulsating_actor_3_0.mouseMove= mouseMoveHandler;
-//        _pulsating_actor_3_1.mouseMove= mouseMoveHandler;
-//        _pulsating_actor_3_2.mouseMove= mouseMoveHandler;
-//        _pulsating_actor_3_3.mouseMove= mouseMoveHandler;
+        MouseListener mouseMoveListener = new MouseMoveHandler();
+        _pulsating_actor_3_0.setMouseMoveListener(mouseMoveListener);
+        _pulsating_actor_3_1.setMouseMoveListener(mouseMoveListener);
+        _pulsating_actor_3_2.setMouseMoveListener(mouseMoveListener);
+        _pulsating_actor_3_3.setMouseMoveListener(mouseMoveListener);
 
         // don't forget to actors to the scene.
-        _scene_3.addChild( _pulsating_actor_3_0 );
-        _scene_3.addChild( _pulsating_actor_3_1 );
-        _scene_3.addChild( _pulsating_actor_3_2 );
-        _scene_3.addChild( _pulsating_actor_3_3 );
+        _scene_3.addChild(_pulsating_actor_3_0);
+        _scene_3.addChild(_pulsating_actor_3_1);
+        _scene_3.addChild(_pulsating_actor_3_2);
+        _scene_3.addChild(_pulsating_actor_3_3);
 
         // set 20 fps animation
         Caatja.loop(20);
+    }
+    
+    class MouseMoveHandler implements MouseListener {
+
+        @Override
+        public void call(CAATMouseEvent e) throws Exception {
+            Actor actor = e.source;
+            
+            
+        }
+        
     }
 
 }
