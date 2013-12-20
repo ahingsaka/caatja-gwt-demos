@@ -2,7 +2,7 @@ package com.katspow.caatjagwtdemos.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.katspow.caatjagwt.client.CAATGwt;
+import com.katspow.caatjagwt.client.CaatjaGwt;
 import com.katspow.caatjagwtdemos.client.welcome.HomeView;
 
 public class CaatjaGwtDemos implements EntryPoint {
@@ -10,7 +10,7 @@ public class CaatjaGwtDemos implements EntryPoint {
 	public void onModuleLoad() {
 
 		try {
-		    CAATGwt.init();
+		    CaatjaGwt.init();
 //			new Main().__CAAT_init();
 //			new HyperNumber().init();
 //			new Tut031().init();
