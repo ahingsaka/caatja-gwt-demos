@@ -133,7 +133,7 @@ public class Tut92 {
                         addListener(
                                 
                                 BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                                    public void call(BaseBehavior behavior, double time, Actor actor) {
+                                    public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                                         actor.
                                         setDiscardable(true).
                                         setExpired(true);

@@ -388,7 +388,7 @@ public class GameScene implements ContextListener {
                 moveB.addListener(
                         
                     BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                        public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                             actorCount++;
                             if ( actorCount== gameRows * gameColumns ) {
                                 if ( context.status==context.ST_INITIALIZING ) {
@@ -553,7 +553,7 @@ public class GameScene implements ContextListener {
               addListener(
                       
                       BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                        public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                             count++;
                             if ( count==maxCount ) {
                                 bricksContainer.enableEvents(true);
@@ -615,12 +615,12 @@ public class GameScene implements ContextListener {
               .addListener(
                       
                       BehaviorListener.valueOfExpiredAndApplied(new BehaviorExpiredListener() {
-                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                        public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                             actor.setExpired(true);
                         }
                         
                     }, new BehaviorAppliedListener() {
-                        public void call(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
+                        public void onApplied(BaseBehavior behavior, double time, double normalizeTime, Actor actor, SetForTimeReturnValue value)
                                 throws Exception {
                             List<String> colors= Arrays.asList("#00ff00","#ffff00","#00ffff");
                             for(int i=0; i<3; i++ ) {
@@ -786,7 +786,7 @@ public class GameScene implements ContextListener {
             addListener(
                     
                     BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                        public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                             me_endGameActor.enableEvents(true);
                         }
                     })

@@ -154,7 +154,7 @@ public class Scene7 {
                 cb.addListener(
                         
                         BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                            public void call(BaseBehavior behavior, double time, Actor actor) {
+                            public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                                 behavior.actor.discardable= true;
                                 behavior.actor.setExpired(true);
                             }
@@ -226,7 +226,7 @@ public class Scene7 {
             pbfish.addListener(
                     
                     BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                        public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                             Pt endCoord= ((PathBehavior) behavior).path.endCurvePosition();
                             
                             ((PathBehavior) behavior).setPath( new Path().setCubic(

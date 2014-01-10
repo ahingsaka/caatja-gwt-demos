@@ -110,7 +110,7 @@ public class Demo3 {
                 addListener(
                         
                         BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                            public void call(BaseBehavior behavior, double time, Actor actor) {
+                            public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                                 PathBehavior pathBehavior = (PathBehavior) behavior;
                                 Pt endCoord= pathBehavior.path.endCurvePosition();
                                 pathBehavior.setPath(

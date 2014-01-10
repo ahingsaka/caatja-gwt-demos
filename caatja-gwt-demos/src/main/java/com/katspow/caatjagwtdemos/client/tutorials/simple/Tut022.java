@@ -56,7 +56,7 @@ public class Tut022 {
         _sb_c4_text_0.addListener(behaviorListener);
         
         _sb_c4_text_0.addListener(BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-            public void call(BaseBehavior behavior, double time, Actor actor) {
+            public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                 _rb_c4_text_0.setFrameTime(time, 3000);
             }
         }));
@@ -64,7 +64,7 @@ public class Tut022 {
 
         // when rotation Behavior finishes, start scale Behavior.
         _rb_c4_text_0.addListener(BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-            public void call(BaseBehavior behavior, double time, Actor actor) {
+            public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                 _sb_c4_text_0.setFrameTime(time, 3000);
             }
         }));

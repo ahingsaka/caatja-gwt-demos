@@ -64,7 +64,7 @@ public class Demo2 {
                     addListener(
                             
                             BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                                public void call(BaseBehavior behavior, double time, Actor actor) {
+                                public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                                     ((PathBehavior) behavior).path.setCubic(
                                             -fw - Math.random() * 300,
                                             Math.random() * director.height,

@@ -610,7 +610,7 @@ public class ShowcaseOld {
                 cb.addListener(
                         
                         BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                            public void call(BaseBehavior behavior, double time, Actor actor) {
+                            public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                                 behavior.actor.discardable= true;
                                 behavior.actor.setExpired(true);
                             }

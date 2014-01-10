@@ -70,7 +70,7 @@ public class Demo15 {
                             addListener(
                                     
                                     BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                                        public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                                             ((CurvePath) ((PathBehavior) behavior).path.pathSegments.get(0)).curve.coordlist.get(0).set(
                                                     Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.width,
                                                     Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.height);
@@ -115,7 +115,7 @@ public class Demo15 {
                             addListener(
                                     
                                     BehaviorListener.valueOfExpired(new BehaviorExpiredListener() {
-                                        public void call(BaseBehavior behavior, double time, Actor actor) {
+                                        public void onExpired(BaseBehavior behavior, double time, Actor actor) {
                                             ((CurvePath) ((PathBehavior) behavior).path.pathSegments.get(0)).curve.coordlist.get(3).set(
                                                     Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.width,
                                                     Math.random()<.5 ? slide.width+Math.random() * 50 : -20-Math.random()*slide.height
