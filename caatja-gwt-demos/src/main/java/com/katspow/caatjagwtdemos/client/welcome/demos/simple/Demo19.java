@@ -17,6 +17,7 @@ import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
 import com.katspow.caatja.foundation.image.SpriteImage;
 import com.katspow.caatja.foundation.timer.Callback;
+import com.katspow.caatja.foundation.timer.CallbackTick;
 import com.katspow.caatja.foundation.timer.TimerTask;
 import com.katspow.caatja.foundation.ui.StarActor;
 import com.katspow.caatja.math.AABB;
@@ -70,8 +71,7 @@ public class Demo19 {
          * This timer makes the process to increment actor position based on elapsed time.
          * it will move pixelsPerSecond pixels on any direction.
          */
-        scene.createTimer(scene.time, Double.MAX_VALUE, null, new Callback() {
-            @Override
+        scene.createTimer(scene.time, Double.MAX_VALUE, null, new CallbackTick() {
             public void call(double time, double ttime, TimerTask timerTask) {
                 double ottime= ttime;
                 if ( -1!=prevTime ) {
@@ -228,7 +228,7 @@ public class Demo19 {
         /**
          * Check on every frame, whether our hero collides with any enemy.
          */
-        scene.createTimer(scene.time, Double.MAX_VALUE, null, new Callback() {
+        scene.createTimer(scene.time, Double.MAX_VALUE, null, new CallbackTick() {
             @Override
             public void call(double time, double ttime, TimerTask timerTask) {
                 int max= Math.max( levelW, levelH );

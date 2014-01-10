@@ -6,7 +6,7 @@ import com.katspow.caatja.core.canvas.CaatjaGradient;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ActorContainer;
-import com.katspow.caatja.foundation.timer.Callback;
+import com.katspow.caatja.foundation.timer.CallbackTick;
 import com.katspow.caatja.foundation.timer.TimerTask;
 import com.katspow.caatja.foundation.ui.IMActor;
 import com.katspow.caatja.foundation.ui.TextActor;
@@ -100,7 +100,7 @@ public class Scene9 {
     
     private static TimerTask __scene9_createtimer(Scene scene, final IMActor ip3) {
         
-        return scene.createTimer(scene.time, Double.MAX_VALUE, null, new Callback() {
+        return scene.createTimer(scene.time, Double.MAX_VALUE, null, new CallbackTick() {
             @Override
             public void call(double time, double ttime, TimerTask timerTask) {
                 double r= ip3.imageProcessor.width-10;

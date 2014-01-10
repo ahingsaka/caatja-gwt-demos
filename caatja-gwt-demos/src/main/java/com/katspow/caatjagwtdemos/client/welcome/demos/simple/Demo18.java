@@ -12,7 +12,7 @@ import com.katspow.caatja.event.MouseListener;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
-import com.katspow.caatja.foundation.timer.Callback;
+import com.katspow.caatja.foundation.timer.CallbackTick;
 import com.katspow.caatja.foundation.timer.TimerTask;
 import com.katspow.caatja.foundation.ui.ShapeActor;
 import com.katspow.caatja.foundation.ui.StarActor;
@@ -38,8 +38,7 @@ public class Demo18 {
          * This timer makes the process to increment actor position based on elapsed time.
          * it will move pixelsPerSecond pixels on any direction.
          */
-        scene.createTimer(scene.time, Double.MAX_VALUE, null, new Callback() {
-            @Override
+        scene.createTimer(scene.time, Double.MAX_VALUE, null, new CallbackTick() {
             public void call(double time, double ttime, TimerTask timerTask) {
                 if ( selected == null) {
                     return;

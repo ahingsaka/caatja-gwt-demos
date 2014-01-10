@@ -2,7 +2,7 @@ package com.katspow.caatjagwtdemos.client.welcome.hypernumber.startmenu;
 
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.ImageActor;
-import com.katspow.caatja.foundation.timer.Callback;
+import com.katspow.caatja.foundation.timer.CallbackTimeout;
 import com.katspow.caatja.foundation.timer.TimerTask;
 import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.Event;
 import com.katspow.caatjagwtdemos.client.welcome.hypernumber.core.context.Context;
@@ -30,8 +30,7 @@ public class AnimatedBackground extends ImageActor implements ContextListener {
                     this.timer= this.scene.createTimer(
                         scene.time,
                         100,
-                        new Callback() {
-                            @Override
+                        new CallbackTimeout() {
                             public void call(double time, double ttime, TimerTask timerTask) {
                                 offsetY+= .2;
                                 if ( offsetY>0 ) {

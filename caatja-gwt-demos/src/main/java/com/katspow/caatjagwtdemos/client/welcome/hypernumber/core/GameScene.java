@@ -25,7 +25,8 @@ import com.katspow.caatja.foundation.actor.ActorContainer;
 import com.katspow.caatja.foundation.actor.Button;
 import com.katspow.caatja.foundation.actor.ImageActor;
 import com.katspow.caatja.foundation.image.CompoundImage;
-import com.katspow.caatja.foundation.timer.Callback;
+import com.katspow.caatja.foundation.timer.CallbackTick;
+import com.katspow.caatja.foundation.timer.CallbackTimeout;
 import com.katspow.caatja.foundation.timer.TimerTask;
 import com.katspow.caatja.foundation.ui.ShapeActor;
 import com.katspow.caatja.foundation.ui.TextActor;
@@ -829,14 +830,12 @@ public class GameScene implements ContextListener {
         this.timer= this.directorScene.createTimer(
             this.directorScene.time,
             this.context.turnTime,
-            new Callback() {
-                @Override
+            new CallbackTimeout() {
                 public void call(double sceneTime, double ttime, TimerTask timerTask) {
                     context.timeUp();
                 }
             },
-            new Callback() {
-                @Override
+            new CallbackTick() {
                 public void call(double sceneTime, double ttime, TimerTask timerTask) {
                     chronoActor.tick(ttime, timerTask.duration);
                 }

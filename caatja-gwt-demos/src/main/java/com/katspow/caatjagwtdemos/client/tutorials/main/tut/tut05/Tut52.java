@@ -6,7 +6,9 @@ import com.katspow.caatja.core.canvas.CaatjaContext2d;
 import com.katspow.caatja.foundation.Director;
 import com.katspow.caatja.foundation.Scene;
 import com.katspow.caatja.foundation.actor.Actor;
-import com.katspow.caatja.foundation.timer.Callback;
+import com.katspow.caatja.foundation.timer.CallbackCancel;
+import com.katspow.caatja.foundation.timer.CallbackTick;
+import com.katspow.caatja.foundation.timer.CallbackTimeout;
 import com.katspow.caatja.foundation.timer.TimerTask;
 import com.katspow.caatja.foundation.ui.TextActor;
 import com.katspow.caatja.foundation.ui.TextFont;
@@ -127,25 +129,25 @@ public class Tut52 {
 
         // create a timer which runs for ever
         // on every timer tick, update counter.
-        scene1.createTimer(0, Double.MAX_VALUE, new Callback() {
+        scene1.createTimer(0, Double.MAX_VALUE, new CallbackTimeout() {
             @Override
             public void call(double time, double ttime, TimerTask timerTask) {
             }
-        }, new Callback() {
+        }, new CallbackTick() {
 
             @Override
             public void call(double time, double ttime, TimerTask timerTask) {
                 s1t1.setText( format(ttime) );
             }
             
-        }, new Callback() {
+        }, new CallbackCancel() {
             @Override
             public void call(double time, double ttime, TimerTask timerTask) {
             }
         });
         
         
-        scene1.createTimer(0, 1000, new Callback() {
+        scene1.createTimer(0, 1000, new CallbackTimeout() {
             @Override
             public void call(double time, double ttime, TimerTask timerTask) {
                 if (name.equals("1")) {
@@ -158,13 +160,13 @@ public class Tut52 {
                     s1t2.setText(format(seconds2));
                 }
             }
-        }, new Callback() {
+        }, new CallbackTick() {
 
             @Override
             public void call(double time, double ttime, TimerTask timerTask) {
             }
 
-        }, new Callback() {
+        }, new CallbackCancel() {
             @Override
             public void call(double time, double ttime, TimerTask timerTask) {
             }
