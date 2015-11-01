@@ -39,11 +39,16 @@
 					<execution>
 						<goals>
 							<goal>compile</goal>
-							<goal>generateAsync</goal>
 							<goal>test</goal>
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+                    <compileSourcesArtifacts>
+                    	<compileSourcesArtifact>com.katspow.caatja:caatja-core</compileSourcesArtifact>
+                        <compileSourcesArtifact>com.katspow.caatja:caatja-gwt</compileSourcesArtifact>
+                    </compileSourcesArtifacts>
+                </configuration>
 			</plugin>
 
 		</plugins>
