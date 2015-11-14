@@ -25,7 +25,13 @@ public class CaatjaGwtImageServiceImpl extends RemoteServiceServlet implements C
 
 			// System.out.println(entry.getKey());
 
-			InputStream is = this.getClass().getResourceAsStream("images/" + entry.getValue());
+            InputStream is = null;
+
+			is = this.getClass().getResourceAsStream(entry.getValue());
+
+            if (is == null) {
+                is = getServletContext().getResourceAsStream(entry.getValue());
+            }
 
 			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 

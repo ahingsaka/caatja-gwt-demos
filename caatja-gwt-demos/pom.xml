@@ -16,18 +16,18 @@
 			<artifactId>caatja-gwt</artifactId>
 			<version>0.7.6-SNAPSHOT</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
+
 		<plugins>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 
@@ -51,7 +51,24 @@
                 </configuration>
 			</plugin>
 
-		</plugins>
+            <plugin>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>1.9.3-maven3.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <enableJarSplitting>true</enableJarSplitting>
+                </configuration>
+
+            </plugin>
+
+        </plugins>
 	</build>
 
 </project>
